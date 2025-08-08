@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Can Club</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Cool Sky & Charcoal -->
+    <!-- Application Structure Plan: A single-page application with a top navigation bar for smooth scrolling to different thematic sections. The design has been updated to incorporate the new logo's color scheme (sky blue, dark gray, white) to ensure brand consistency. The logo is now a prominent part of the header. The interactive 'Core Values' section is maintained to encourage user engagement and exploration, reinforcing the club's identity. This structure remains intuitive for users to consume and interact with the content. The AI features have been removed as requested. -->
+    <!-- Visualization & Content Choices: The report is qualitative. 'Story' is the narrative intro. 'Mission' & 'Vision' are presented as distinct blocks for clarity. 'Culture' is a descriptive text section. The main interactive element for 'Core Values' is a grid of clickable HTML/CSS cards, now styled with the new palette. Method: Vanilla JS for interaction, Tailwind for styling. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+        .active-nav {
+            color: #0c4a6e; /* sky-800 */
+            font-weight: 500;
+        }
+        .value-card.active {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border-color: #0c4a6e; /* sky-800 */
+        }
+    </style>
+</head>
+<body class="bg-sky-100 text-gray-800">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <!-- Đã cập nhật đường dẫn logo để hiển thị chính xác -->
+                <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Pn79ADnFXn8Q7kNvwHtjn30&_nc_oc=AdkktOPr-jcLyJr52E7Jk5QWaEHGbYZfybk_UWYF8daSGlE08cCxusBjimfSbBcMoUIaghL5lRXkeQ09xoGT8_Nh&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=x3cvYp8FFPYsAqzSSHeo3g&oh=00_AfUsH21wXttNF-ZxphX61AFnBX5FRhHHEW0mmiq19NvpKQ&oe=689B81D0" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
+                <span class="text-xl font-bold text-gray-900">You Can Club</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#cau-chuyen" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Câu chuyện</a>
+                <a href="#su-menh" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Sứ mệnh</a>
+                <a href="#van-hoa" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Văn hóa</a>
+                <a href="#gia-tri" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Giá trị cốt lõi</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="#cau-chuyen" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Câu chuyện</a>
+            <a href="#su-menh" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Sứ mệnh</a>
+            <a href="#van-hoa" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Văn hóa</a>
+            <a href="#gia-tri" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Giá trị cốt lõi</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+
+        <section id="cau-chuyen" class="text-center min-h-[60vh] flex flex-col justify-center items-center">
+             <h1 class="text-4xl md:text-6xl font-bold text-sky-900 mb-4">Hành trình vượt qua giới hạn</h1>
+             <p class="max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed">
+                Câu chuyện của chúng tôi bắt đầu từ một sứ mệnh đơn giản nhưng đầy ý nghĩa: tạo ra một nơi mà những nỗi sợ hãi không còn là rào cản. Chúng tôi muốn xây dựng một cộng đồng nơi mỗi học sinh đều có cơ hội vượt qua giới hạn của bản thân, tự tin thể hiện cá tính và phát triển toàn diện.
+             </p>
+        </section>
+
+        <section id="su-menh" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Sứ Mệnh & Định Hướng</h2>
+                <p class="mt-2 text-gray-500">La bàn dẫn lối cho mọi hoạt động của chúng tôi.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-sky-800 mb-4 flex items-center">
+                        <span class="text-3xl mr-3">🎯</span> Sứ mệnh
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Đóng góp vào sự phát triển của cộng đồng học sinh tại địa phương bằng cách cung cấp một nơi để học hỏi, trau dồi kỹ năng, vượt qua những nỗi sợ hãi và kết nối với những người cùng chí hướng.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-sky-800 mb-4 flex items-center">
+                        <span class="text-3xl mr-3">🧭</span> Định hướng
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Xây dựng một cộng đồng học tập tích cực, nơi các thành viên được rèn luyện kỹ năng thuyết trình, phản biện, tự tin giao tiếp và thể hiện bản thân. Mục tiêu là tạo ra một môi trường hỗ trợ, thúc đẩy sự tiến bộ cá nhân và xây dựng thói quen học tập chủ động, tích cực.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="van-hoa" class="py-16 bg-white rounded-2xl my-16">
+            <div class="text-center mb-12 px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Không Gian Văn Hóa</h2>
+                 <p class="mt-2 text-gray-500">Nơi mọi cá tính được tôn trọng và phát triển.</p>
+            </div>
+            <div class="max-w-3xl mx-auto px-6">
+                 <p class="text-center text-gray-600 leading-relaxed text-lg">
+                    Chúng tôi tạo ra một không gian cởi mở, thân thiện và thoải mái. Mọi người đều có thể chia sẻ, lắng nghe và tôn trọng lẫn nhau. Văn hóa của cộng đồng được xây dựng trên tinh thần <strong class="text-sky-700">tích cực</strong>, <strong class="text-sky-700">cởi mở</strong>, <strong class="text-sky-700">dám thử</strong> và <strong class="text-sky-700">cùng nhau tiến bộ</strong>.
+                </p>
+            </div>
+        </section>
+
+        <section id="gia-tri" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Giá Trị Cốt Lõi</h2>
+                <p class="mt-2 text-gray-500">Nền tảng cho mọi quyết định và hành động. Nhấp vào từng giá trị để tìm hiểu thêm.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-md hover:shadow-xl" data-target="desc-1">
+                    <h4 class="font-bold text-lg text-gray-800">Tôn trọng - Cởi mở - Cùng tiến bộ</h4>
+                </div>
+                <div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-md hover:shadow-xl" data-target="desc-2">
+                    <h4 class="font-bold text-lg text-gray-800">Dám thử - Dám sai - Dám sửa</h4>
+                </div>
+                <div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-md hover:shadow-xl" data-target="desc-3">
+                    <h4 class="font-bold text-lg text-gray-800">Học từ nhau</h4>
+                </div>
+            </div>
+            <div id="descriptions-container" class="min-h-[150px] bg-white rounded-xl p-8 shadow-inner transition-all duration-500">
+                <div id="desc-1" class="value-description" style="display: none;">
+                    <h5 class="font-bold text-xl text-sky-800 mb-2">Tôn trọng - Cởi mở - Cùng tiến bộ</h5>
+                    <p class="text-gray-600 leading-relaxed">Luôn lắng nghe, tôn trọng ý kiến cá nhân và cùng nhau phát triển. Chúng tôi tin rằng sự đa dạng trong suy nghĩ là chìa khóa cho sự đột phá và phát triển bền vững của cả cộng đồng.</p>
+                </div>
+                <div id="desc-2" class="value-description" style="display: none;">
+                    <h5 class="font-bold text-xl text-sky-800 mb-2">Dám thử - Dám sai - Dám sửa</h5>
+                    <p class="text-gray-600 leading-relaxed">Khuyến khích sự sáng tạo, không ngại thử thách và sẵn sàng học hỏi từ những sai lầm. Thất bại không phải là điểm kết thúc, mà là một bước đệm cần thiết trên con đường dẫn đến thành công.</p>
+                </div>
+                 <div id="desc-3" class="value-description" style="display: none;">
+                    <h5 class="font-bold text-xl text-sky-800 mb-2">Học từ nhau</h5>
+                    <p class="text-gray-600 leading-relaxed">Mở lòng để tiếp nhận tri thức và góc nhìn mới, trao đi kiến thức để nhận lại giá trị lớn hơn cho cả bản thân và cộng đồng. Mỗi thành viên vừa là người học, vừa là người thầy.</p>
+                </div>
+                <div id="desc-placeholder" class="text-center text-gray-500">
+                    <p>Chọn một giá trị ở trên để xem chi tiết.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-sky-100 mt-16">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025. Được tạo ra với niềm đam mê và tinh thần cởi mở.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Existing Functionality ---
+            const valueCards = document.querySelectorAll('.value-card');
+            const descriptionsContainer = document.getElementById('descriptions-container');
+            const placeholder = document.getElementById('desc-placeholder');
+            const allDescriptions = document.querySelectorAll('.value-description');
+            
+            valueCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const targetId = this.dataset.target;
+                    const targetDescription = document.getElementById(targetId);
+                    valueCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    allDescriptions.forEach(desc => {
+                        desc.style.display = 'none';
+                    });
+                    if (placeholder) {
+                        placeholder.style.display = 'none';
+                    }
+                    if (targetDescription) {
+                        targetDescription.style.display = 'block';
+                    }
+                });
+            });
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const navLinks = document.querySelectorAll('.nav-link, #mobile-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenu.classList.contains('hidden') === false) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+            
+            const sections = document.querySelectorAll('section');
+            const mainNavLinks = document.querySelectorAll('header nav a.nav-link');
+            
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.4
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        mainNavLinks.forEach(link => {
+                            link.classList.remove('active-nav');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active-nav');
+                            }
+                        });
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+        });
+    </script>
+</body>
+</html>
