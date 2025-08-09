@@ -28,6 +28,21 @@
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             border-color: #0c4a6e; /* sky-800 */
         }
+        /* Styling for the "Tham gia ngay" button to make it more prominent */
+        .join-button {
+            background-color: #0c4a6e; /* Darker sky blue */
+            color: #f0f9ff; /* White text */
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px; /* Fully rounded */
+            font-weight: 700; /* Bold font */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            transition: all 0.3s ease;
+        }
+        .join-button:hover {
+            background-color: #075985; /* Even darker blue on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+        }
     </style>
 </head>
 <body class="bg-sky-100 text-gray-800">
@@ -35,16 +50,17 @@
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
-                <!-- Cập nhật đường dẫn logo với ảnh mới được cung cấp -->
-                <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Pn79ADnFXn8Q7kNvwHtjn30&_nc_oc=AdkktOPr-jcLyJr52E7Jk5QWaEHGbYZfybk_UWYF8daSGlE08cCxusBjimfSbBcMoUIaghL5lRXkeQ09xoGT8_Nh&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=pEuG0iduPMB5mLUsxEALLQ&oh=00_AfW5-jbBa9_TX1Ap_F9Ee_sxpjgHj8q-c3hO25OCRVcP0g&oe=689BBA10" alt="Logo You Can Club" class="h-12 w-auto rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/100x100/94a3b8/e2e8f0?text=YCC';">
+                <!-- Cập nhật đường dẫn logo với ảnh mới được cung cấp và loại bỏ cơ chế dự phòng. -->
+                <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Pn79ADnFXn8Q7kNvwHtjn30&_nc_oc=AdkktOPr-jcLyJr52E7Jk5QWaEHGbYZfybk_UWYF8daSGlE08cCxusBjimfSbBcMoUIaghL5lRXkeQ09xoGT8_Nh&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=pEuG0iduPMB5mLUsxEALLQ&oh=00_AfW5-jbBa9_TX1Ap_F9Ee_sxpjgHj8q-c3hO25OCRVcP0g&oe=689BBA10" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
                 <span class="text-xl font-bold text-gray-900">You Can Club</span>
             </a>
-            <div class="hidden md:flex space-x-8">
+            <div class="hidden md:flex space-x-8 items-center">
                 <!-- Thêm liên kết đến trang tin tức mới -->
                 <a href="new.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Tin tức</a>
                 <!-- Thêm liên kết đến trang bảng xếp hạng -->
                 <a href="rank.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Bảng xếp hạng</a>
-                <a href="#dang-ky" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Tham gia ngay</a>
+                <!-- Thanh điều hướng "Tham gia ngay" nổi bật hơn -->
+                <a href="#dang-ky" class="join-button">Tham gia ngay</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-gray-800">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -55,6 +71,7 @@
             <a href="new.html" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Tin tức</a>
             <!-- Thêm liên kết đến trang bảng xếp hạng trong menu mobile -->
             <a href="rank.html" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Bảng xếp hạng</a>
+            <!-- Thanh điều hướng "Tham gia ngay" nổi bật hơn trong menu mobile -->
             <a href="#dang-ky" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Tham gia ngay</a>
         </div>
     </header>
