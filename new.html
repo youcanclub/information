@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông báo CLB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Import Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Chosen Palette: Cool Sky & Charcoal -->
+    <!-- This page displays club announcements with a similar aesthetic to the main page. -->
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-sky-100 text-gray-800">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <!-- Cập nhật logo bằng đường dẫn bạn đã cung cấp, có fallback nếu link bị hỏng -->
+                <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Pn79ADnFXn8Q7kNvwHtjn30&_nc_oc=AdkktOPr-jcLyJr52E7Jk5QWaEHGbYZfybk_UWYF8daSGlE08cCxusBjimfSbBcMoUIaghL5lRXkeQ09xoGT8_Nh&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=pEuG0iduPMB5mLUsxEALLQ&oh=00_AfW5-jbBa9_TX1Ap_F9Ee_sxpjgHj8q-c3hO25OCRVcP0g&oe=689BBA10" alt="Logo You Can Club" class="h-12 w-auto rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/100x100/94a3b8/e2e8f0?text=YCC';">
+                <span class="text-xl font-bold text-gray-900">You Can Club</span>
+            </a>
+            <!-- Nav links for desktop, linking back to the main info page and leaderboard -->
+            <div class="hidden md:flex space-x-8">
+                <a href="https://youcanclub.github.io/information/" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Giới thiệu</a>
+                <a href="https://youcanclub.github.io/information/rank.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Bảng xếp hạng</a>
+            </div>
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="https://youcanclub.github.io/information/" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Giới thiệu</a>
+            <a href="https://youcanclub.github.io/information/rank.html" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Bảng xếp hạng</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+        <section id="announcements" class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-sky-900 mb-8">Bảng thông báo</h1>
+            
+            <!-- Announcement cards section -->
+            <div class="grid grid-cols-1 gap-8 max-w-2xl mx-auto">
+                <!-- Announcement Card -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-sky-800 mb-2">Tiêu đề</h2>
+                        <p class="text-gray-500 text-sm mb-4">Ngày đăng: 01/01/2001</p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Mô tả
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="mt-8 text-gray-500 text-sm">
+                Cập nhật nhanh sự kiện và hoạt động lớn – ai cũng có thể tham gia. Hãy theo dõi để không bỏ lỡ cơ hội kết nối, thi đua vui vẻ và cùng nhau tiến bộ.
+            </p>
+            
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-sky-100 mt-16">
+        <div class="container mx-auto px-6 py-8 flex flex-col items-center space-y-4">
+            <div class="flex space-x-4">
+                <!-- Thêm icon và link Facebook -->
+                <a href="https://www.facebook.com/profile.php?id=61578363805571" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook text-2xl hover:text-sky-400 transition-colors duration-300"></i>
+                </a>
+                <!-- Thêm icon và link TikTok -->
+                <a href="https://www.tiktok.com/@youcan.club?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <i class="fab fa-tiktok text-2xl hover:text-sky-400 transition-colors duration-300"></i>
+                </a>
+            </div>
+            <p>&copy; 2025. CLB Thuyết trình & Học tập</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
