@@ -8,13 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Import Font Awesome for icons -->
+    <!-- Import Font Awesome for icons, this library is reliable -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Chosen Palette: Cool Sky & Charcoal -->
-    <!-- Application Structure Plan: A single-page application with a top navigation bar for smooth scrolling to different thematic sections. The design has been updated to incorporate the new logo's color scheme (sky blue, dark gray, white) to ensure brand consistency. The logo is now a prominent part of the header. The interactive 'Core Values' section is maintained to encourage user engagement and exploration, reinforcing the club's identity. This structure remains intuitive for users to consume and interact with the content. The AI features have been removed as requested. -->
-    <!-- Visualization & Content Choices: The report is qualitative. 'Story' is the narrative intro. 'Mission' & 'Vision' are presented as distinct blocks for clarity. 'Culture' is a descriptive text section. The main interactive element for 'Core Values' is a grid of clickable HTML/CSS cards, now styled with the new palette. Method: Vanilla JS for interaction, Tailwind for styling. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
@@ -43,6 +40,31 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
         }
+        /* Styling for the floating feedback button */
+        .feedback-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #f0f9ff; /* White */
+            color: #0c4a6e; /* Dark sky blue */
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%; /* Make it a circle */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100; /* Ensure it stays on top */
+        }
+        .feedback-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .feedback-button i {
+            /* Styling for the icon inside the button */
+            font-size: 1.5rem;
+        }
     </style>
 </head>
 <body class="bg-sky-100 text-gray-800">
@@ -50,7 +72,10 @@
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
-                <!-- Cập nhật đường dẫn logo với ảnh mới được cung cấp và loại bỏ cơ chế dự phòng. -->
+                <!-- 
+                Sử dụng đường dẫn logo bạn đã cung cấp theo yêu cầu.
+                Đã loại bỏ cơ chế dự phòng (onerror) để chỉ hiển thị logo này.
+                -->
                 <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Pn79ADnFXn8Q7kNvwHtjn30&_nc_oc=AdkktOPr-jcLyJr52E7Jk5QWaEHGbYZfybk_UWYF8daSGlE08cCxusBjimfSbBcMoUIaghL5lRXkeQ09xoGT8_Nh&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=pEuG0iduPMB5mLUsxEALLQ&oh=00_AfW5-jbBa9_TX1Ap_F9Ee_sxpjgHj8q-c3hO25OCRVcP0g&oe=689BBA10" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
                 <span class="text-xl font-bold text-gray-900">You Can Club</span>
             </a>
@@ -170,6 +195,12 @@
         </section>
 
     </main>
+
+    <!-- Nút góp ý nổi bật, cố định ở góc dưới bên phải -->
+    <a href="https://forms.gle/WAmeqVbB7fvX3VtFA" target="_blank" rel="noopener noreferrer" class="feedback-button" aria-label="Góp ý cho CLB">
+        <!-- Replaced with a Font Awesome icon for better compatibility -->
+        <i class="fa-solid fa-lightbulb"></i>
+    </a>
 
     <footer class="bg-gray-900 text-sky-100 mt-16">
         <div class="container mx-auto px-6 py-8 flex flex-col items-center space-y-4">
