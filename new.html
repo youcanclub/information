@@ -19,13 +19,14 @@
         }
     </style>
 </head>
-<body class="bg-sky-100 text-gray-800">
+<!-- Đã cập nhật body để sử dụng flexbox và đảm bảo trang chiếm ít nhất toàn bộ chiều cao của màn hình -->
+<body class="flex flex-col min-h-screen bg-sky-100 text-gray-800">
 
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
-                <!-- Cập nhật logo bằng đường dẫn bạn đã cung cấp, có fallback nếu link bị hỏng -->
-                <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Pn79ADnFXn8Q7kNvwHtjn30&_nc_oc=AdkktOPr-jcLyJr52E7Jk5QWaEHGbYZfybk_UWYF8daSGlE08cCxusBjimfSbBcMoUIaghL5lRXkeQ09xoGT8_Nh&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=pEuG0iduPMB5mLUsxEALLQ&oh=00_AfW5-jbBa9_TX1Ap_F9Ee_sxpjgHj8q-c3hO25OCRVcP0g&oe=689BBA10" alt="Logo You Can Club" class="h-12 w-auto rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/100x100/94a3b8/e2e8f0?text=YCC';">
+                <!-- Cập nhật logo bằng đường dẫn bạn đã cung cấp, loại bỏ fallback để đảm bảo chỉ hiển thị đúng ảnh này -->
+                <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Pn79ADnFXn8Q7kNvwHtjn30&_nc_oc=AdkktOPr-jcLyJr52E7Jk5QWaEHGbYZfybk_UWYF8daSGlE08cCxusBjimfSbBcMoUIaghL5lRXkeQ09xoGT8_Nh&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=pEuG0iduPMB5mLUsxEALLQ&oh=00_AfW5-jbBa9_TX1Ap_F9Ee_sxpjgHj8q-c3hO25OCRVcP0g&oe=689BBA10" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
                 <span class="text-xl font-bold text-gray-900">You Can Club</span>
             </a>
             <!-- Nav links for desktop, linking back to the main info page and leaderboard -->
@@ -45,7 +46,8 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-8 md:py-16">
+    <!-- Thêm flex-grow để main chiếm hết khoảng trống, đẩy footer xuống dưới cùng -->
+    <main class="container mx-auto px-6 py-8 md:py-16 flex-grow">
         <section id="announcements" class="text-center">
             <h1 class="text-4xl md:text-5xl font-bold text-sky-900 mb-8">Bảng thông báo</h1>
             
