@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng xếp hạng CLB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Import Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Chosen Palette: Cool Sky & Charcoal -->
+    <!-- This page displays the club's leaderboard with a similar aesthetic to the main page. -->
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-sky-100 text-gray-800">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Pn79ADnFXn8Q7kNvwHtjn30&_nc_oc=AdkktOPr-jcLyJr52E7Jk5QWaEHGbYZfybk_UWYF8daSGlE08cCxusBjimfSbBcMoUIaghL5lRXkeQ09xoGT8_Nh&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=pEuG0iduPMB5mLUsxEALLQ&oh=00_AfW5-jbBa9_TX1Ap_F9Ee_sxpjgHj8q-c3hO25OCRVcP0g&oe=689BBA10" alt="Logo You Can Club" class="h-12 w-auto rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/100x100/94a3b8/e2e8f0?text=YCC';">
+                <span class="text-xl font-bold text-gray-900">You Can Club</span>
+            </a>
+             <div class="hidden md:flex space-x-8">
+                <a href="https://youcanclub.github.io/information/" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300" target="_blank">Thông tin về CLB</a>
+            </div>
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile menu, now empty as there are no other pages -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <a href="https://youcanclub.github.io/information/" class="block py-2 px-6 text-gray-600 hover:bg-sky-100" target="_blank">Thông tin về CLB</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-16">
+        <section id="leaderboard" class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-sky-900 mb-8">Bảng xếp hạng thành viên</h1>
+            
+            <!-- Khu vực hiển thị 3 người đứng đầu -->
+            <div class="flex flex-col md:flex-row justify-center items-end space-y-8 md:space-y-0 md:space-x-8 mb-12">
+                <!-- Hạng 2 -->
+                <div class="flex flex-col items-center">
+                    <div class="relative">
+                        <img src="https://placehold.co/120x120/a5f3fc/0c4a6e?text=Hạng+2" alt="Ảnh thành viên hạng 2" class="w-24 h-24 md:w-32 md:h-32 rounded-full ring-4 ring-gray-400 object-cover">
+                        <span class="absolute -top-2 -right-2 bg-gray-400 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center text-sm">2</span>
+                    </div>
+                    <p class="mt-2 text-lg font-semibold text-gray-700">Trần Thị B</p>
+                </div>
+
+                <!-- Hạng 1 -->
+                <div class="flex flex-col items-center">
+                    <div class="relative">
+                        <img src="https://placehold.co/150x150/0c4a6e/a5f3fc?text=Hạng+1" alt="Ảnh thành viên hạng 1" class="w-32 h-32 md:w-40 md:h-40 rounded-full ring-4 ring-amber-400 object-cover">
+                        <span class="absolute -top-2 -right-2 bg-amber-400 text-white font-bold rounded-full w-10 h-10 flex items-center justify-center text-base">1</span>
+                    </div>
+                    <p class="mt-2 text-xl font-bold text-sky-900">Nguyễn Văn A</p>
+                </div>
+
+                <!-- Hạng 3 -->
+                <div class="flex flex-col items-center">
+                    <div class="relative">
+                        <img src="https://placehold.co/120x120/a5f3fc/0c4a6e?text=Hạng+3" alt="Ảnh thành viên hạng 3" class="w-24 h-24 md:w-32 md:h-32 rounded-full ring-4 ring-yellow-700 object-cover">
+                        <span class="absolute -top-2 -right-2 bg-yellow-700 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center text-sm">3</span>
+                    </div>
+                    <p class="mt-2 text-lg font-semibold text-gray-700">Lê Văn C</p>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto bg-white rounded-2xl shadow-lg p-4">
+                <table class="min-w-full leading-normal">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider rounded-tl-lg">
+                                Hạng
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                                Tên thành viên
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-right text-sm font-semibold text-gray-600 uppercase tracking-wider rounded-tr-lg">
+                                Điểm
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu mẫu cho bảng xếp hạng -->
+                        <tr class="hover:bg-gray-50 transition-colors duration-200">
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
+                                <span class="text-xl font-bold text-sky-700">1</span>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                <div class="flex items-center">
+                                    <div class="ml-3">
+                                        <p class="text-gray-900 whitespace-no-wrap font-medium">Nguyễn Văn A</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-right">
+                                <p class="text-gray-900 whitespace-no-wrap font-bold text-lg">950</p>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors duration-200">
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
+                                <span class="text-lg font-semibold text-gray-600">2</span>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                <div class="flex items-center">
+                                    <div class="ml-3">
+                                        <p class="text-gray-900 whitespace-no-wrap">Trần Thị B</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-right">
+                                <p class="text-gray-900 whitespace-no-wrap font-semibold">920</p>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors duration-200">
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
+                                <span class="text-lg font-semibold text-gray-600">3</span>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                <div class="flex items-center">
+                                    <div class="ml-3">
+                                        <p class="text-gray-900 whitespace-no-wrap">Lê Văn C</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-right">
+                                <p class="text-gray-900 whitespace-no-wrap font-semibold">880</p>
+                            </td>
+                        </tr>
+                         <tr class="hover:bg-gray-50 transition-colors duration-200">
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
+                                <span class="text-gray-500">4</span>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                <div class="flex items-center">
+                                    <div class="ml-3">
+                                        <p class="text-gray-900 whitespace-no-wrap">Phạm Thị D</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-right">
+                                <p class="text-gray-900 whitespace-no-wrap">850</p>
+                            </td>
+                        </tr>
+                         <tr class="hover:bg-gray-50 transition-colors duration-200">
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
+                                <span class="text-gray-500">5</span>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                <div class="flex items-center">
+                                    <div class="ml-3">
+                                        <p class="text-gray-900 whitespace-no-wrap">Hoàng Đình E</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-right">
+                                <p class="text-gray-900 whitespace-no-wrap">810</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p class="mt-8 text-gray-500 text-sm">
+                Bảng xếp hạng chỉ phản ánh mức độ tham gia, không định giá con người. Hãy coi đây là lời nhắc để giữ lửa học tập, thi đua vui vẻ và cùng nhau tiến bộ – ai ở top hãy giữ phong độ, ai phía sau hãy bứt phá. Quan trọng nhất là chúng ta đi cùng nhau.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-sky-100 mt-16">
+        <div class="container mx-auto px-6 py-8 flex flex-col items-center space-y-4">
+            <div class="flex space-x-4">
+                <!-- Thêm icon và link Facebook -->
+                <a href="https://www.facebook.com/profile.php?id=61578363805571" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook text-2xl hover:text-sky-400 transition-colors duration-300"></i>
+                </a>
+                <!-- Thêm icon và link TikTok -->
+                <a href="https://www.tiktok.com/@youcan.club?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <i class="fab fa-tiktok text-2xl hover:text-sky-400 transition-colors duration-300"></i>
+                </a>
+            </div>
+            <p>&copy; 2025. CLB Thuyết trình & Học tập</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // This page has no navigation links, so no need for an intersection observer
+        });
+    </script>
+</body>
+</html>
