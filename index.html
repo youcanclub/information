@@ -89,6 +89,17 @@
         .comment-button i {
             font-size: 1.5rem;
         }
+
+        /* New CSS for the scroll-in animation */
+        .scroll-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-sky-100 text-gray-800">
@@ -128,20 +139,22 @@
     <main class="container mx-auto px-6 py-8 md:py-16">
 
         <section id="cau-chuyen" class="text-center min-h-[60vh] flex flex-col justify-center items-center">
-             <h1 class="text-4xl md:text-6xl font-bold text-sky-900 mb-4">Hành trình vượt qua giới hạn</h1>
-             <p class="max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed">
-                Câu chuyện của chúng tôi bắt đầu từ một sứ mệnh đơn giản nhưng đầy ý nghĩa: tạo ra một nơi mà những nỗi sợ hãi không còn là rào cản. Chúng tôi muốn xây dựng một cộng đồng nơi mỗi học sinh đều có cơ hội vượt qua giới hạn của bản thân, tự tin thể hiện cá tính và phát triển toàn diện.
-             </p>
+            <div class="scroll-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-sky-900 mb-4">Hành trình vượt qua giới hạn</h1>
+                <p class="max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed">
+                   Câu chuyện của chúng tôi bắt đầu từ một sứ mệnh đơn giản nhưng đầy ý nghĩa: tạo ra một nơi mà những nỗi sợ hãi không còn là rào cản. Chúng tôi muốn xây dựng một cộng đồng nơi mỗi học sinh đều có cơ hội vượt qua giới hạn của bản thân, tự tin thể hiện cá tính và phát triển toàn diện.
+                </p>
+            </div>
         </section>
 
         <section id="su-menh" class="py-16 bg-white rounded-2xl my-16">
-            <div class="text-center mb-12 px-6">
+            <div class="scroll-in text-center mb-12 px-6">
                 <!-- Sử dụng icon Font Awesome cho Sứ Mệnh (Vương miện) -->
                 <i class="fa-solid fa-crown text-sky-600 text-6xl mx-auto mb-4"></i>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Sứ Mệnh</h2>
                 <p class="mt-2 text-gray-500">Mục tiêu cốt lõi của chúng tôi.</p>
             </div>
-            <div class="max-w-3xl mx-auto px-6">
+            <div class="scroll-in max-w-3xl mx-auto px-6">
                  <p class="text-center text-gray-600 leading-relaxed text-lg">
                     Đóng góp vào sự phát triển của cộng đồng học sinh tại địa phương bằng cách cung cấp một nơi để học hỏi, trau dồi kỹ năng, vượt qua những nỗi sợ hãi và kết nối với những người cùng chí hướng.
                 </p>
@@ -149,13 +162,13 @@
         </section>
 
         <section id="dinh-huong" class="py-16 bg-white rounded-2xl my-16">
-            <div class="text-center mb-12 px-6">
+            <div class="scroll-in text-center mb-12 px-6">
                 <!-- Sử dụng icon Font Awesome cho Định Hướng (Mắt) -->
                 <i class="fa-solid fa-eye text-sky-600 text-6xl mx-auto mb-4"></i>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Định Hướng</h2>
                 <p class="mt-2 text-gray-500">La bàn dẫn lối cho mọi hoạt động.</p>
             </div>
-            <div class="max-w-3xl mx-auto px-6">
+            <div class="scroll-in max-w-3xl mx-auto px-6">
                  <p class="text-center text-gray-600 leading-relaxed text-lg">
                     Xây dựng một cộng đồng học tập tích cực, nơi các thành viên được rèn luyện kỹ năng thuyết trình, phản biện, tự tin giao tiếp và thể hiện bản thân. Mục tiêu là tạo ra một môi trường hỗ trợ, thúc đẩy sự tiến bộ cá nhân và xây dựng thói quen học tập chủ động, tích cực.
                 </p>
@@ -163,13 +176,13 @@
         </section>
 
         <section id="van-hoa" class="py-16 bg-white rounded-2xl my-16">
-            <div class="text-center mb-12 px-6">
+            <div class="scroll-in text-center mb-12 px-6">
                 <!-- Sử dụng icon Font Awesome cho Văn Hóa (Nhóm người) -->
                 <i class="fa-solid fa-user-group text-sky-600 text-6xl mx-auto mb-4"></i>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Không Gian Văn Hóa</h2>
                  <p class="mt-2 text-gray-500">Nơi mọi cá tính được tôn trọng và phát triển.</p>
             </div>
-            <div class="max-w-3xl mx-auto px-6">
+            <div class="scroll-in max-w-3xl mx-auto px-6">
                  <p class="text-center text-gray-600 leading-relaxed text-lg">
                     Chúng tôi tạo ra một không gian cởi mở, thân thiện và thoải mái. Mọi người đều có thể chia sẻ, lắng nghe và tôn trọng lẫn nhau. Văn hóa của cộng đồng được xây dựng trên tinh thần <strong class="text-sky-700">tích cực</strong>, <strong class="text-sky-700">cởi mở</strong>, <strong class="text-sky-700">dám thử</strong> và <strong class="text-sky-700">cùng nhau tiến bộ</strong>.
                 </p>
@@ -177,13 +190,13 @@
         </section>
 
         <section id="gia-tri" class="py-16">
-            <div class="text-center mb-12">
+            <div class="scroll-in text-center mb-12">
                 <!-- Sử dụng icon Font Awesome cho Giá Trị Cốt Lõi (Bánh răng) -->
                 <i class="fa-solid fa-gear text-sky-600 text-6xl mx-auto mb-4"></i>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Giá Trị Cốt Lõi</h2>
                 <p class="mt-2 text-gray-500">Nền tảng cho mọi quyết định và hành động. Nhấn vào từng giá trị để tìm hiểu thêm.</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="scroll-in grid md:grid-cols-3 gap-6 mb-8">
                 <div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-md hover:shadow-xl" data-target="desc-1">
                     <h4 class="font-bold text-lg text-gray-800">Tôn trọng - Cùng tiến bộ</h4>
                 </div>
@@ -213,9 +226,11 @@
 
         <!-- Thêm nút đăng ký vào cuối trang -->
         <section id="dang-ky" class="py-16 text-center">
-            <a href="https://forms.gle/9wgmqSkFbY1A7mHo6" target="_blank" rel="noopener noreferrer" class="bg-sky-700 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-sky-800 transition-colors duration-300 transform hover:scale-105 inline-block">
-                Đăng ký tham gia CLB ngay!
-            </a>
+            <div class="scroll-in">
+                <a href="https://forms.gle/9wgmqSkFbY1A7mHo6" target="_blank" rel="noopener noreferrer" class="bg-sky-700 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-sky-800 transition-colors duration-300 transform hover:scale-105 inline-block">
+                    Đăng ký tham gia CLB ngay!
+                </a>
+            </div>
         </section>
 
     </main>
@@ -248,27 +263,21 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // --- Existing Functionality ---
+            // --- Existing Functionality: Value Cards ---
             const valueCards = document.querySelectorAll('.value-card');
             const descriptionsContainer = document.getElementById('descriptions-container');
             const allDescriptions = document.querySelectorAll('.value-description');
             
-            // Ẩn tất cả các mô tả ban đầu
             allDescriptions.forEach(desc => desc.style.display = 'none');
 
-            // Thêm sự kiện click
             valueCards.forEach(card => {
                 card.addEventListener('click', function () {
                     const targetId = this.dataset.target;
                     const targetDescription = document.getElementById(targetId);
-
-                    // Deactivate all cards and hide all descriptions
                     valueCards.forEach(c => c.classList.remove('active'));
                     allDescriptions.forEach(desc => {
                         desc.style.display = 'none';
                     });
-
-                    // Activate the current card, show the descriptions container and the corresponding description
                     this.classList.add('active');
                     descriptionsContainer.style.display = 'block';
                     if (targetDescription) {
@@ -277,13 +286,12 @@
                 });
             });
 
-            // Sử dụng mouseleave trên descriptions-container để ẩn nó đi khi chuột rời khỏi toàn bộ khu vực
             descriptionsContainer.addEventListener('mouseleave', function() {
-                // Ẩn descriptions-container và bỏ trạng thái active của tất cả các thẻ
                 descriptionsContainer.style.display = 'none';
                 valueCards.forEach(c => c.classList.remove('active'));
             });
 
+            // --- Existing Functionality: Mobile Menu ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {
@@ -299,6 +307,7 @@
                 });
             });
             
+            // --- Existing Functionality: Intersection Observer for Nav Links ---
             const sections = document.querySelectorAll('section');
             const mainNavLinks = document.querySelectorAll('header nav a.nav-link');
             
@@ -324,7 +333,30 @@
             sections.forEach(section => {
                 observer.observe(section);
             });
-            
+
+            // --- NEW Functionality: Scroll-in animation ---
+            // Chọn tất cả các phần tử có class 'scroll-in'
+            const scrollInElements = document.querySelectorAll('.scroll-in');
+
+            const scrollInObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // Khi phần tử đi vào khung nhìn (isIntersecting là true),
+                    // thêm class 'active' để kích hoạt hiệu ứng
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Sau khi kích hoạt, không cần theo dõi phần tử này nữa
+                        scrollInObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                // Cài đặt ngưỡng: hiệu ứng sẽ kích hoạt khi 10% của phần tử xuất hiện
+                threshold: 0.1 
+            });
+
+            // Bắt đầu theo dõi tất cả các phần tử có class 'scroll-in'
+            scrollInElements.forEach(element => {
+                scrollInObserver.observe(element);
+            });
         });
     </script>
 </body>
