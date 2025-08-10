@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE ahtml>
 <html lang="vi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -17,6 +17,55 @@
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
         }
+        /* Styling for the floating feedback button */
+        .feedback-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #f0f9ff; /* White */
+            color: #0c4a6e; /* Dark sky blue */
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%; /* Make it a circle */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100; /* Ensure it stays on top */
+        }
+        .feedback-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .feedback-button i {
+            /* Styling for the icon inside the button */
+            font-size: 1.5rem;
+        }
+        /* Styling for the new floating comment button */
+        .comment-button {
+            position: fixed;
+            bottom: 6.5rem; /* Adjusted to stack vertically above the feedback button */
+            right: 2rem; /* Aligned with the feedback button */
+            background-color: #f0f9ff; /* White */
+            color: #0c4a6e; /* Dark sky blue */
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%; /* Make it a circle */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        .comment-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .comment-button i {
+            font-size: 1.5rem;
+        }
     </style>
 </head>
 <!-- Đã cập nhật body để sử dụng flexbox và đảm bảo trang chiếm ít nhất toàn bộ chiều cao của màn hình -->
@@ -26,7 +75,7 @@
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
                 <!-- Cập nhật logo bằng đường dẫn bạn đã cung cấp, loại bỏ fallback để đảm bảo chỉ hiển thị đúng ảnh này -->
-                <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Pn79ADnFXn8Q7kNvwHtjn30&_nc_oc=AdkktOPr-jcLyJr52E7Jk5QWaEHGbYZfybk_UWYF8daSGlE08cCxusBjimfSbBcMoUIaghL5lRXkeQ09xoGT8_Nh&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=pEuG0iduPMB5mLUsxEALLQ&oh=00_AfW5-jbBa9_TX1Ap_F9Ee_sxpjgHj8q-c3hO25OCRVcP0g&oe=689BBA10" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
+                <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Pn79ADnFXn8Q7kNvwGsDFA2&_nc_oc=AdmKQ_eW1qr93IJbVnCaDKJtnHHMPyMIqE6sUM9hkVGlx_B9F_bWi-I03304Q8MgERU&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=Q0g2oZENLT-m5fvpsha3YQ&oh=00_AfVVzFryeuHth3odqlCCbpofN0JqBVNEsaDtVS21LIkGrw&oe=689E5D10" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
                 <span class="text-xl font-bold text-gray-900">You Can Club</span>
             </a>
             <!-- Nav links for desktop, linking back to the main info page and leaderboard -->
@@ -59,7 +108,7 @@
                         <h2 class="text-2xl font-bold text-sky-800 mb-2">Chưa cập nhật</h2>
                         <p class="text-gray-500 text-sm mb-4">Ngày đăng: 01/01/2000</p>
                         <p class="text-gray-700 leading-relaxed">
-                            Chưa cập nhật
+                            Hiện tại chưa có thông báo mới nào từ CLB. Xin vui lòng quay lại sau!
                         </p>
                     </div>
                 </div>
@@ -71,7 +120,80 @@
             
         </section>
 
+        <!-- New section for topics -->
+        <section id="topics" class="text-center mt-16">
+            <!-- Updated heading text -->
+            <h2 class="text-3xl md:text-4xl font-bold text-sky-900 mb-8">Các chủ đề hiện có</h2>
+            <!-- Adjusted grid layout for 7 topics -->
+            <!-- Adjusted the maximum width for a more balanced look on larger screens -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <!-- Vật lý -->
+                <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-atom text-2xl"></i>
+                    </div>
+                    <p class="text-lg font-semibold text-gray-800">Vật lý</p>
+                </div>
+                <!-- Toán học -->
+                <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-calculator text-2xl"></i>
+                    </div>
+                    <p class="text-lg font-semibold text-gray-800">Toán học</p>
+                </div>
+                <!-- Tiếng Anh -->
+                <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-language text-2xl"></i>
+                    </div>
+                    <p class="text-lg font-semibold text-gray-800">Tiếng Anh</p>
+                </div>
+                <!-- Văn học -->
+                <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-book-open text-2xl"></i>
+                    </div>
+                    <p class="text-lg font-semibold text-gray-800">Văn học</p>
+                </div>
+                <!-- Tin học -->
+                <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-laptop-code text-2xl"></i>
+                    </div>
+                    <p class="text-lg font-semibold text-gray-800">Tin học</p>
+                </div>
+                <!-- Tâm lý học -->
+                <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-brain text-2xl"></i>
+                    </div>
+                    <p class="text-lg font-semibold text-gray-800">Tâm lý học</p>
+                </div>
+                <!-- Phát triển bản thân -->
+                <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-seedling text-2xl"></i>
+                    </div>
+                    <p class="text-lg font-semibold text-gray-800">Phát triển bản thân</p>
+                </div>
+            </div>
+            <!-- Thêm lưu ý nhỏ bên dưới các chủ đề -->
+            <p class="mt-8 text-gray-600 text-sm max-w-2xl mx-auto">
+                Chủ đề được hình thành dựa trên chuyên môn và sự tham gia của thành viên. Sẽ tiếp tục mở rộng khi có đủ người cùng lĩnh vực.
+            </p>
+        </section>
+
     </main>
+    
+    <!-- Nút bình luận nổi bật, cố định ở góc dưới bên phải -->
+    <a href="https://forms.gle/sdiptXjXtoByeYiF8" target="_blank" rel="noopener noreferrer" class="comment-button" aria-label="Bình luận về CLB">
+        <i class="fa-solid fa-comment"></i>
+    </a>
+
+    <!-- Nút góp ý nổi bật, cố định ở góc dưới bên phải -->
+    <a href="https://forms.gle/WAmeqVbB7fvX3VtFA" target="_blank" rel="noopener noreferrer" class="feedback-button" aria-label="Góp ý cho CLB">
+        <i class="fa-solid fa-lightbulb"></i>
+    </a>
 
     <footer class="bg-gray-900 text-sky-100 mt-16">
         <div class="container mx-auto px-6 py-8 flex flex-col items-center space-y-4">
@@ -97,8 +219,12 @@
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
+            
+            // This page has no navigation links, so no need for an intersection observer
+            // Intersection observer logic is not necessary for this static page,
+            // but the links in the mobile menu and main navigation are now updated
+            // to be consistent with the other pages.
         });
     </script>
 </body>
 </html>
-
