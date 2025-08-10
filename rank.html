@@ -12,10 +12,62 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Chosen Palette: Cool Sky & Charcoal -->
-    <!-- This page displays the club's leaderboard with a similar aesthetic to the main page. -->
     <style>
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
+        }
+        .active-nav {
+            color: #0c4a6e; /* sky-800 */
+            font-weight: 500;
+        }
+        /* Styling for the floating feedback button */
+        .feedback-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #f0f9ff; /* White */
+            color: #0c4a6e; /* Dark sky blue */
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%; /* Make it a circle */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100; /* Ensure it stays on top */
+        }
+        .feedback-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .feedback-button i {
+            /* Styling for the icon inside the button */
+            font-size: 1.5rem;
+        }
+        /* Styling for the new floating comment button */
+        .comment-button {
+            position: fixed;
+            bottom: 6.5rem; /* Adjusted to stack vertically above the feedback button */
+            right: 2rem; /* Aligned with the feedback button */
+            background-color: #f0f9ff; /* White */
+            color: #0c4a6e; /* Dark sky blue */
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%; /* Make it a circle */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        .comment-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .comment-button i {
+            font-size: 1.5rem;
         }
     </style>
 </head>
@@ -28,9 +80,9 @@
                 <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Pn79ADnFXn8Q7kNvwHtjn30&_nc_oc=AdkktOPr-jcLyJr52E7Jk5QWaEHGbYZfybk_UWYF8daSGlE08cCxusBjimfSbBcMoUIaghL5lRXkeQ09xoGT8_Nh&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=pEuG0iduPMB5mLUsxEALLQ&oh=00_AfW5-jbBa9_TX1Ap_F9Ee_sxpjgHj8q-c3hO25OCRVcP0g&oe=689BBA10" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
                 <span class="text-xl font-bold text-gray-900">You Can Club</span>
             </a>
-             <div class="hidden md:flex space-x-8">
-                <!-- Cập nhật tên thanh điều hướng và thêm mục mới -->
-                <a href="https://youcanclub.github.io/information/" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Giới thiệu</a>
+            <div class="hidden md:flex space-x-8">
+                <!-- Xóa liên kết Bảng xếp hạng và cập nhật các liên kết khác -->
+                <a href="index.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Giới thiệu</a>
                 <a href="new.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Tin tức</a>
             </div>
             <!-- Mobile menu button -->
@@ -38,10 +90,10 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
-        <!-- Mobile menu, now empty as there are no other pages -->
+        <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white">
-            <!-- Cập nhật tên thanh điều hướng và thêm mục mới cho mobile -->
-            <a href="https://youcanclub.github.io/information/" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Giới thiệu</a>
+            <!-- Xóa liên kết Bảng xếp hạng và cập nhật các liên kết khác -->
+            <a href="index.html" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Giới thiệu</a>
             <a href="new.html" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Tin tức</a>
         </div>
     </header>
@@ -50,7 +102,7 @@
         <section id="leaderboard" class="text-center">
             <h1 class="text-4xl md:text-5xl font-bold text-sky-900 mb-8">Bảng xếp hạng thành viên</h1>
             
-            <!-- Khu vực hiển thị 3 người đứng đầu, đã được điều chỉnh để hiển thị theo hàng ngang trên tất cả các kích thước màn hình -->
+            <!-- Khu vực hiển thị 3 người đứng đầu -->
             <div class="flex flex-row justify-center items-end space-x-4 md:space-x-8 mb-12">
                 <!-- Hạng 2 -->
                 <div class="flex flex-col items-center">
@@ -99,7 +151,8 @@
                         <!-- Dữ liệu mẫu cho bảng xếp hạng -->
                         <tr class="hover:bg-gray-50 transition-colors duration-200">
                             <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
-                                <span class="text-xl font-bold text-sky-700">1</span>
+                                <!-- Hạng 1: Đổi màu số sang vàng -->
+                                <span class="text-xl font-bold text-amber-500">1</span>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                 <div class="flex items-center">
@@ -114,7 +167,8 @@
                         </tr>
                         <tr class="hover:bg-gray-50 transition-colors duration-200">
                             <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
-                                <span class="text-lg font-semibold text-gray-600">2</span>
+                                <!-- Hạng 2: Đổi màu số sang bạc (xám nhạt) -->
+                                <span class="text-lg font-semibold text-gray-500">2</span>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                 <div class="flex items-center">
@@ -129,7 +183,8 @@
                         </tr>
                         <tr class="hover:bg-gray-50 transition-colors duration-200">
                             <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
-                                <span class="text-lg font-semibold text-gray-600">3</span>
+                                <!-- Hạng 3: Đổi màu số sang đồng (cam đậm) -->
+                                <span class="text-lg font-semibold text-orange-800">3</span>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 text-sm">
                                 <div class="flex items-center">
@@ -142,7 +197,7 @@
                                 <p class="text-gray-900 whitespace-no-wrap font-semibold">880</p>
                             </td>
                         </tr>
-                         <tr class="hover:bg-gray-50 transition-colors duration-200">
+                        <tr class="hover:bg-gray-50 transition-colors duration-200">
                             <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
                                 <span class="text-gray-500">4</span>
                             </td>
@@ -157,7 +212,7 @@
                                 <p class="text-gray-900 whitespace-no-wrap">850</p>
                             </td>
                         </tr>
-                         <tr class="hover:bg-gray-50 transition-colors duration-200">
+                        <tr class="hover:bg-gray-50 transition-colors duration-200">
                             <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
                                 <span class="text-gray-500">5</span>
                             </td>
@@ -181,7 +236,92 @@
             </p>
         </section>
 
+        <!-- Bảng Cơ chế cộng điểm -->
+        <section id="point-system" class="text-center mt-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-sky-900 mb-8">Cơ chế cộng điểm</h2>
+            
+            <!-- Bảng Sinh hoạt tập thể -->
+            <div class="overflow-x-auto bg-green-50 rounded-2xl shadow-lg p-4 mb-8">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Sinh hoạt tập thể</h3>
+                <table class="min-w-full leading-normal">
+                    <thead>
+                        <tr class="bg-green-100">
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider rounded-tl-lg">
+                                Tham gia
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                                Tương tác
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                                Góp ý
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                                Xây dựng
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider rounded-tr-lg">
+                                Thuyết trình
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">+5</td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">+8</td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">+10</td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">+15</td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">+20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Bảng Sinh hoạt nhóm -->
+            <div class="overflow-x-auto bg-purple-50 rounded-2xl shadow-lg p-4">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Sinh hoạt nhóm</h3>
+                <table class="min-w-full leading-normal">
+                    <thead>
+                        <tr class="bg-purple-100">
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider rounded-tl-lg">
+                                Tham gia
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                                Tương tác
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                                Góp ý
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                                Xây dựng
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider rounded-tr-lg">
+                                Thuyết trình
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">+2</td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">+4</td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">+6</td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">+8</td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">+10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
     </main>
+    
+    <!-- Nút bình luận nổi bật, cố định ở góc dưới bên phải -->
+    <a href="https://forms.gle/sdiptXjXtoByeYiF8" target="_blank" rel="noopener noreferrer" class="comment-button" aria-label="Bình luận về CLB">
+        <i class="fa-solid fa-comment"></i>
+    </a>
+
+    <!-- Nút góp ý nổi bật, cố định ở góc dưới bên phải -->
+    <a href="https://forms.gle/WAmeqVbB7fvX3VtFA" target="_blank" rel="noopener noreferrer" class="feedback-button" aria-label="Góp ý cho CLB">
+        <i class="fa-solid fa-lightbulb"></i>
+    </a>
 
     <footer class="bg-gray-900 text-sky-100 mt-16">
         <div class="container mx-auto px-6 py-8 flex flex-col items-center space-y-4">
@@ -209,6 +349,9 @@
             });
             
             // This page has no navigation links, so no need for an intersection observer
+            // Intersection observer logic is not necessary for this static page,
+            // but the links in the mobile menu and main navigation are now updated
+            // to be consistent with the other pages.
         });
     </script>
 </body>
