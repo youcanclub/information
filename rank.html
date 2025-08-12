@@ -69,6 +69,17 @@
         .comment-button i {
             font-size: 1.5rem;
         }
+
+        /* --- New styles for scroll-in animation --- */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-sky-100 text-gray-800">
@@ -107,7 +118,8 @@
     </header>
 
     <main class="container mx-auto px-6 py-8 md:py-16">
-        <section id="leaderboard" class="text-center">
+        <!-- Add 'fade-in-scroll' class to sections for animation -->
+        <section id="leaderboard" class="text-center fade-in-scroll">
             <h1 class="text-4xl md:text-5xl font-bold text-sky-900 mb-8">Bảng xếp hạng thành viên</h1>
             
             <!-- Khu vực hiển thị 3 người đứng đầu -->
@@ -245,7 +257,7 @@
         </section>
 
         <!-- Bảng Cơ chế cộng điểm -->
-        <section id="point-system" class="text-center mt-16">
+        <section id="point-system" class="text-center mt-16 fade-in-scroll">
             <h2 class="text-3xl md:text-4xl font-bold text-sky-900 mb-8">Cơ chế cộng điểm</h2>
             
             <!-- Bảng Sinh hoạt toàn thể -->
@@ -350,11 +362,29 @@
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
-            
-            // This page has no navigation links, so no need for an intersection observer
-            // Intersection observer logic is not necessary for this static page,
-            // but the links in the mobile menu and main navigation are now updated
-            // to be consistent with the other pages.
+
+            // --- New JavaScript for scroll-in animation (Hiệu ứng xuất hiện khi cuộn) ---
+            const observerOptions = {
+                root: null, // Sử dụng viewport làm root
+                rootMargin: '0px',
+                threshold: 0.1 // Kích hoạt khi 10% của phần tử hiển thị
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Nếu phần tử đang hiển thị, thêm class 'is-visible' để kích hoạt animation
+                        entry.target.classList.add('is-visible');
+                        // Dừng theo dõi phần tử này sau khi nó đã xuất hiện
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Tìm tất cả các phần tử có class 'fade-in-scroll' và bắt đầu theo dõi chúng
+            document.querySelectorAll('.fade-in-scroll').forEach(section => {
+                observer.observe(section);
+            });
         });
     </script>
 </body>
