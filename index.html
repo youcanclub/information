@@ -89,6 +89,17 @@
         .comment-button i {
             font-size: 1.5rem;
         }
+
+        /* --- New styles for scroll-in animation (Hiệu ứng xuất hiện khi cuộn) --- */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-sky-100 text-gray-800">
@@ -96,19 +107,12 @@
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
-                <!-- 
-                Đã cập nhật lại logo theo yêu cầu của bạn.
-                Loại bỏ các thông số không cần thiết để tăng tính ổn định của đường dẫn.
-                -->
                 <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Pn79ADnFXn8Q7kNvwHtjn30&_nc_oc=AdkktOPr-jcLyJr52E7Jk5QWaEHGbYZfybk_UWYF8daSGlE08cCxusBjimfSbBcMoUIaghL5lRXkeQ09xoGT8_Nh&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=pEuG0iduPMB5mLUsxEALLQ&oh=00_AfW5-jbBa9_TX1Ap_F9Ee_sxpjgHj8q-c3hO25OCRVcP0g&oe=689BBA10" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
                 <span class="text-xl font-bold text-gray-900">You Can Club</span>
             </a>
             <div class="hidden md:flex space-x-8 items-center">
-                <!-- Thêm liên kết đến trang tin tức mới -->
                 <a href="new.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Thông báo</a>
-                <!-- Thêm liên kết đến trang bảng xếp hạng -->
                 <a href="rank.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Bảng xếp hạng</a>
-                <!-- Thanh điều hướng "Tham gia ngay" nổi bật hơn -->
                 <a href="#dang-ky" class="join-button">Tham gia ngay</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-gray-800">
@@ -116,11 +120,8 @@
             </button>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden bg-white">
-            <!-- Thêm liên kết đến trang tin tức trong menu mobile -->
             <a href="new.html" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Thông báo</a>
-            <!-- Thêm liên kết đến trang bảng xếp hạng trong menu mobile -->
             <a href="rank.html" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Bảng xếp hạng</a>
-            <!-- Thanh điều hướng "Tham gia ngay" nổi bật hơn trong menu mobile -->
             <a href="#dang-ky" class="block py-2 px-6 text-sky-800 hover:bg-sky-100 font-semibold">
                 Tham gia ngay
             </a>
@@ -129,14 +130,16 @@
 
     <main class="container mx-auto px-6 py-8 md:py-16">
 
-        <section id="cau-chuyen" class="text-center min-h-[60vh] flex flex-col justify-center items-center">
+        <!-- Added fade-in-scroll class to main sections -->
+        <section id="cau-chuyen" class="text-center min-h-[60vh] flex flex-col justify-center items-center fade-in-scroll">
              <h1 class="text-4xl md:text-6xl font-bold text-sky-900 mb-4">Hành trình vượt qua giới hạn</h1>
              <p class="max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed">
                 Câu chuyện của chúng tôi bắt đầu từ một sứ mệnh đơn giản nhưng đầy ý nghĩa: tạo ra một nơi mà những nỗi sợ hãi không còn là rào cản. Chúng tôi muốn xây dựng một cộng đồng nơi mỗi học sinh đều có cơ hội vượt qua giới hạn của bản thân, tự tin thể hiện cá tính và phát triển toàn diện.
              </p>
         </section>
 
-        <section id="su-menh" class="py-16 bg-white rounded-2xl my-16">
+        <!-- Added fade-in-scroll class to main sections -->
+        <section id="su-menh" class="py-16 bg-white rounded-2xl my-16 fade-in-scroll">
             <div class="text-center mb-12 px-6">
                 <!-- Sử dụng icon Font Awesome cho Sứ Mệnh (Vương miện) -->
                 <i class="fa-solid fa-crown text-sky-600 text-6xl mx-auto mb-4"></i>
@@ -150,7 +153,8 @@
             </div>
         </section>
 
-        <section id="dinh-huong" class="py-16 bg-white rounded-2xl my-16">
+        <!-- Added fade-in-scroll class to main sections -->
+        <section id="dinh-huong" class="py-16 bg-white rounded-2xl my-16 fade-in-scroll">
             <div class="text-center mb-12 px-6">
                 <!-- Sử dụng icon Font Awesome cho Định Hướng (Mắt) -->
                 <i class="fa-solid fa-eye text-sky-600 text-6xl mx-auto mb-4"></i>
@@ -164,7 +168,8 @@
             </div>
         </section>
 
-        <section id="van-hoa" class="py-16 bg-white rounded-2xl my-16">
+        <!-- Added fade-in-scroll class to main sections -->
+        <section id="van-hoa" class="py-16 bg-white rounded-2xl my-16 fade-in-scroll">
             <div class="text-center mb-12 px-6">
                 <!-- Sử dụng icon Font Awesome cho Văn Hóa (Nhóm người) -->
                 <i class="fa-solid fa-user-group text-sky-600 text-6xl mx-auto mb-4"></i>
@@ -178,7 +183,8 @@
             </div>
         </section>
 
-        <section id="gia-tri" class="py-16">
+        <!-- Added fade-in-scroll class to main sections -->
+        <section id="gia-tri" class="py-16 fade-in-scroll">
             <div class="text-center mb-12">
                 <!-- Sử dụng icon Font Awesome cho Giá Trị Cốt Lõi (Bánh răng) -->
                 <i class="fa-solid fa-gear text-sky-600 text-6xl mx-auto mb-4"></i>
@@ -214,7 +220,7 @@
         </section>
 
         <!-- Thêm nút đăng ký vào cuối trang -->
-        <section id="dang-ky" class="py-16 text-center">
+        <section id="dang-ky" class="py-16 text-center fade-in-scroll">
             <a href="https://forms.gle/9wgmqSkFbY1A7mHo6" target="_blank" rel="noopener noreferrer" class="bg-sky-700 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-sky-800 transition-colors duration-300 transform hover:scale-105 inline-block">
                 Đăng ký tham gia CLB ngay!
             </a>
@@ -327,6 +333,28 @@
                 observer.observe(section);
             });
             
+            // --- New JavaScript for scroll-in animation (Hiệu ứng xuất hiện khi cuộn) ---
+            const observerOptions = {
+                root: null, // Sử dụng viewport làm root
+                rootMargin: '0px',
+                threshold: 0.1 // Kích hoạt khi 10% của phần tử hiển thị
+            };
+
+            const fadeInObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Nếu phần tử đang hiển thị, thêm class 'is-visible' để kích hoạt animation
+                        entry.target.classList.add('is-visible');
+                        // Dừng theo dõi phần tử này sau khi nó đã xuất hiện
+                        fadeInObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Tìm tất cả các phần tử có class 'fade-in-scroll' và bắt đầu theo dõi chúng
+            document.querySelectorAll('.fade-in-scroll').forEach(section => {
+                fadeInObserver.observe(section);
+            });
         });
     </script>
 </body>
