@@ -107,7 +107,8 @@
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
-                <img src="https://photos.app.goo.gl/cbP59cBaea2PbBRh8" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
+                <!-- LOGO ĐÃ ĐƯỢC CẬP NHẬT TỪ ĐƯỜNG LINK ỔN ĐỊNH MỚI CỦA BẠN -->
+                <img src="https://i.ibb.co/8LV2QDR2/4-D892-F5-A-D50-C-41-F6-AB82-610-B6-BF4-D719.jpg" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
                 <span class="text-xl font-bold text-gray-900">You Can Club</span>
             </a>
             <div class="hidden md:flex space-x-8 items-center">
@@ -134,7 +135,7 @@
         <section id="cau-chuyen" class="text-center min-h-[60vh] flex flex-col justify-center items-center fade-in-scroll">
              <h1 class="text-4xl md:text-6xl font-bold text-sky-900 mb-4">Hành trình vượt qua giới hạn</h1>
              <p class="max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed">
-                Chúng tôi bắt đầu từ một mong muốn rất đơn giản: tạo ra một nơi mà nỗi sợ hãi không còn ngăn bước bạn. Ở đây, ai cũng có thể thử, có thể sai, rồi cùng nhau học và tiến bộ. Chúng tôi tin rằng mỗi người đều có điểm mạnh riêng, chỉ cần một môi trường an toàn và ủng hộ để bộc lộ. CLB là nơi bạn được lắng nghe, được động viên, và được dám làm những điều trước đây mình từng ngại. Cùng nhau, chúng ta sẽ trưởng thành và tự tin hơn mỗi ngày.
+                 Chúng tôi bắt đầu từ một mong muốn rất đơn giản: tạo ra một nơi mà nỗi sợ hãi không còn ngăn bước bạn. Ở đây, ai cũng có thể thử, có thể sai, rồi cùng nhau học và tiến bộ. Chúng tôi tin rằng mỗi người đều có điểm mạnh riêng, chỉ cần một môi trường an toàn và ủng hộ để bộc lộ. CLB là nơi bạn được lắng nghe, được động viên, và được dám làm những điều trước đây mình từng ngại. Cùng nhau, chúng ta sẽ trưởng thành và tự tin hơn mỗi ngày.
              </p>
         </section>
 
@@ -271,28 +272,30 @@
                     const targetId = this.dataset.target;
                     const targetDescription = document.getElementById(targetId);
 
-                    // Deactivate all cards and hide all descriptions
+                    // Kiểm tra xem thẻ hiện tại đã active chưa
+                    const wasActive = this.classList.contains('active');
+
+                    // Bỏ trạng thái active của tất cả các thẻ và ẩn tất cả mô tả
                     valueCards.forEach(c => c.classList.remove('active'));
                     allDescriptions.forEach(desc => {
                         desc.style.display = 'none';
                     });
 
-                    // Activate the current card, show the descriptions container and the corresponding description
-                    this.classList.add('active');
-                    descriptionsContainer.style.display = 'block';
-                    if (targetDescription) {
-                        targetDescription.style.display = 'block';
+                    if (!wasActive) {
+                        // Kích hoạt thẻ hiện tại, hiển thị container và mô tả tương ứng
+                        this.classList.add('active');
+                        descriptionsContainer.style.display = 'block';
+                        if (targetDescription) {
+                            targetDescription.style.display = 'block';
+                        }
+                    } else {
+                        // Nếu đã active, nhấp lại sẽ ẩn container
+                        descriptionsContainer.style.display = 'none';
                     }
                 });
             });
-
-            // Sử dụng mouseleave trên descriptions-container để ẩn nó đi khi chuột rời khỏi toàn bộ khu vực
-            descriptionsContainer.addEventListener('mouseleave', function() {
-                // Ẩn descriptions-container và bỏ trạng thái active của tất cả các thẻ
-                descriptionsContainer.style.display = 'none';
-                valueCards.forEach(c => c.classList.remove('active'));
-            });
-
+            
+            // Mobile Menu Toggle
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {
@@ -308,6 +311,7 @@
                 });
             });
             
+            // Active Nav Link on Scroll
             const sections = document.querySelectorAll('section');
             const mainNavLinks = document.querySelectorAll('header nav a.nav-link');
             
@@ -321,9 +325,12 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         mainNavLinks.forEach(link => {
-                            link.classList.remove('active-nav');
-                            if (link.getAttribute('href').substring(1) === entry.target.id) {
-                                link.classList.add('active-nav');
+                            // Check if link is not the join button
+                            if (!link.classList.contains('join-button')) {
+                                link.classList.remove('active-nav');
+                                if (link.getAttribute('href') && link.getAttribute('href').substring(1) === entry.target.id) {
+                                    link.classList.add('active-nav');
+                                }
                             }
                         });
                     }
@@ -334,7 +341,7 @@
                 observer.observe(section);
             });
             
-            // --- New JavaScript for scroll-in animation (Hiệu ứng xuất hiện khi cuộn) ---
+            // --- JavaScript for scroll-in animation (Hiệu ứng xuất hiện khi cuộn) ---
             const observerOptions = {
                 root: null, // Sử dụng viewport làm root
                 rootMargin: '0px',
@@ -360,12 +367,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
