@@ -7,70 +7,133 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- Import Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Chosen Palette: Cool Sky & Charcoal -->
     <style>
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #f8fafc; /* Màu nền nhẹ hơn */
         }
-        .active-nav {
-            color: #0c4a6e; /* sky-800 */
-            font-weight: 500;
+        
+        /* --- NEW: Floating Cube Podium Styles --- */
+        .podium-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 1.5rem 0.5rem 1rem; 
+            border-radius: 1.5rem; 
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
-        /* Styling for the floating feedback button */
-        .feedback-button {
+
+        /* Profile Image for Podium */
+        .profile-img {
+            position: absolute;
+            top: 0;
+            /* Đẩy ảnh lên nhẹ nhàng */
+            transform: translateY(-50%); 
+            border: 5px solid white; 
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+            z-index: 20; 
+        }
+
+        /* Rank 1: Gold - Cao nhất và nổi bật nhất */
+        .rank-1-bg {
+            background: linear-gradient(180deg, #ffde54 0%, #f7a800 100%); 
+            box-shadow: 0 15px 30px rgba(255, 166, 0, 0.6), 0 0 0 5px #ffd700; 
+            height: 16rem; /* Tăng chiều cao */
+            width: 100%;
+            max-width: 200px;
+        }
+        .rank-1-bg:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(255, 166, 0, 0.8), 0 0 0 5px #f0b800;
+        }
+
+        /* Rank 2: Silver - Thấp hơn rank 1 */
+        .rank-2-bg {
+            background: linear-gradient(180deg, #e0e0e0 0%, #a9a9a9 100%); 
+            box-shadow: 0 8px 16px rgba(128, 128, 128, 0.4), 0 0 0 3px #c0c0c0;
+            height: 14rem; 
+            width: 100%;
+            max-width: 180px;
+        }
+
+        /* Rank 3: Bronze - Thấp nhất - ĐÃ ĐIỀU CHỈNH MÀU NÂU NHẠT HƠN VÀ ẤM HƠN */
+        .rank-3-bg {
+            /* Sử dụng tông màu đồng/nâu nhạt hơn, kết hợp với màu vàng kem nhẹ */
+            background: linear-gradient(180deg, #e7c2a5 0%, #b8860b 100%); 
+            box-shadow: 0 5px 10px rgba(184, 134, 11, 0.4), 0 0 0 2px #d2b48c; 
+            height: 12rem; 
+            width: 100%;
+            max-width: 180px;
+        }
+
+        /* Vương miện (Crown) */
+        .rank-1-crown {
+            position: absolute;
+            /* Đẩy vương miện lên cao hơn đỉnh của ảnh */
+            top: -5rem; 
+            right: 50%;
+            transform: translateX(50%); 
+            z-index: 30; 
+            color: #ffd700;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Rank 4+ List style (Striped Card) */
+        .rank-list-item {
+            transition: all 0.3s ease;
+            border-left: 5px solid transparent; /* Sọc màu ban đầu */
+        }
+        .rank-list-item:nth-child(even) {
+            background-color: #f8fafc; /* Màu sọc nhẹ */
+        }
+        .rank-list-item:hover {
+            background-color: #f0f9ff; /* sky-50 */
+            border-left-color: #0ea5e9; /* Sọc màu xanh khi hover */
+            transform: translateX(5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        /* Rank badge in list */
+        .list-rank-badge {
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #374151; /* Gray-700 */
+        }
+
+        /* General styles */
+        .feedback-button, .comment-button {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background-color: #f0f9ff; /* White */
-            color: #0c4a6e; /* Dark sky blue */
+            background-color: #f0f9ff;
+            color: #0c4a6e; 
             width: 3.5rem;
             height: 3.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 50%; /* Make it a circle */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            z-index: 100; /* Ensure it stays on top */
-        }
-        .feedback-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-        .feedback-button i {
-            /* Styling for the icon inside the button */
-            font-size: 1.5rem;
-        }
-        /* Styling for the new floating comment button */
-        .comment-button {
-            position: fixed;
-            bottom: 6.5rem; /* Adjusted to stack vertically above the feedback button */
-            right: 2rem; /* Aligned with the feedback button */
-            background-color: #f0f9ff; /* White */
-            color: #0c4a6e; /* Dark sky blue */
-            width: 3.5rem;
-            height: 3.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%; /* Make it a circle */
+            border-radius: 50%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             z-index: 100;
         }
-        .comment-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        .comment-button {
+            bottom: 6.5rem; 
         }
-        .comment-button i {
-            font-size: 1.5rem;
-        }
-
-        /* --- New styles for scroll-in animation --- */
+        
         .fade-in-scroll {
             opacity: 0;
             transform: translateY(20px);
@@ -80,23 +143,43 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Mobile adjustments */
+        @media (max-width: 640px) {
+            .rank-1-img { width: 5rem; height: 5rem; }
+            .rank-2-img, .rank-3-img { width: 4.5rem; height: 4.5rem; }
+            .podium-container { margin-top: 6rem; } /* Giảm nhẹ khoảng cách trên mobile */
+            .rank-1-crown { top: -4.5rem; } /* Chỉnh cho mobile */
+        }
+        @media (min-width: 641px) {
+            .rank-1-img { width: 6rem; height: 6rem; }
+            .rank-2-img, .rank-3-img { width: 5rem; height: 5rem; }
+        }
     </style>
 </head>
-<body class="bg-sky-100 text-gray-800">
+<body class="bg-gray-50 text-gray-800">
 
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
-                <!-- Cập nhật đường dẫn logo mới, chỉ hiển thị hình này. -->
-                <img src="https://scontent.fvca1-4.fna.fbcdn.net/v/t39.30808-6/518310769_763880686166027_2831211489178282416_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=k32ouYO7pGMQ7kNvwEIG6AX&_nc_oc=AdkdSZAiyQQzZguHc3i4nNAFHNeaz4j3dyQI-J_sAEkYB1nwWaQjTIuxYWwTjtcQeFnOIyks_LzSS9KM7hfnRsjv&_nc_zt=23&_nc_ht=scontent.fvca1-4.fna&_nc_gid=la9-jmfstsgJsNjqDc4yMQ&oh=00_AfYUGa16gSZpUsZlIF4X3VGdsvDM1OMmPdPryEeOeALa0w&oe=68E08050" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
+                <!-- LOGO -->
+                <img src="https://i.ibb.co/8LV2QDR2/4-D892-F5-A-D50-C-41-F6-AB82-610-B6-BF4-D719.jpg" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
                 <span class="text-xl font-bold text-gray-900">You Can Club</span>
             </a>
             <div class="hidden md:flex items-center space-x-8">
                 <!-- Thêm các liên kết điều hướng -->
                 <a href="index.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Giới thiệu</a>
                 <a href="new.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Thông báo</a>
-                <!-- Thêm nút "Tham gia ngay" -->
-                <a href="https://youcanclub.github.io/information/#dang-ky" class="px-4 py-2 bg-sky-800 text-white font-semibold rounded-full hover:bg-sky-700 transition-colors duration-300 shadow-lg">
+                <!-- Nút "Tham gia ngay" (đã điều chỉnh nhỏ gọn) -->
+                <a href="https://youcanclub.github.io/information/#dang-ky" class="
+                    px-3 py-1.5 text-sm 
+                    bg-gradient-to-r from-sky-500 to-sky-700 
+                    text-white font-semibold 
+                    rounded-full 
+                    hover:from-sky-600 hover:to-sky-800 
+                    transition-all duration-300 
+                    shadow-md hover:shadow-lg 
+                ">
                     Tham gia ngay
                 </a>
             </div>
@@ -106,227 +189,228 @@
             </button>
         </nav>
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white">
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4">
             <!-- Thêm các liên kết cho mobile -->
             <a href="index.html" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Giới thiệu</a>
             <a href="new.html" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Thông báo</a>
-            <!-- Thêm nút "Tham gia ngay" cho mobile -->
-            <a href="https://youcanclub.github.io/information/#dang-ky" class="block py-2 px-6 text-sky-800 hover:bg-sky-100 font-semibold">
+            <!-- Nút "Tham gia ngay" mobile (đã điều chỉnh nhỏ gọn) -->
+            <a href="https://youcanclub.github.io/information/#dang-ky" class="
+                block mx-4 mt-2 py-2 text-center text-sm
+                bg-gradient-to-r from-sky-500 to-sky-700 
+                text-white font-semibold 
+                rounded-lg 
+                hover:from-sky-600 hover:to-sky-800 
+                transition-colors duration-300 
+                shadow-md
+            ">
                 Tham gia ngay
             </a>
         </div>
     </header>
 
     <main class="container mx-auto px-6 py-8 md:py-16">
-        <!-- Add 'fade-in-scroll' class to sections for animation -->
         <section id="leaderboard" class="text-center fade-in-scroll">
-            <h1 class="text-4xl md:text-5xl font-bold text-sky-900 mb-8">Bảng xếp hạng thành viên</h1>
             
-            <!-- Khu vực hiển thị 3 người đứng đầu -->
-            <div class="flex flex-row justify-center items-end space-x-4 md:space-x-8 mb-12">
-                <!-- Hạng 2 -->
-                <div class="flex flex-col items-center">
-                    <div class="relative">
-                        <img src="https://scontent.fvca1-3.fna.fbcdn.net/v/t39.30808-6/499402703_2153331558506589_1614688569350780328_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=disbAn24dVAQ7kNvwFY2IK4&_nc_oc=Adl6rUIURvpiS2feqMurindz6mT8v4XGaz3rWj-b8xpGl38jL8nVJhc55F2LhmGfgXJht60vYJRjl7MaDt2IzEHV&_nc_zt=23&_nc_ht=scontent.fvca1-3.fna&_nc_gid=9FBSVd7b86S5-ZdENpXT8Q&oh=00_AfWN8pV_lwejQtT5TXJwS-An1uXozc-WfnS30l6rgZLPmA&oe=68AE2AC1" alt="Ảnh thành viên hạng 2" class="w-20 h-20 md:w-32 md:h-32 rounded-full ring-4 ring-gray-400 object-cover">
-                        <span class="absolute -top-2 -right-2 bg-gray-400 text-white font-bold rounded-full w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-xs md:text-sm">2</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-sky-900 mb-8">Bảng xếp hạng tháng</h1>
+            
+            <!-- Khu vực hiển thị 3 người đứng đầu (PODIUM - FLOATING CUBE) -->
+            <div class="podium-container max-w-4xl mx-auto mt-24 md:mt-32">
+                <div class="flex flex-row justify-center items-end space-x-3 md:space-x-8">
+                    
+                    <!-- Hạng 2 (Silver) -->
+                    <div class="podium-item rank-2-bg w-1/3 order-2 md:order-1">
+                        <!-- Ảnh placeholder: B -->
+                        <img src="https://placehold.co/120x120/f97316/ffffff?text=B" alt="Ảnh thành viên hạng 2" class="profile-img rank-2-img rounded-full">
+                        
+                        <p class="text-sm md:text-base font-bold text-gray-900 mt-2">Thành viên B</p>
+                        <p class="text-xl md:text-3xl font-extrabold text-gray-900">12</p>
+                        <p class="text-xs text-gray-700 uppercase">Điểm</p>
+                        
+                        <!-- Số hạng nằm trong khối -->
+                        <div class="absolute bottom-0 left-0 p-2 rounded-tl-xl rounded-br-lg bg-gray-700 text-white font-black text-xl">2</div>
                     </div>
-                    <p class="mt-2 text-sm md:text-lg font-semibold text-gray-700">Phương Uyên</p>
-                </div>
 
-                <!-- Hạng 1 -->
-                <div class="flex flex-col items-center">
-                    <div class="relative">
-                        <img src="https://scontent.fvca1-3.fna.fbcdn.net/v/t39.30808-6/476785842_605725835768038_518714144180238998_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHYnsDFMfNISSAD2_l57BXBVaJcEbOMipxVolwRs4yKnODoqFlGiVNmZceaBJyLZu0C4HJO-oiGkhqzyj5eyEvV&_nc_ohc=4apYRXo5D8cQ7kNvwEsTeeU&_nc_oc=AdlW5jqiMjW6QOo7Kp0fBP6EuWk0kxDdYVVxHBsG9_vPRxJiQfqwRK1DFPllYnmMneL1hOraRYrEbfRIPIFdgnWI&_nc_zt=23&_nc_ht=scontent.fvca1-3.fna&_nc_gid=_a1yfpFGeZXmL49yDXCzew&oh=00_AfXIDUMeaDjoTca5iAJ_iYSpkKx8Sxa33ZlrV9L_8QLgVA&oe=68B84E66" class="w-24 h-24 md:w-40 md:h-40 rounded-full ring-4 ring-amber-400 object-cover">
-                        <span class="absolute -top-2 -right-2 bg-amber-400 text-white font-bold rounded-full w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-sm md:text-base">1</span>
-                    </div>
-                    <p class="mt-2 text-base md:text-xl font-bold text-sky-900">Minh Khôi</p>
-                </div>
+                    <!-- Hạng 1 (Gold) -->
+                    <div class="podium-item rank-1-bg w-1/3 order-1 md:order-2">
+                        <!-- Vương miện đã được đẩy lên cao hơn -->
+                        <span class="rank-1-crown text-4xl"><i class="fas fa-crown"></i></span>
 
-                <!-- Hạng 3 -->
-                <div class="flex flex-col items-center">
-                    <div class="relative">
-                        <img src="https://scontent.fvca1-3.fna.fbcdn.net/v/t39.30808-6/462227848_122094500528569173_3398806690559395530_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=MqLfHfZtrQ8Q7kNvwFddm1F&_nc_oc=AdlBHXJICmi_19NYSnBzevCYGLQrMmYQSZsYAr_Cii7_mMIAEYbqUpPauu_junz7v-ML1fpuQLlJWeREImb2Fg39&_nc_zt=23&_nc_ht=scontent.fvca1-3.fna&_nc_gid=BxGyc4laifbfOjK7f6oOag&oh=00_AfWbudaA_wf9vtJMt5JcIeV0ZcAi2vmVuYaatMzWaPXBng&oe=68AE49A6" alt="Ảnh thành viên hạng 3" class="w-20 h-20 md:w-32 md:h-32 rounded-full ring-4 ring-yellow-700 object-cover">
-                        <span class="absolute -top-2 -right-2 bg-yellow-700 text-white font-bold rounded-full w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-xs md:text-sm">3</span>
+                        <!-- Ảnh placeholder: A -->
+                        <img src="https://placehold.co/150x150/22c55e/ffffff?text=A" alt="Ảnh thành viên hạng 1" class="profile-img rank-1-img rounded-full">
+                        
+                        <p class="text-base md:text-lg font-black text-amber-900 mt-2">Thành viên A</p>
+                        <p class="text-2xl md:text-4xl font-extrabold text-amber-900">15</p>
+                        <p class="text-xs text-amber-800 uppercase">Điểm</p>
+
+                        <!-- Số hạng nằm trong khối -->
+                        <div class="absolute bottom-0 left-0 p-2 rounded-tl-xl rounded-br-lg bg-amber-700 text-white font-black text-xl">1</div>
                     </div>
-                    <p class="mt-2 text-sm md:text-lg font-semibold text-gray-700">Khả Quỳnh</p>
+
+                    <!-- Hạng 3 (Bronze) - ĐÃ CẬP NHẬT MÀU NỀN VÀ MÀU CHỮ -->
+                    <div class="podium-item rank-3-bg w-1/3 order-3 md:order-3">
+                        <!-- Ảnh placeholder: C -->
+                        <img src="https://placehold.co/120x120/6366f1/ffffff?text=C" alt="Ảnh thành viên hạng 3" class="profile-img rank-3-img rounded-full">
+                        
+                        <!-- Chữ màu đen đậm (text-gray-900) -->
+                        <p class="text-sm md:text-base font-bold text-gray-900 mt-2">Thành viên C</p>
+                        <p class="text-xl md:text-3xl font-extrabold text-gray-900">10</p>
+                        <p class="text-xs text-gray-700 uppercase">Điểm</p>
+                        
+                        <!-- Số hạng nằm trong khối, giữ màu cũ để nổi bật -->
+                        <div class="absolute bottom-0 left-0 p-2 rounded-tl-xl rounded-br-lg bg-red-700 text-white font-black text-xl">3</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="overflow-x-auto bg-white rounded-2xl shadow-lg p-4">
-                <table class="min-w-full leading-normal">
-                    <thead>
-                        <tr class="bg-gray-100">
-                            <th class="px-5 py-3 border-b-2 border-gray-200 text-center text-sm font-semibold text-gray-600 uppercase tracking-wider rounded-tl-lg">
-                                Hạng
-                            </th>
-                            <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">
-                                Tên thành viên
-                            </th>
-                            <th class="px-5 py-3 border-b-2 border-gray-200 text-right text-sm font-semibold text-gray-600 uppercase tracking-wider rounded-tr-lg">
-                                Điểm
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Dữ liệu mẫu cho bảng xếp hạng -->
-                        <tr class="hover:bg-gray-50 transition-colors duration-200">
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
-                                <!-- Hạng 1: Đổi màu số sang vàng -->
-                                <span class="text-xl font-bold text-amber-500">1</span>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                <div class="flex items-center">
-                                    <div class="ml-3">
-                                        <p class="text-gray-900 whitespace-no-wrap font-medium">Minh Khôi</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-right">
-                                <p class="text-gray-900 whitespace-no-wrap font-bold text-lg">58</p>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-gray-50 transition-colors duration-200">
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
-                                <!-- Hạng 2: Đổi màu số sang bạc (xám nhạt) -->
-                                <span class="text-lg font-semibold text-gray-500">2</span>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                <div class="flex items-center">
-                                    <div class="ml-3">
-                                        <p class="text-gray-900 whitespace-no-wrap">Phương Uyên</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-right">
-                                <p class="text-gray-900 whitespace-no-wrap font-semibold">57</p>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-gray-50 transition-colors duration-200">
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
-                                <!-- Hạng 3: Đổi màu số sang đồng (cam đậm) -->
-                                <span class="text-lg font-semibold text-orange-800">3</span>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                <div class="flex items-center">
-                                    <div class="ml-3">
-                                        <p class="text-gray-900 whitespace-no-wrap">Khả Quỳnh</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-right">
-                                <p class="text-gray-900 whitespace-no-wrap font-semibold">53</p>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-gray-50 transition-colors duration-200">
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
-                                <span class="text-gray-500">4</span>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                <div class="flex items-center">
-                                    <div class="ml-3">
-                                        <p class="text-gray-900 whitespace-no-wrap">Phước Vinh</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-right">
-                                <p class="text-gray-900 whitespace-no-wrap">38</p>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-gray-50 transition-colors duration-200">
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-center">
-                                <span class="text-gray-500">5</span>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
-                                <div class="flex items-center">
-                                    <div class="ml-3">
-                                        <p class="text-gray-900 whitespace-no-wrap">Hoài Phúc</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 text-sm text-right">
-                                <p class="text-gray-900 whitespace-no-wrap">38</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Bảng xếp hạng chi tiết (Rank 4+) - Dạng danh sách thẻ (Striped Card) -->
+            <div class="mt-12 space-y-1 max-w-3xl mx-auto p-4 bg-white rounded-xl shadow-lg border border-gray-100">
+                <p class="text-left text-sm font-semibold text-gray-700 uppercase mb-3 px-2">Các thành viên tích cực khác</p>
+                
+                <!-- Hạng 4 -->
+                <div class="rank-list-item flex items-center justify-between p-3 rounded-lg">
+                    <div class="flex items-center space-x-4">
+                        <span class="list-rank-badge text-gray-500">4</span>
+                        <p class="text-gray-900 font-medium">Thành viên D</p>
+                    </div>
+                    <span class="text-xl font-black text-sky-700">8 điểm</span>
+                </div>
+
+                <!-- Hạng 5 -->
+                <div class="rank-list-item flex items-center justify-between p-3 rounded-lg">
+                    <div class="flex items-center space-x-4">
+                        <span class="list-rank-badge text-gray-500">5</span>
+                        <p class="text-gray-900 font-medium">Thành viên E</p>
+                    </div>
+                    <span class="text-xl font-black text-sky-700">5 điểm</span>
+                </div>
+                
+                <!-- Hạng 6 -->
+                <div class="rank-list-item flex items-center justify-between p-3 rounded-lg">
+                    <div class="flex items-center space-x-4">
+                        <span class="list-rank-badge text-gray-500">6</span>
+                        <p class="text-gray-900 font-medium">Thành viên F</p>
+                    </div>
+                    <span class="text-xl font-black text-sky-700">3 điểm</span>
+                </div>
+                
+                <!-- Hạng 7 -->
+                <div class="rank-list-item flex items-center justify-between p-3 rounded-lg">
+                    <div class="flex items-center space-x-4">
+                        <span class="list-rank-badge text-gray-500">7</span>
+                        <p class="text-gray-900 font-medium">Thành viên G</p>
+                    </div>
+                    <span class="text-xl font-black text-sky-700">2 điểm</span>
+                </div>
             </div>
             
             <p class="mt-8 text-gray-500 text-sm">
-                Bảng xếp hạng chỉ phản ánh mức độ tham gia, không định giá con người. Hãy coi đây là lời nhắc để giữ lửa học tập, thi đua vui vẻ và cùng nhau tiến bộ – ai ở top hãy giữ phong độ, ai phía sau hãy bứt phá. Quan trọng nhất là chúng ta đi cùng nhau.
+                Bảng xếp hạng chỉ phản ánh mức độ tham gia, không định giá con người. Hãy coi đây là lời nhắc để giữ lửa học tập, thi đua vui vẻ và cùng nhau tiến bộ.
             </p>
         </section>
 
         <!-- Bảng Cơ chế cộng điểm -->
         <section id="point-system" class="text-center mt-16 fade-in-scroll">
-            <h2 class="text-3xl md:text-4xl font-bold text-sky-900 mb-8">Cơ chế cộng điểm</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-sky-900 mb-12">Cơ chế cộng điểm</h2>
             
-            <!-- Bảng Sinh hoạt toàn thể -->
-            <div class="overflow-x-auto bg-green-50 rounded-2xl shadow-lg p-4 mb-8">
-                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Sinh hoạt toàn thể</h3>
-                <p class="text-gray-600 text-sm mt-1 mb-4">Số thành viên tham gia tối thiểu từ 80%</p>
-                <div class="grid grid-cols-2 gap-4 text-center">
-                    <div class="bg-green-100 p-4 rounded-lg">
-                        <p class="font-semibold text-gray-600">Tham gia</p>
-                        <p class="mt-2 text-xl font-bold text-gray-800">+5</p>
-                    </div>
-                    <div class="bg-green-100 p-4 rounded-lg">
-                        <p class="font-semibold text-gray-600">Tương tác</p>
-                        <p class="mt-2 text-xl font-bold text-gray-800">+8</p>
-                    </div>
-                    <div class="bg-green-100 p-4 rounded-lg">
-                        <p class="font-semibold text-gray-600">Góp ý</p>
-                        <p class="mt-2 text-xl font-bold text-gray-800">+10</p>
-                    </div>
-                    <div class="bg-green-100 p-4 rounded-lg">
-                        <p class="font-semibold text-gray-600">Xây dựng</p>
-                        <p class="mt-2 text-xl font-bold text-gray-800">+15</p>
-                    </div>
-                    <!-- Mục thuyết trình đã được làm lớn gấp 2 lần -->
-                    <div class="bg-green-100 p-4 rounded-lg col-span-2">
-                        <p class="font-semibold text-gray-600">Thuyết trình</p>
-                        <p class="mt-2 text-xl font-bold text-gray-800">+20</p>
+            <!-- Main Grid Container for 2 types of activities (Cân đối trên Desktop) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- BLOCK 1: Sinh hoạt toàn thể (Màu Xanh Sky nổi bật) -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 lg:p-8 border-t-8 border-sky-600 transition duration-300 hover:shadow-2xl">
+                    <h3 class="text-3xl font-extrabold text-sky-800 mb-2 flex items-center justify-center">
+                        <i class="fa-solid fa-users text-3xl mr-3"></i> Sinh hoạt toàn thể
+                    </h3>
+                    <p class="text-gray-500 text-sm mb-6 italic">Yêu cầu tham gia tối thiểu từ 80% thành viên.</p>
+                    
+                    <!-- Inner Grid for points - 2 columns -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Tham gia -->
+                        <div class="p-4 rounded-xl bg-sky-50 shadow-sm border border-sky-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-sky-300">
+                            <i class="fa-solid fa-person-walking-luggage text-sky-600 text-xl mb-1"></i>
+                            <p class="font-medium text-gray-700">Tham gia</p>
+                            <p class="text-2xl font-black text-sky-800 mt-1">+5</p>
+                        </div>
+                        <!-- Tương tác -->
+                        <div class="p-4 rounded-xl bg-sky-50 shadow-sm border border-sky-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-sky-300">
+                            <i class="fa-solid fa-comments text-sky-600 text-xl mb-1"></i>
+                            <p class="font-medium text-gray-700">Tương tác</p>
+                            <p class="text-2xl font-black text-sky-800 mt-1">+8</p>
+                        </div>
+                        <!-- Góp ý -->
+                        <div class="p-4 rounded-xl bg-sky-50 shadow-sm border border-sky-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-sky-300">
+                            <i class="fa-solid fa-lightbulb text-sky-600 text-xl mb-1"></i>
+                            <p class="font-medium text-gray-700">Góp ý</p>
+                            <p class="text-2xl font-black text-sky-800 mt-1">+10</p>
+                        </div>
+                        <!-- Xây dựng -->
+                        <div class="p-4 rounded-xl bg-sky-50 shadow-sm border border-sky-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-sky-300">
+                            <i class="fa-solid fa-tools text-sky-600 text-xl mb-1"></i>
+                            <p class="font-medium text-gray-700">Xây dựng</p>
+                            <p class="text-2xl font-black text-sky-800 mt-1">+15</p>
+                        </div>
+                        <!-- Thuyết trình - Full width -->
+                        <div class="col-span-2 p-4 rounded-xl bg-sky-100 border-2 border-sky-400 shadow-lg transition duration-300 hover:shadow-xl flex flex-col items-center justify-center">
+                            <i class="fa-solid fa-microphone-lines text-sky-700 text-2xl mb-1"></i>
+                            <p class="font-bold text-lg text-sky-800">Thuyết trình</p>
+                            <p class="text-3xl font-extrabold text-sky-900 mt-2">+20</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Bảng Sinh hoạt bán toàn thể -->
-            <div class="overflow-x-auto bg-purple-50 rounded-2xl shadow-lg p-4 mb-8">
-                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Sinh hoạt bán toàn thể</h3>
-                <p class="text-gray-600 text-sm mt-1 mb-4">Số thành viên tham gia tối thiểu từ 50%</p>
-                <div class="grid grid-cols-2 gap-4 text-center">
-                    <div class="bg-purple-100 p-4 rounded-lg">
-                        <p class="font-semibold text-gray-600">Tham gia</p>
-                        <p class="mt-2 text-xl font-bold text-gray-800">+2</p>
-                    </div>
-                    <div class="bg-purple-100 p-4 rounded-lg">
-                        <p class="font-semibold text-gray-600">Tương tác</p>
-                        <p class="mt-2 text-xl font-bold text-gray-800">+4</p>
-                    </div>
-                    <div class="bg-purple-100 p-4 rounded-lg">
-                        <p class="font-semibold text-gray-600">Góp ý</p>
-                        <p class="mt-2 text-xl font-bold text-gray-800">+6</p>
-                    </div>
-                    <div class="bg-purple-100 p-4 rounded-lg">
-                        <p class="font-semibold text-gray-600">Xây dựng</p>
-                        <p class="mt-2 text-xl font-bold text-gray-800">+8</p>
-                    </div>
-                    <!-- Mục thuyết trình đã được làm lớn gấp 2 lần -->
-                    <div class="bg-purple-100 p-4 rounded-lg col-span-2">
-                        <p class="font-semibold text-gray-600">Thuyết trình</p>
-                        <p class="mt-2 text-xl font-bold text-gray-800">+10</p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Vùng cộng điểm thuyết trình -->
-            <div class="fade-in-scroll overflow-x-auto bg-yellow-50 rounded-2xl shadow-lg p-4 mb-8">
-                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Cộng điểm thuyết trình</h3>
-                <div class="bg-yellow-100 p-4 rounded-lg text-center mb-4">
-                    <p class="font-semibold text-gray-600">Điểm thưởng</p>
-                    <p class="mt-2 text-2xl font-bold text-gray-800">+(1-10)</p>
+                <!-- BLOCK 2: Sinh hoạt bán toàn thể (Màu Tím Indigo nhẹ nhàng) -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 lg:p-8 border-t-8 border-indigo-600 transition duration-300 hover:shadow-2xl">
+                    <h3 class="text-3xl font-extrabold text-indigo-800 mb-2 flex items-center justify-center">
+                        <i class="fa-solid fa-user-group text-3xl mr-3"></i> Sinh hoạt bán toàn thể
+                    </h3>
+                    <p class="text-gray-500 text-sm mb-6 italic">Yêu cầu tham gia tối thiểu từ 50% thành viên.</p>
+                    
+                    <!-- Inner Grid for points - 2 columns -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Tham gia -->
+                        <div class="p-4 rounded-xl bg-indigo-50 shadow-sm border border-indigo-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-indigo-300">
+                            <i class="fa-solid fa-person-walking-luggage text-indigo-600 text-xl mb-1"></i>
+                            <p class="font-medium text-gray-700">Tham gia</p>
+                            <p class="text-2xl font-black text-indigo-800 mt-1">+2</p>
+                        </div>
+                        <!-- Tương tác -->
+                        <div class="p-4 rounded-xl bg-indigo-50 shadow-sm border border-indigo-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-indigo-300">
+                            <i class="fa-solid fa-comments text-indigo-600 text-xl mb-1"></i>
+                            <p class="font-medium text-gray-700">Tương tác</p>
+                            <p class="text-2xl font-black text-indigo-800 mt-1">+4</p>
+                        </div>
+                        <!-- Góp ý -->
+                        <div class="p-4 rounded-xl bg-indigo-50 shadow-sm border border-indigo-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-indigo-300">
+                            <i class="fa-solid fa-lightbulb text-indigo-600 text-xl mb-1"></i>
+                            <p class="font-medium text-gray-700">Góp ý</p>
+                            <p class="text-2xl font-black text-indigo-800 mt-1">+6</p>
+                        </div>
+                        <!-- Xây dựng -->
+                        <div class="p-4 rounded-xl bg-indigo-50 shadow-sm border border-indigo-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-indigo-300">
+                            <i class="fa-solid fa-tools text-indigo-600 text-xl mb-1"></i>
+                            <p class="font-medium text-gray-700">Xây dựng</p>
+                            <p class="text-2xl font-black text-indigo-800 mt-1">+8</p>
+                        </div>
+                        <!-- Thuyết trình - Full width -->
+                        <div class="col-span-2 p-4 rounded-xl bg-indigo-100 border-2 border-indigo-400 shadow-lg transition duration-300 hover:shadow-xl flex flex-col items-center justify-center">
+                            <i class="fa-solid fa-microphone-lines text-indigo-700 text-2xl mb-1"></i>
+                            <p class="font-bold text-lg text-indigo-800">Thuyết trình</p>
+                            <p class="text-3xl font-extrabold text-indigo-900 mt-2">+10</p>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-sm text-gray-600">
-                    Áp dụng cho các thành viên có phần thuyết trình xuất sắc trong cả sinh hoạt toàn thể và sinh hoạt bán toàn thể.
+            </div>
+            
+            <!-- Vùng cộng điểm thuyết trình (Điểm thưởng - Nổi bật màu Hổ phách/Vàng) -->
+            <div class="fade-in-scroll bg-amber-500/10 p-6 md:p-8 rounded-2xl shadow-xl mt-8 border-l-4 border-amber-500 text-center">
+                <h3 class="text-2xl font-semibold text-amber-700 mb-4 flex items-center justify-center">
+                    <i class="fa-solid fa-star text-3xl mr-3"></i> Điểm thưởng Thuyết trình
+                </h3>
+                <div class="bg-amber-100 p-4 rounded-xl inline-block min-w-[200px] shadow-md">
+                    <p class="font-semibold text-gray-700">Dựa trên chất lượng</p>
+                    <p class="mt-2 text-3xl font-extrabold text-amber-800">+(1 - 10)</p>
+                </div>
+                <p class="text-sm text-gray-600 mt-4 max-w-xl mx-auto">
+                    Áp dụng cho các thành viên có phần thuyết trình xuất sắc, sáng tạo, hoặc có ảnh hưởng lớn đến buổi sinh hoạt, trong cả sinh hoạt toàn thể và sinh hoạt bán toàn thể.
                 </p>
             </div>
             
@@ -401,14 +485,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
