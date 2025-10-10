@@ -161,26 +161,30 @@
             color: #374151; 
         }
 
-        /* General styles */
+        /* ---------------------------------------------------- */
+        /* --- CẬP NHẬT KÍCH THƯỚC NÚT GÓP Ý/BÌNH LUẬN --- */
+        /* ĐÃ ĐIỀU CHỈNH: Kích thước 3.5rem (56px) và vị trí mới */
+        /* ---------------------------------------------------- */
         .feedback-button, .comment-button {
             position: fixed;
-            bottom: 3rem; /* Tăng khoảng cách từ dưới lên */
-            right: 3rem;  /* Tăng khoảng cách từ phải vào */
+            bottom: 1.5rem; /* Khoảng cách từ dưới lên (24px) */
+            right: 1.5rem;  /* Khoảng cách từ phải vào (24px) */
             background-color: #f0f9ff;
             color: #0c4a6e; 
-            width: 4rem; /* TĂNG KÍCH THƯỚC */
-            height: 4rem; /* TĂNG KÍCH THƯỚC */
+            width: 3.5rem; /* Tăng từ 3rem lên 3.5rem (56px) */
+            height: 3.5rem; /* Tăng từ 3rem lên 3.5rem (56px) */
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Tăng bóng */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
             transition: all 0.3s ease;
             z-index: 100;
-            font-size: 1.5rem; /* Tăng kích thước icon */
+            font-size: 1.5rem; /* Tăng từ 1.25rem lên 1.5rem */
         }
+        /* Vị trí mới: 1.5rem (base) + 3.5rem (height) + 1rem (spacing) = 6rem */
         .comment-button {
-            bottom: 8rem; /* Đã điều chỉnh khoảng cách (4rem + 1rem = 5rem cách nhau) */
+            bottom: 6rem; 
         }
 
         .feedback-button:hover, .comment-button:hover {
@@ -202,16 +206,17 @@
         /* === MOBILE ADJUSTMENTS (DƯỚI 640PX) === */
         /* ================================================= */
         @media (max-width: 639px) {
-            /* Fix Mobile Floating Button Size and Position for touch targets */
+            /* Điều chỉnh vị trí nút nổi trên Mobile */
             .feedback-button, .comment-button {
-                bottom: 2rem; /* Giảm lại cho mobile để không chiếm quá nhiều không gian */
-                right: 1.5rem; 
-                width: 3.5rem; /* Giữ kích thước lớn hơn 48px */
-                height: 3.5rem;
-                font-size: 1.3rem; 
+                bottom: 1rem; /* Giảm lại cho mobile */
+                right: 1rem; 
+                width: 3.5rem; /* Kích thước mới */
+                height: 3.5rem; /* Kích thước mới */
+                font-size: 1.5rem; /* Kích thước mới */
             }
+            /* Vị trí mới: 1rem (base) + 3.5rem (height) + 1rem (spacing) = 5.5rem */
             .comment-button {
-                bottom: 6.5rem; /* Căn chỉnh lại khoảng cách trên mobile */
+                bottom: 5.5rem; 
             }
 
             /* Make Ranks 1, 2, 3 appear side-by-side, smaller, and balanced */
@@ -229,7 +234,7 @@
                 /* Đảm bảo 3 thẻ fit vừa vặn trên màn hình hẹp */
                 width: calc(33.333% - 0.5rem); 
                 max-width: none; 
-                padding: 1rem 0.25rem; /* Reduce padding inside the card */
+                padding: 0.75rem 0.25rem; /* Giảm padding tổng thể */
                 min-height: 8rem; /* Base minimum height for mobile side-by-side */
                 margin-top: 0 !important; 
                 transform: none !important; /* Remove scaling/translation */
@@ -261,24 +266,33 @@
                 font-size: 1.5rem; /* Smaller crown */
             }
 
-            /* Adjust font sizes inside the cards for better fit/readability on mobile */
-            .top-rank-card p:nth-child(3) { /* Name: Thành viên A/B/C */
-                font-size: 0.875rem; /* text-sm */
+            /* FIX: OVERLAPPING TEXT IN TOP RANK CARDS FOR MOBILE */
+            .top-rank-card p:nth-child(3) { /* Name */
+                font-size: 0.75rem; /* text-xs */
+                line-height: 1rem; 
+                margin-bottom: 0; 
+                word-wrap: break-word; 
+                max-width: 100%;
             }
-            /* Score: 15/12/10 */
-            .top-rank-card p:nth-child(4) { 
-                font-size: 1.75rem !important; /* text-xl */
+            .rank-one p:nth-child(3) {
+                font-size: 0.875rem !important; 
+                padding-top: 0.5rem !important; 
             }
-            /* Label: Điểm */
-            .top-rank-card p:nth-child(5) { 
-                font-size: 0.625rem !important; /* text-xs (already defined) */
+            
+            .top-rank-card p:nth-child(4) { /* Score */
+                font-size: 1.5rem !important; 
+                line-height: 1.75rem; 
+                margin-top: 0.25rem !important; 
+                margin-bottom: 0;
             }
-
-            .rank-one .text-xl, .rank-one .text-2xl {
-                font-size: 1rem !important; /* Tên Hạng 1 */
+            .rank-one p:nth-child(4) {
+                font-size: 2rem !important; 
             }
-            .rank-one .text-4xl, .rank-one .text-5xl {
-                font-size: 2.25rem !important; /* Điểm Hạng 1 */
+            
+            .top-rank-card p:nth-child(5) { /* Label */
+                font-size: 0.625rem !important; 
+                line-height: 0.75rem;
+                margin-top: 0;
             }
         }
     </style>
