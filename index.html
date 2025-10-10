@@ -3,256 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You Can Club</title>
+    <title>You Can Club - Hành Trình Vượt Qua Giới Hạn</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Import Font Awesome for icons, this library is reliable -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Import Font Awesome for icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Chosen Palette: Cool Sky & Charcoal -->
-    <style>
+    <!-- Chosen Palette: Cool Sky & Charcoal --><style>
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
         }
         .active-nav {
             color: #0c4a6e; /* sky-800 */
-            font-weight: 500;
+            font-weight: 600;
+        }
+        /* Custom styles for interactive cards and buttons */
+        .value-card {
+            transition: all 0.3s ease;
         }
         .value-card.active {
             transform: translateY(-4px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             border-color: #0c4a6e; /* sky-800 */
         }
-        /* Styling for the "Tham gia ngay" button to make it more prominent */
         .join-button {
             background-color: #0c4a6e; /* Darker sky blue */
-            color: #f0f9ff; /* White text */
+            color: #f0f9ff;
             padding: 0.5rem 1.5rem;
-            border-radius: 9999px; /* Fully rounded */
-            font-weight: 700; /* Bold font */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            border-radius: 9999px;
+            font-weight: 700;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
         .join-button:hover {
-            background-color: #075985; /* Even darker blue on hover */
+            background-color: #075985;
             transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
-        }
-        /* Styling for the floating feedback button */
-        .feedback-button {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: #f0f9ff; /* White */
-            color: #0c4a6e; /* Dark sky blue */
-            width: 3.5rem;
-            height: 3.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%; /* Make it a circle */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            z-index: 100; /* Ensure it stays on top */
-        }
-        .feedback-button:hover {
-            transform: scale(1.1);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
-        .feedback-button i {
-            /* Styling for the icon inside the button */
-            font-size: 1.5rem;
-        }
-        /* Styling for the new floating comment button */
-        .comment-button {
+        .feedback-button, .comment-button {
             position: fixed;
-            bottom: 6.5rem; /* Adjusted to stack vertically above the feedback button */
-            right: 2rem; /* Aligned with the feedback button */
-            background-color: #f0f9ff; /* White */
-            color: #0c4a6e; /* Dark sky blue */
+            background-color: #f0f9ff;
+            color: #0c4a6e;
             width: 3.5rem;
             height: 3.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 50%; /* Make it a circle */
+            border-radius: 50%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             z-index: 100;
         }
-        .comment-button:hover {
+        .feedback-button {
+            bottom: 2rem;
+            right: 2rem;
+        }
+        .comment-button {
+            bottom: 6.5rem;
+            right: 2rem;
+        }
+        .feedback-button:hover, .comment-button:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
-        .comment-button i {
+        .feedback-button i, .comment-button i {
             font-size: 1.5rem;
         }
 
-        /* --- New styles for scroll-in animation (Hiệu ứng xuất hiện khi cuộn) --- */
+        /* Hero Section Styling */
+        #cau-chuyen {
+            background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%); /* light gradient from sky-100 to sky-50 */
+            border-radius: 0 0 40px 40px;
+            padding-bottom: 5rem;
+        }
+
+        /* --- Scroll-in animation --- */
         .fade-in-scroll {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
         .fade-in-scroll.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* --- ICON DYNAMIC EFFECTS (Hiệu ứng logo động - Chuyển động nhẹ, liên tục) --- */
+        .icon-transition {
+            transition: none;
+            display: inline-block; /* Quan trọng để áp dụng transform */
+        }
+
+        /* Keyframes cho hiệu ứng nổi nhẹ, liên tục (đã làm rõ ràng hơn) */
+        @keyframes subtle-float {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-12px) scale(1.08); } /* Nổi lên 12px và phóng to nhẹ 8% */
+            100% { transform: translateY(0) scale(1); }
+        }
+
+        /* Áp dụng animation liên tục cho các icon (đã tăng tốc độ nhẹ) */
+        .icon-animate-float {
+            animation: subtle-float 3s ease-in-out infinite; /* 3 giây, kiểu ease-in-out, lặp vô hạn */
+        }
+
     </style>
 </head>
-<body class="bg-sky-100 text-gray-800">
+<body class="bg-sky-50 text-gray-800">
 
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+    <!-- Header Navigation --><header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-2">
-                <!-- LOGO ĐÃ ĐƯỢC CẬP NHẬT TỪ ĐƯỜNG LINK ỔN ĐỊNH MỚI CỦA BẠN -->
-                <img src="https://i.ibb.co/8LV2QDR2/4-D892-F5-A-D50-C-41-F6-AB82-610-B6-BF4-D719.jpg" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
-                <span class="text-xl font-bold text-gray-900">You Can Club</span>
+                <!-- LOGO --><img src="https://i.ibb.co/8LV2QDR2/4-D892-F5-A-D50-C-41-F6-AB82-610-B6-BF4-D719.jpg" alt="Logo You Can Club" class="h-12 w-auto rounded-full shadow-lg border border-sky-200">
+                <span class="text-xl font-extrabold text-sky-900">You Can Club</span>
             </a>
             <div class="hidden md:flex space-x-8 items-center">
-                <a href="new.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Thông báo</a>
-                <a href="rank.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Bảng xếp hạng</a>
+                <!-- Thông báo --><a href="new.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Thông báo</a>
+                <!-- Bảng xếp hạng --><a href="rank.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Bảng xếp hạng</a>
                 <a href="#dang-ky" class="join-button">Tham gia ngay</a>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-gray-800">
+            <button id="mobile-menu-button" class="md:hidden text-gray-800 p-2 rounded-lg hover:bg-sky-100">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-white">
-            <a href="new.html" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Thông báo</a>
-            <a href="rank.html" class="block py-2 px-6 text-gray-600 hover:bg-sky-100">Bảng xếp hạng</a>
-            <a href="#dang-ky" class="block py-2 px-6 text-sky-800 hover:bg-sky-100 font-semibold">
+        <!-- Mobile Menu --><div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-sky-100">
+            <a href="new.html" class="nav-link block py-2 px-6 text-gray-600 hover:bg-sky-100">Thông báo</a>
+            <a href="rank.html" class="nav-link block py-2 px-6 text-gray-600 hover:bg-sky-100">Bảng xếp hạng</a>
+            <a href="#dang-ky" class="nav-link block py-2 px-6 text-sky-800 hover:bg-sky-100 font-semibold">
                 Tham gia ngay
             </a>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-8 md:py-16">
+    <main class="container mx-auto px-6 py-0 md:py-8">
 
-        <!-- Added fade-in-scroll class to main sections -->
-        <section id="cau-chuyen" class="text-center min-h-[60vh] flex flex-col justify-center items-center fade-in-scroll">
-             <h1 class="text-4xl md:text-6xl font-bold text-sky-900 mb-4">Hành trình vượt qua giới hạn</h1>
-             <p class="max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed">
-                 Chúng tôi bắt đầu từ một mong muốn rất đơn giản: tạo ra một nơi mà nỗi sợ hãi không còn ngăn bước bạn. Ở đây, ai cũng có thể thử, có thể sai, rồi cùng nhau học và tiến bộ. Chúng tôi tin rằng mỗi người đều có điểm mạnh riêng, chỉ cần một môi trường an toàn và ủng hộ để bộc lộ. CLB là nơi bạn được lắng nghe, được động viên, và được dám làm những điều trước đây mình từng ngại. Cùng nhau, chúng ta sẽ trưởng thành và tự tin hơn mỗi ngày.
-             </p>
+        <!-- Hero Section: Câu Chuyện (Story/Mission) - Rocket icon now animates --><section id="cau-chuyen" class="text-center pt-16 pb-20 flex flex-col justify-center items-center fade-in-scroll">
+            <i class="fa-solid fa-rocket text-sky-600 text-7xl mx-auto mb-6 transform rotate-45 icon-transition icon-animate-float" style="animation-delay: -0.5s;"></i>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-sky-900 mb-6 tracking-tight">
+                Hành trình <span class="text-sky-600">vượt qua giới hạn</span>
+            </h1>
+            <p class="max-w-4xl mx-auto text-xl text-gray-700 leading-relaxed font-light">
+                Chúng tôi bắt đầu từ một mong muốn rất đơn giản: tạo ra một nơi mà nỗi sợ hãi không còn ngăn bước bạn. Ở đây, ai cũng có thể thử, có thể sai, rồi cùng nhau học và tiến bộ. Chúng tôi tin rằng mỗi người đều có điểm mạnh riêng, chỉ cần một môi trường an toàn và ủng hộ để bộc lộ. CLB là nơi bạn được lắng nghe, được động viên, và được dám làm những điều trước đây mình từng ngại. Cùng nhau, chúng ta sẽ trưởng thành và tự tin hơn mỗi ngày.
+            </p>
         </section>
 
-        <!-- Added fade-in-scroll class to main sections -->
-        <section id="su-menh" class="py-16 bg-white rounded-2xl my-16 fade-in-scroll">
+        <!-- Sứ Mệnh (Mission) --><section id="su-menh" class="py-16 bg-white rounded-2xl my-16 shadow-xl fade-in-scroll border-t-4 border-sky-400">
             <div class="text-center mb-12 px-6">
-                <!-- Sử dụng icon Font Awesome cho Sứ Mệnh (Vương miện) -->
-                <i class="fa-solid fa-crown text-sky-600 text-6xl mx-auto mb-4"></i>
+                <!-- ICON: Sứ Mệnh (Continuous Float) --><i class="fa-solid fa-bullseye text-sky-600 text-6xl mx-auto mb-4 icon-transition icon-animate-float" style="animation-delay: -1s;"></i>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Sứ Mệnh</h2>
                 <p class="mt-2 text-gray-500">Mục tiêu cốt lõi của chúng tôi.</p>
             </div>
             <div class="max-w-3xl mx-auto px-6">
-                 <p class="text-center text-gray-600 leading-relaxed text-lg">
+                <p class="text-center text-gray-700 leading-relaxed text-lg font-medium">
                     Góp phần phát triển cộng đồng học sinh địa phương bằng môi trường học hỏi, trau dồi kỹ năng, vượt qua nỗi sợ và kết nối những người cùng chí hướng.
                 </p>
             </div>
         </section>
 
-        <!-- Added fade-in-scroll class to main sections -->
-        <section id="dinh-huong" class="py-16 bg-white rounded-2xl my-16 fade-in-scroll">
+        <!-- Định Hướng (Vision/Direction) --><section id="dinh-huong" class="py-16 bg-white rounded-2xl my-16 shadow-xl fade-in-scroll">
             <div class="text-center mb-12 px-6">
-                <!-- Sử dụng icon Font Awesome cho Định Hướng (Mắt) -->
-                <i class="fa-solid fa-eye text-sky-600 text-6xl mx-auto mb-4"></i>
+                <!-- ICON: Định Hướng (Continuous Float) --><i class="fa-solid fa-mountain-sun text-sky-600 text-6xl mx-auto mb-4 icon-transition icon-animate-float" style="animation-delay: -2.5s;"></i>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Định Hướng</h2>
                 <p class="mt-2 text-gray-500">La bàn dẫn lối cho mọi hoạt động.</p>
             </div>
             <div class="max-w-3xl mx-auto px-6">
-                 <p class="text-center text-gray-600 leading-relaxed text-lg">
+                <p class="text-center text-gray-700 leading-relaxed text-lg font-medium">
                     Xây dựng cộng đồng học tập tích cực, rèn kỹ năng thuyết trình, phản biện, giao tiếp và thể hiện bản thân; hỗ trợ sự tiến bộ cá nhân và thói quen học tập chủ động.
                 </p>
             </div>
         </section>
 
-        <!-- Added fade-in-scroll class to main sections -->
-        <section id="van-hoa" class="py-16 bg-white rounded-2xl my-16 fade-in-scroll">
+        <!-- Văn Hóa (Culture) --><section id="van-hoa" class="py-16 bg-white rounded-2xl my-16 shadow-xl fade-in-scroll border-b-4 border-sky-400">
             <div class="text-center mb-12 px-6">
-                <!-- Sử dụng icon Font Awesome cho Văn Hóa (Nhóm người) -->
-                <i class="fa-solid fa-user-group text-sky-600 text-6xl mx-auto mb-4"></i>
+                <!-- ICON: Văn Hóa (Continuous Float) --><i class="fa-solid fa-handshake-angle text-sky-600 text-6xl mx-auto mb-4 icon-transition icon-animate-float" style="animation-delay: -4s;"></i>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Không Gian Văn Hóa</h2>
-                 <p class="mt-2 text-gray-500">Nơi mọi cá tính được tôn trọng và phát triển.</p>
+                <p class="mt-2 text-gray-500">Nơi mọi cá tính được tôn trọng và phát triển.</p>
             </div>
             <div class="max-w-3xl mx-auto px-6">
-                 <p class="text-center text-gray-600 leading-relaxed text-lg">
+                <p class="text-center text-gray-700 leading-relaxed text-lg font-medium">
                     Chúng tôi tạo không gian cởi mở, thân thiện, nơi mọi người được chia sẻ, lắng nghe và tôn trọng, cùng xây dựng văn hóa <strong class="text-sky-700">tích cực</strong>, <strong class="text-sky-700">cởi mở</strong>, <strong class="text-sky-700">dám thử</strong> và <strong class="text-sky-700">cùng nhau tiến bộ</strong>.
                 </p>
             </div>
         </section>
-
-        <!-- Added fade-in-scroll class to main sections -->
-        <section id="gia-tri" class="py-16 fade-in-scroll">
+        
+        <!-- Giá Trị Cốt Lõi (Core Values) --><section id="gia-tri" class="py-16 fade-in-scroll">
             <div class="text-center mb-12">
-                <!-- Sử dụng icon Font Awesome cho Giá Trị Cốt Lõi (Bánh răng) -->
-                <i class="fa-solid fa-gear text-sky-600 text-6xl mx-auto mb-4"></i>
+                <!-- ICON: Giá Trị Cốt Lõi (Continuous Float) --><i class="fa-solid fa-cogs text-sky-600 text-6xl mx-auto mb-4 icon-transition icon-animate-float" style="animation-delay: -5.5s;"></i>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Giá Trị Cốt Lõi</h2>
                 <p class="mt-2 text-gray-500">Nền tảng cho mọi quyết định và hành động. Nhấn vào từng giá trị để tìm hiểu thêm.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-6 mb-8">
-                <div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-md hover:shadow-xl" data-target="desc-1">
-                    <h4 class="font-bold text-lg text-gray-800">Tôn trọng - Cùng tiến bộ</h4>
+                <!-- Value Card 1 --><div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-lg hover:shadow-xl" data-target="desc-1">
+                    <h4 class="font-bold text-xl text-gray-800">Tôn trọng - Cùng tiến bộ</h4>
                 </div>
-                <div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-md hover:shadow-xl" data-target="desc-2">
-                    <h4 class="font-bold text-lg text-gray-800">Dám thử - Dám sửa</h4>
+                <!-- Value Card 2 --><div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-lg hover:shadow-xl" data-target="desc-2">
+                    <h4 class="font-bold text-xl text-gray-800">Dám thử - Dám sửa</h4>
                 </div>
-                <div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-md hover:hover:shadow-xl" data-target="desc-3">
-                    <h4 class="font-bold text-lg text-gray-800">Học từ nhau - Tư duy mở</h4>
+                <!-- Value Card 3 --><div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-lg hover:hover:shadow-xl" data-target="desc-3">
+                    <h4 class="font-bold text-xl text-gray-800">Học từ nhau - Tư duy mở</h4>
                 </div>
             </div>
-            <!-- Bảng trắng chi tiết giờ ẩn ban đầu và chỉ hiện khi nhấp chuột -->
-            <div id="descriptions-container" class="min-h-[150px] bg-white rounded-xl p-8 shadow-inner transition-all duration-500" style="display: none;">
+            <!-- Bảng trắng chi tiết --><div id="descriptions-container" class="min-h-[150px] bg-white rounded-xl p-8 shadow-inner transition-all duration-500 border-l-4 border-sky-600" style="display: none;">
                 <div id="desc-1" class="value-description" style="display: none;">
-                    <h5 class="font-bold text-xl text-sky-800 mb-2">Tôn trọng - Cùng tiến bộ</h5>
-                    <p class="text-gray-600 leading-relaxed">Chúng tôi tin rằng khi tôn trọng sự khác biệt và đa dạng trong suy nghĩ, chúng ta sẽ cùng nhau tạo ra những đột phá và phát triển bền vững cho cả cộng đồng.</p>
+                    <h5 class="font-bold text-2xl text-sky-800 mb-3">Tôn trọng - Cùng tiến bộ</h5>
+                    <p class="text-gray-600 leading-relaxed text-lg">Chúng tôi tin rằng khi tôn trọng sự khác biệt và đa dạng trong suy nghĩ, chúng ta sẽ cùng nhau tạo ra những đột phá và phát triển bền vững cho cả cộng đồng.</p>
                 </div>
                 <div id="desc-2" class="value-description" style="display: none;">
-                    <h5 class="font-bold text-xl text-sky-800 mb-2">Dám thử - Dám sửa</h5>
-                    <p class="text-gray-600 leading-relaxed">Khuyến khích sự sáng tạo, không ngại thử thách và sẵn sàng học hỏi từ những sai lầm. Thất bại không phải là điểm kết thúc, mà là một bước đệm cần thiết trên con đường dẫn đến thành công.</p>
+                    <h5 class="font-bold text-2xl text-sky-800 mb-3">Dám thử - Dám sửa</h5>
+                    <p class="text-gray-600 leading-relaxed text-lg">Khuyến khích sự sáng tạo, không ngại thử thách và sẵn sàng học hỏi từ những sai lầm. Thất bại không phải là điểm kết thúc, mà là một bước đệm cần thiết trên con đường dẫn đến thành công.</p>
                 </div>
-                 <div id="desc-3" class="value-description" style="display: none;">
-                    <h5 class="font-bold text-xl text-sky-800 mb-2">Học từ nhau - Tư duy mở</h5>
-                    <p class="text-gray-600 leading-relaxed">Mở lòng để tiếp nhận tri thức và góc nhìn mới, trao đi kiến thức để nhận lại giá trị lớn hơn cho cả bản thân và cộng đồng. Mỗi thành viên vừa là người học, vừa là người thầy.</p>
+                <div id="desc-3" class="value-description" style="display: none;">
+                    <h5 class="font-bold text-2xl text-sky-800 mb-3">Học từ nhau - Tư duy mở</h5>
+                    <p class="text-gray-600 leading-relaxed text-lg">Mở lòng để tiếp nhận tri thức và góc nhìn mới, trao đi kiến thức để nhận lại giá trị lớn hơn cho cả bản thân và cộng đồng. Mỗi thành viên vừa là người học, vừa là người thầy.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Thêm nút đăng ký vào cuối trang -->
-        <section id="dang-ky" class="py-16 text-center fade-in-scroll">
-            <a href="https://forms.gle/9wgmqSkFbY1A7mHo6" target="_blank" rel="noopener noreferrer" class="bg-sky-700 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:bg-sky-800 transition-colors duration-300 transform hover:scale-105 inline-block">
-                Đăng ký tham gia CLB ngay!
+        <!-- Chủ đề sinh hoạt (Activity Topics) - Đã được di chuyển sau Giá trị Cốt lõi -->
+        <section id="chu-de" class="py-16 text-center fade-in-scroll">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Các Chủ Đề Sinh Hoạt</h2>
+            <p class="mb-10 text-gray-600 max-w-3xl mx-auto">Các buổi sinh hoạt giúp bạn phát triển khả năng thuyết trình và phản biện qua các môn tự nhiên.</p>
+            
+            <!-- CẬP NHẬT DANH SÁCH CHỦ ĐỀ -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <!-- Vật lý -->
+                <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-atom text-2xl"></i>
+                    </div>
+                    <p class="text-lg font-semibold text-gray-800">Vật lý</p>
+                </div>
+                <!-- Toán học -->
+                <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-calculator text-2xl"></i>
+                    </div>
+                    <p class="text-lg font-semibold text-gray-800">Toán học</p>
+                </div>
+                <!-- Tin học -->
+                <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-laptop-code text-2xl"></i>
+                    </div>
+                    <p class="text-lg font-semibold text-gray-800">Tin học</p>
+                </div>
+                <!-- Hóa học -->
+                <div class="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
+                        <i class="fa-solid fa-flask text-2xl"></i>
+                    </div>
+                    <p class="text-lg font-semibold text-gray-800">Hóa học</p>
+                </div>
+            </div>
+            <!-- KẾT THÚC CẬP NHẬT DANH SÁCH CHỦ ĐỀ -->
+        </section>
+
+        <!-- Khu vực đăng ký (Call to Action) -->
+        <section id="dang-ky" class="py-20 text-center fade-in-scroll mt-16">
+            <h3 class="text-3xl font-bold text-gray-800 mb-6">Sẵn sàng để vượt qua giới hạn của bản thân?</h3>
+            <a href="https://forms.gle/9wgmqSkFbY1A7mHo6" target="_blank" rel="noopener noreferrer" class="bg-sky-700 text-white font-extrabold py-4 px-10 rounded-full shadow-2xl shadow-sky-400/50 hover:bg-sky-800 transition-all duration-300 transform hover:scale-105 inline-block text-xl">
+                <i class="fa-solid fa-hand-point-right mr-2"></i> Đăng ký tham gia CLB ngay!
             </a>
         </section>
 
     </main>
 
-    <!-- Nút góp ý nổi bật, cố định ở góc dưới bên phải -->
-    <a href="https://forms.gle/WAmeqVbB7fvX3VtFA" target="_blank" rel="noopener noreferrer" class="feedback-button" aria-label="Góp ý cho CLB">
+    <!-- Nút góp ý nổi bật, cố định ở góc dưới bên phải --><a href="https://forms.gle/WAmeqVbB7fvX3VtFA" target="_blank" rel="noopener noreferrer" class="feedback-button" aria-label="Góp ý cho CLB">
         <i class="fa-solid fa-lightbulb"></i>
     </a>
     
-    <!-- Nút bình luận nổi bật, cố định ở góc dưới bên phải -->
-    <a href="https://forms.gle/sdiptXjXtoByeYiF8" target="_blank" rel="noopener noreferrer" class="comment-button" aria-label="Bình luận về CLB">
+    <!-- Nút bình luận nổi bật, cố định ở góc dưới bên phải --><a href="https://forms.gle/sdiptXjXtoByeYiF8" target="_blank" rel="noopener noreferrer" class="comment-button" aria-label="Bình luận về CLB">
         <i class="fa-solid fa-comment"></i>
     </a>
 
-    <footer class="bg-gray-900 text-sky-100 mt-16">
+    <!-- Footer --><footer class="bg-gray-900 text-sky-100 mt-16">
         <div class="container mx-auto px-6 py-8 flex flex-col items-center space-y-4">
-            <div class="flex space-x-4">
-                <!-- Thêm icon và link Facebook -->
-                <a href="https://www.facebook.com/profile.php?id=61578363805571" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                    <i class="fab fa-facebook text-2xl hover:text-sky-400 transition-colors duration-300"></i>
+            <div class="flex space-x-6">
+                <!-- Icon và link Facebook --><a href="https://www.facebook.com/profile.php?id=61578363805571" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f text-2xl hover:text-sky-400 transition-colors duration-300"></i>
                 </a>
-                <!-- Thêm icon và link TikTok -->
-                <a href="https://www.tiktok.com/@youcan.club?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <!-- Icon và link TikTok --><a href="https://www.tiktok.com/@youcan.club?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
                     <i class="fab fa-tiktok text-2xl hover:text-sky-400 transition-colors duration-300"></i>
                 </a>
             </div>
             <p class="text-sm">Thành lập: 21/6/2025</p>
-            <p>&copy; 2025. CLB Thuyết trình & Học tập</p>
+            <p class="font-medium">&copy; 2025. CLB Thuyết trình & Học tập - You Can Club</p>
         </div>
     </footer>
 
@@ -266,7 +301,7 @@
             // Ẩn tất cả các mô tả ban đầu
             allDescriptions.forEach(desc => desc.style.display = 'none');
 
-            // Thêm sự kiện click
+            // Thêm sự kiện click cho các thẻ giá trị
             valueCards.forEach(card => {
                 card.addEventListener('click', function () {
                     const targetId = this.dataset.target;
@@ -287,6 +322,8 @@
                         descriptionsContainer.style.display = 'block';
                         if (targetDescription) {
                             targetDescription.style.display = 'block';
+                            // Scroll to the container when opened for better visibility on mobile
+                            descriptionsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
                     } else {
                         // Nếu đã active, nhấp lại sẽ ẩn container
@@ -302,47 +339,53 @@
                 mobileMenu.classList.toggle('hidden');
             });
             
+            // Close mobile menu when a link is clicked
             const navLinks = document.querySelectorAll('.nav-link, #mobile-menu a');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    if (mobileMenu.classList.contains('hidden') === false) {
-                        mobileMenu.classList.add('hidden');
+                    // Check if the link is a internal anchor link before closing
+                    if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
+                         if (mobileMenu.classList.contains('hidden') === false) {
+                            mobileMenu.classList.add('hidden');
+                        }
                     }
                 });
             });
             
-            // Active Nav Link on Scroll
+            // Active Nav Link on Scroll (Intersection Observer for highlighting sections)
             const sections = document.querySelectorAll('section');
             const mainNavLinks = document.querySelectorAll('header nav a.nav-link');
             
-            const options = {
+            const navOptions = {
                 root: null,
-                rootMargin: '0px',
-                threshold: 0.4
+                rootMargin: '-50% 0px -50% 0px', // Highlight link when section is near the middle of the viewport
+                threshold: 0
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            const navObserver = new IntersectionObserver((entries, observer) => {
+                let activeId = null;
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        mainNavLinks.forEach(link => {
-                            // Check if link is not the join button
-                            if (!link.classList.contains('join-button')) {
-                                link.classList.remove('active-nav');
-                                if (link.getAttribute('href') && link.getAttribute('href').substring(1) === entry.target.id) {
-                                    link.classList.add('active-nav');
-                                }
-                            }
-                        });
+                        activeId = entry.target.id;
                     }
                 });
-            }, options);
+
+                mainNavLinks.forEach(link => {
+                    link.classList.remove('active-nav');
+                    const linkHash = link.getAttribute('href') ? link.getAttribute('href').substring(1) : '';
+                    // Check if link is not the join button AND its href matches the active section ID
+                    if (!link.classList.contains('join-button') && linkHash === activeId) {
+                        link.classList.add('active-nav');
+                    }
+                });
+            }, navOptions);
 
             sections.forEach(section => {
-                observer.observe(section);
+                navObserver.observe(section);
             });
             
             // --- JavaScript for scroll-in animation (Hiệu ứng xuất hiện khi cuộn) ---
-            const observerOptions = {
+            const fadeInObserverOptions = {
                 root: null, // Sử dụng viewport làm root
                 rootMargin: '0px',
                 threshold: 0.1 // Kích hoạt khi 10% của phần tử hiển thị
@@ -357,7 +400,7 @@
                         fadeInObserver.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, fadeInObserverOptions);
 
             // Tìm tất cả các phần tử có class 'fade-in-scroll' và bắt đầu theo dõi chúng
             document.querySelectorAll('.fade-in-scroll').forEach(section => {
