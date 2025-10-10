@@ -18,161 +18,119 @@
         }
         
         /* ---------------------------------------------------- */
-        /* --- NEW ANIMATION KEYFRAMES (HIỆU ỨNG PHÁT SÁNG) --- */
+        /* --- HIỆU ỨNG CHỮ GRADIENT CHO TIÊU ĐỀ H1 --- */
+        /* ---------------------------------------------------- */
+        .gradient-text {
+            background: linear-gradient(90deg, #0ea5e9, #1e3a8a); /* Sky to Dark Blue */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ---------------------------------------------------- */
+        /* --- HIỆU ỨNG PHÁT SÁNG CHO HẠNG 1 --- */
         /* ---------------------------------------------------- */
         @keyframes pulse-glow {
-            0% { box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 0 0 rgba(255, 193, 7, 0.4); }
-            70% { box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 0 8px rgba(255, 193, 7, 0); }
-            100% { box-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 0 0 rgba(255, 193, 7, 0); }
+            0% { box-shadow: 0 4px 12px rgba(0,0,0,0.1), 0 0 0 0 rgba(255, 193, 7, 0.4); }
+            70% { box-shadow: 0 4px 12px rgba(0,0,0,0.1), 0 0 0 8px rgba(255, 193, 7, 0); }
+            100% { box-shadow: 0 4px 12px rgba(0,0,0,0.1), 0 0 0 0 rgba(255, 193, 7, 0); }
         }
 
-        /* --- NEW TOP RANK CARD STYLES (PODIUM STYLE) --- */
-        .top-rank-card {
-            flex-grow: 1; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* Giữ padding gọn gàng */
-            padding: 1.5rem 0.75rem; /* Tăng padding để bù cho việc bỏ ảnh */
-            border-radius: 1.25rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: visible; 
-            cursor: pointer;
-            justify-content: center; /* Căn giữa nội dung thẻ */
-            min-height: 10rem; /* Chiều cao cơ bản cho thẻ 2 & 3 */
-            text-align: center;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Thêm bóng chữ nhẹ */
-        }
-
-        /* Rank 1 Specific - Taller, Larger, Elevated (Desktop) */
-        .rank-one {
-            min-height: 13rem; /* Chiều cao lớn hơn */
-            margin-top: -1.5rem; /* Nâng thẻ lên cao hơn so với 2 & 3 */
-            transform: scale(1.05); /* Phóng to nhẹ */
-            z-index: 20; /* Đảm bảo nó nằm trên 2 & 3 */
-        }
+        /* ---------------------------------------------------- */
+        /* --- THIẾT KẾ MỚI: DANH SÁCH DUY NHẤT (SINGLE LIST) --- */
+        /* ---------------------------------------------------- */
         
-        /* Rank 2 & 3 Specific - Đẩy xuống nhẹ để tạo hiệu ứng bục (Desktop) */
-        .rank-two, .rank-three {
-            margin-top: 0.5rem; 
-        }
-        
-        /* Rank 1: Gold - MÀU SẮC BẮT MẮT MỚI */
-        .rank-gold {
-            background: linear-gradient(180deg, #ffdc5c 0%, #ffc107 100%); /* Strong gold gradient */
-            border: 3px solid #ffeb3b; 
-            color: #6a4c00; /* Dark text for contrast */
-            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.5); /* Stronger shadow */
-        }
-        .rank-gold:hover {
-            transform: translateY(-6px) scale(1.05); /* Enhanced hover */
-            box-shadow: 0 12px 35px rgba(255, 193, 7, 0.6);
-        }
-
-        /* Rank 2: Silver - MÀU SẮC BẮT MẮT MỚI */
-        .rank-silver {
-            background: linear-gradient(180deg, #f0f0f0 0%, #c0c0c0 100%); /* Silver gradient */
-            border: 2px solid #ffffff; 
-            color: #333;
-            box-shadow: 0 8px 20px rgba(169, 169, 169, 0.4);
-        }
-        .rank-silver:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(169, 169, 169, 0.5);
-        }
-
-        /* Rank 3: Bronze - MÀU SẮC BẮT MẮT MỚI */
-        .rank-bronze {
-            background: linear-gradient(180deg, #d8a77a 0%, #cd7f32 100%); /* Bronze gradient */
-            border: 2px solid #ffe0b2; 
-            color: #583315;
-            box-shadow: 0 8px 20px rgba(205, 127, 50, 0.4);
-        }
-        .rank-bronze:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(205, 127, 50, 0.5);
-        }
-
-        /* Integrated Rank Badge (Top Center) - TĂNG KÍCH THƯỚC */
-        .rank-badge {
-            position: absolute;
-            top: -1.5rem; /* Nâng cao hơn */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3.5rem; /* Kích thước lớn hơn */
-            height: 3.5rem;
-            line-height: 3.5rem;
-            text-align: center;
-            font-weight: 900;
-            border-radius: 50%;
-            color: white;
-            z-index: 30; /* Đảm bảo nằm trên mọi thứ */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            font-size: 1.5rem; /* Font lớn hơn */
-            border: 5px solid white; /* Viền trắng dày hơn */
-        }
-
-        .rank-badge.gold {
-            background: linear-gradient(135deg, #ffd700, #ffc107);
-            /* ÁP DỤNG HIỆU ỨNG GLOW CHO HẠNG 1 */
-            animation: pulse-glow 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
-        }
-        .rank-badge.silver {
-            background: linear-gradient(135deg, #c0c0c0, #a9a9a9);
-        }
-        .rank-badge.bronze {
-            background: linear-gradient(135deg, #cd7f32, #b8860b);
-        }
-
-        /* NEW CROWN POSITIONING */
-        .rank-one .fa-crown {
-            position: absolute;
-            top: -3.5rem; /* Vị trí Vương miện */
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 40; 
-            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
-        }
-
-
-        /* Rank 4+ List style */
+        /* List Item Base Style (Rank 4+) */
         .rank-list-item {
             transition: all 0.3s ease;
             border-left: 5px solid transparent; 
+            padding: 0.75rem 1rem; /* Base padding */
+            background-color: #fff;
         }
-        .rank-list-item:nth-child(even) {
-            background-color: #f8fafc; 
+        .rank-list-item:nth-child(even):not(.list-rank-1):not(.list-rank-2):not(.list-rank-3) {
+            background-color: #f8fafc; /* Màu sọc cho các hạng dưới */
         }
         .rank-list-item:hover {
-            background-color: #f0f9ff; 
-            border-left-color: #0ea5e9; 
-            transform: translateX(3px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-left-color: #0ea5e9; /* Màu xanh khi hover */
+            transform: translateX(2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
+        
+        /* --- STYLES CHO TOP 3 TRONG LIST --- */
+        
+        /* Hạng 1 (GOLD) - Nền gradient và bóng mạnh */
+        .list-rank-1 {
+            background: linear-gradient(90deg, #fffbe6, #fff0c7); /* Richer gradient background */
+            border-left-color: #f59e0b; 
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.5); /* Stronger shadow */
+            font-weight: 800;
+            animation: pulse-glow 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
+            position: relative;
+        }
+        .list-rank-1:hover {
+            transform: scale(1.015); /* Hiệu ứng phóng to nhẹ nhàng */
+            border-left-color: #eab308;
+        }
+
+        /* Hạng 2 (SILVER) */
+        .list-rank-2 {
+            background-color: #fcfcfc; /* Whiter background */
+            border-left-color: #94a3b8; /* Richer silver border */
+            box-shadow: 0 4px 10px rgba(148, 163, 184, 0.3);
+            font-weight: 700;
+        }
+
+        /* Hạng 3 (BRONZE) */
+        .list-rank-3 {
+            background-color: #fefdfb; 
+            border-left-color: #d97706; /* Richer bronze border */
+            box-shadow: 0 4px 10px rgba(217, 119, 6, 0.2);
+            font-weight: 700;
+        }
+
+        /* --- STYLES CHO HUY HIỆU THỨ HẠNG (BADGE) --- */
         .list-rank-badge {
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 2.25rem; /* Slightly larger */
+            height: 2.25rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: #374151; 
+            font-size: 1.1rem; /* Slightly larger font */
+            font-weight: 900;
+            color: white; 
+            border-radius: 50%; /* Make it round for Top 3 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s;
         }
+        /* Gradient for Gold, Silver, Bronze */
+        .list-rank-badge-gold { background: linear-gradient(135deg, #FFD700, #F59E0B); } 
+        .list-rank-badge-silver { background: linear-gradient(135deg, #C0C0C0, #9CA3AF); } 
+        .list-rank-badge-bronze { background: linear-gradient(135deg, #CD7F32, #B45309); } 
+        
+        /* Hạng 4+ */
+        .list-rank-badge:not(.list-rank-badge-gold):not(.list-rank-badge-silver):not(.list-rank-badge-bronze) {
+            color: #4b5563; /* Màu chữ xám cho hạng dưới */
+            background-color: #e5e7eb; /* Nền xám nhạt */
+            box-shadow: none;
+            border-radius: 0.5rem; /* Vẫn giữ hình vuông */
+        }
+        
+        /* --- FONT SIZES --- */
+        .list-name { font-size: 1rem; font-weight: 600; }
+        .list-score { font-size: 1.25rem; font-weight: 900; }
 
         /* ---------------------------------------------------- */
-        /* --- CẬP NHẬT KÍCH THƯỚC NÚT GÓP Ý/BÌNH LUẬN --- */
-        /* ĐÃ ĐIỀU CHỈNH: Kích thước 3.5rem (56px) và vị trí mới */
+        /* --- FLOATING BUTTONS (GIỮ NGUYÊN) --- */
         /* ---------------------------------------------------- */
         .feedback-button, .comment-button {
             position: fixed;
-            bottom: 1.5rem; /* Khoảng cách từ dưới lên (24px) */
-            right: 1.5rem;  /* Khoảng cách từ phải vào (24px) */
+            bottom: 1.5rem; 
+            right: 1.5rem;  
             background-color: #f0f9ff;
             color: #0c4a6e; 
-            width: 3.5rem; /* Tăng từ 3rem lên 3.5rem (56px) */
-            height: 3.5rem; /* Tăng từ 3rem lên 3.5rem (56px) */
+            width: 3.5rem; 
+            height: 3.5rem; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -180,9 +138,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
             transition: all 0.3s ease;
             z-index: 100;
-            font-size: 1.5rem; /* Tăng từ 1.25rem lên 1.5rem */
+            font-size: 1.5rem; 
         }
-        /* Vị trí mới: 1.5rem (base) + 3.5rem (height) + 1rem (spacing) = 6rem */
         .comment-button {
             bottom: 6rem; 
         }
@@ -208,95 +165,31 @@
         @media (max-width: 639px) {
             /* Điều chỉnh vị trí nút nổi trên Mobile */
             .feedback-button, .comment-button {
-                bottom: 1rem; /* Giảm lại cho mobile */
+                bottom: 1rem; 
                 right: 1rem; 
-                width: 3.5rem; /* Kích thước mới */
-                height: 3.5rem; /* Kích thước mới */
-                font-size: 1.5rem; /* Kích thước mới */
+                width: 3rem; /* Giảm nhẹ kích thước nút nổi cho mobile */
+                height: 3rem; 
+                font-size: 1.25rem; 
             }
-            /* Vị trí mới: 1rem (base) + 3.5rem (height) + 1rem (spacing) = 5.5rem */
             .comment-button {
-                bottom: 5.5rem; 
-            }
-
-            /* Make Ranks 1, 2, 3 appear side-by-side, smaller, and balanced */
-            .top-ranks-flex-container {
-                /* OVERRIDE: Remove column stacking, revert to row/flex for side-by-side */
-                flex-direction: row; 
-                align-items: flex-end; /* Keep the podium alignment */
-                justify-content: space-between; /* Distribute space evenly */
-                gap: 0.25rem; /* Very small gap for fit on narrow screens */
-                padding: 0 0.5rem; /* Add padding to prevent touching screen edges */
-            }
-
-            /* FIX: CÂN CHỈNH KÍCH THƯỚC THẺ VÀ CĂN CHỈNH NỘI DUNG */
-            .top-rank-card {
-                flex-grow: 1; 
-                width: 30%; /* Set a base width, letting flex handle distribution */
-                max-width: none; 
-                padding: 0.75rem 0.25rem; /* Giảm padding tổng thể */
-                min-height: 8.5rem !important; /* Tăng nhẹ chiều cao cơ sở */
-                margin-top: 0 !important; 
-                transform: none !important; 
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            /* Re-establish Rank 1 prominence in the smaller row */
-            .rank-one {
-                min-height: 9.5rem !important; /* Tăng nhẹ chiều cao Hạng 1 */
-                margin-top: -0.5rem !important; /* Lift slightly */
-            }
-            .rank-two, .rank-three {
-                min-height: 8.5rem !important; /* Base height for 2 & 3 */
-                margin-top: 0.5rem !important; /* Push 2 & 3 down relative to 1 */
-            }
-
-            /* Adjust Badge & Crown size/position for smaller cards */
-            .rank-badge {
-                width: 2.5rem; 
-                height: 2.5rem;
-                line-height: 2.5rem;
-                font-size: 1.1rem; 
-                top: -1.25rem; 
-                border: 3px solid white; /* Thinner border */
-            }
-
-            /* Cải thiện vị trí Vương miện */
-            .rank-one .fa-crown {
-                top: -3.25rem; /* Dịch lên cao hơn một chút */
-                font-size: 1.5rem; 
-            }
-
-            /* Tối ưu hóa kích thước và căn chỉnh văn bản bên trong thẻ */
-            .top-rank-card p:nth-child(3) { /* Tên (Name) */
-                font-size: 0.7rem; /* Giảm nhẹ font size */
-                line-height: 1; 
-                margin-bottom: 0; 
-                padding-top: 0.5rem; /* Tăng padding trên để đẩy tên xuống khỏi badge */
-                word-wrap: break-word; 
-                max-width: 100%;
+                bottom: 5rem; /* Vị trí mới: 1rem + 3rem + 1rem */
             }
             
-            .rank-one p:nth-child(3) {
-                font-size: 0.8rem !important; 
-                padding-top: 0.8rem !important; /* Tăng padding trên cho Hạng 1 do Crown */
-            }
+            /* Tối ưu hóa kích thước font chữ trong danh sách cho mobile */
+            .list-name { font-size: 0.9rem; font-weight: 600; }
+            .list-score { font-size: 1.1rem; font-weight: 900; }
+            .rank-list-item { padding: 0.6rem 0.75rem; }
             
-            .top-rank-card p:nth-child(4) { /* Điểm số (Score) */
-                font-size: 1.6rem !important; /* Kích thước vừa phải */
-                line-height: 1.8rem; 
-                margin-top: 0.25rem !important; 
-                margin-bottom: 0;
+            .list-rank-badge {
+                width: 1.75rem; /* Giảm kích thước badge trên mobile */
+                height: 1.75rem;
+                font-size: 0.9rem;
             }
+            .list-rank-1 { box-shadow: 0 4px 8px rgba(245, 158, 11, 0.2); }
             
-            .rank-one p:nth-child(4) {
-                font-size: 2.1rem !important; /* Score Hạng 1 lớn hơn */
-            }
-            
-            .top-rank-card p:nth-child(5) { /* Label (Điểm) */
-                font-size: 0.6rem !important; /* Giảm nhỏ hơn */
-                line-height: 0.7rem;
-                margin-top: 0;
+            /* Tăng kích thước Hạng 1 trên mobile */
+            .list-rank-1 .list-score {
+                font-size: 1.75rem;
             }
         }
     </style>
@@ -355,82 +248,116 @@
 
     <main class="container mx-auto px-6 py-8 md:py-16">
         <section id="leaderboard" class="text-center fade-in-scroll">
-    <h1 class="text-3xl md:text-5xl font-extrabold text-sky-900 mb-10 md:mb-20">Bảng xếp hạng tháng</h1>
+            <!-- TIÊU ĐỀ H1 -->
+            <h1 class="text-3xl md:text-5xl font-extrabold py-2 mb-8 md:mb-10 gradient-text flex items-center justify-center">
+                <i class="fa-solid fa-trophy text-amber-500 text-4xl md:text-5xl mr-3"></i> 
+                Bảng xếp hạng tháng
+            </h1>
 
-    <div class="podium-container max-w-5xl mx-auto mt-4 md:mt-12 p-4 md:p-8">
-        <div class="top-ranks-flex-container flex flex-row justify-center items-end gap-1 md:gap-6">
-
-            <!-- Hạng 2 -->
-            <div class="top-rank-card rank-silver rank-two w-1/3 md:w-1/3">
-                <span class="rank-badge silver">2</span>
-                <p class="text-[0.85rem] sm:text-lg md:text-xl font-black mb-1 text-center break-words leading-tight">Thành viên B</p>
-                <p class="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-1 leading-snug">12</p>
-                <p class="text-[0.65rem] sm:text-xs uppercase font-semibold opacity-70">Điểm</p>
-            </div>
-
-            <!-- Hạng 1 -->
-            <div class="top-rank-card rank-gold rank-one w-1/3 md:w-1/3">
-                <i class="fa-solid fa-crown text-amber-700 text-xl sm:text-3xl absolute -top-6 left-1/2 -translate-x-1/2"></i>
-                <span class="rank-badge gold">1</span>
-                <p class="text-[0.95rem] sm:text-xl md:text-2xl font-black mb-1 text-center pt-6 sm:pt-8 leading-tight break-words">Thành viên A</p>
-                <p class="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-1 leading-snug">15</p>
-                <p class="text-[0.7rem] sm:text-sm uppercase font-semibold opacity-80">Điểm</p>
-            </div>
-
-            <!-- Hạng 3 -->
-            <div class="top-rank-card rank-bronze rank-three w-1/3 md:w-1/3">
-                <span class="rank-badge bronze">3</span>
-                <p class="text-[0.85rem] sm:text-lg md:text-xl font-black mb-1 text-center break-words leading-tight">Thành viên C</p>
-                <p class="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-1 leading-snug">10</p>
-                <p class="text-[0.65rem] sm:text-xs uppercase font-semibold opacity-70">Điểm</p>
-            </div>
-
-        </div>
-    </div>
-</section>
-        
-            <!-- Bảng xếp hạng chi tiết (Rank 4+) - Dạng danh sách thẻ (Striped Card) -->
-            <div class="mt-12 space-y-1 max-w-3xl mx-auto p-4 bg-white rounded-xl shadow-lg border border-gray-100">
-                <p class="text-left text-sm font-semibold text-gray-700 uppercase mb-3 px-2">Các thành viên tích cực khác</p>
-                
-                <!-- Hạng 4 -->
-                <div class="rank-list-item flex items-center justify-between p-3 rounded-lg">
+            <!-- Bảng xếp hạng chi tiết (Rank 1+) - Dạng danh sách duy nhất -->
+            <div class="max-w-3xl mx-auto p-2 md:p-4 bg-white rounded-2xl shadow-2xl border border-gray-100 space-y-1 md:space-y-1.5">
+                <!-- Hạng 1 (Được làm nổi bật tối đa) -->
+                <div class="rank-list-item list-rank-1 flex items-center justify-between p-3 md:p-4 rounded-xl shadow-sm hover:scale-[1.015] transform">
                     <div class="flex items-center space-x-4">
-                        <span class="list-rank-badge text-gray-500">4</span>
-                        <p class="text-gray-900 font-medium">Thành viên D</p>
+                        <!-- Huy hiệu Vàng Gradient -->
+                        <span class="list-rank-badge list-rank-badge-gold">1</span>
+                        <p class="list-name text-gray-900 font-extrabold flex items-center text-lg md:text-xl">
+                            <i class="fa-solid fa-crown text-amber-500 text-xl mr-2 hidden sm:block"></i>
+                            Thành viên A
+                        </p>
                     </div>
-                    <span class="text-lg font-black text-sky-700">8 điểm</span>
+                    <!-- Điểm số lớn nhất -->
+                    <span class="list-score text-2xl md:text-3xl font-black text-amber-700">15 điểm</span>
+                </div>
+
+                <!-- Hạng 2 (Bóng đổ bạc) -->
+                <div class="rank-list-item list-rank-2 flex items-center justify-between p-3 md:p-4 rounded-xl shadow-sm">
+                    <div class="flex items-center space-x-4">
+                        <!-- Huy hiệu Bạc Gradient -->
+                        <span class="list-rank-badge list-rank-badge-silver">2</span>
+                        <p class="list-name text-gray-900 font-bold text-base md:text-lg">Thành viên B</p>
+                    </div>
+                    <!-- Điểm số lớn -->
+                    <span class="list-score text-xl md:text-2xl font-black text-gray-700">12 điểm</span>
+                </div>
+
+                <!-- Hạng 3 (Bóng đổ đồng) -->
+                <div class="rank-list-item list-rank-3 flex items-center justify-between p-3 md:p-4 rounded-xl shadow-sm">
+                    <div class="flex items-center space-x-4">
+                        <!-- Huy hiệu Đồng Gradient -->
+                        <span class="list-rank-badge list-rank-badge-bronze">3</span>
+                        <p class="list-name text-gray-900 font-bold text-base md:text-lg">Thành viên C</p>
+                    </div>
+                    <!-- Điểm số lớn -->
+                    <span class="list-score text-xl md:text-2xl font-black text-amber-800">10 điểm</span>
+                </div>
+
+                <!-- Hạng 4 (Tiếp tục phong cách đơn giản) -->
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
+                    <div class="flex items-center space-x-4">
+                        <span class="list-rank-badge text-gray-500 bg-gray-100">4</span>
+                        <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên D</p>
+                    </div>
+                    <span class="list-score text-lg md:text-xl font-black text-sky-700">8 điểm</span>
                 </div>
 
                 <!-- Hạng 5 -->
-                <div class="rank-list-item flex items-center justify-between p-3 rounded-lg">
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
                     <div class="flex items-center space-x-4">
-                        <span class="list-rank-badge text-gray-500">5</span>
-                        <p class="text-gray-900 font-medium">Thành viên E</p>
+                        <span class="list-rank-badge text-gray-500 bg-gray-100">5</span>
+                        <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên E</p>
                     </div>
-                    <span class="text-lg font-black text-sky-700">5 điểm</span>
+                    <span class="list-score text-lg md:text-xl font-black text-sky-700">5 điểm</span>
                 </div>
                 
                 <!-- Hạng 6 -->
-                <div class="rank-list-item flex items-center justify-between p-3 rounded-lg">
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
                     <div class="flex items-center space-x-4">
-                        <span class="list-rank-badge text-gray-500">6</span>
-                        <p class="text-gray-900 font-medium">Thành viên F</p>
+                        <span class="list-rank-badge text-gray-500 bg-gray-100">6</span>
+                        <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên F</p>
                     </div>
-                    <span class="text-lg font-black text-sky-700">3 điểm</span>
+                    <span class="list-score text-lg md:text-xl font-black text-sky-700">3 điểm</span>
                 </div>
                 
                 <!-- Hạng 7 -->
-                <div class="rank-list-item flex items-center justify-between p-3 rounded-lg">
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
                     <div class="flex items-center space-x-4">
-                        <span class="list-rank-badge text-gray-500">7</span>
-                        <p class="text-gray-900 font-medium">Thành viên G</p>
+                        <span class="list-rank-badge text-gray-500 bg-gray-100">7</span>
+                        <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên G</p>
                     </div>
-                    <span class="text-lg font-black text-sky-700">2 điểm</span>
+                    <span class="list-score text-lg md:text-xl font-black text-sky-700">2 điểm</span>
+                </div>
+
+                <!-- Hạng 8 -->
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
+                    <div class="flex items-center space-x-4">
+                        <span class="list-rank-badge text-gray-500 bg-gray-100">8</span>
+                        <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên H</p>
+                    </div>
+                    <span class="list-score text-lg md:text-xl font-black text-sky-700">1 điểm</span>
+                </div>
+
+                <!-- Hạng 9 -->
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
+                    <div class="flex items-center space-x-4">
+                        <span class="list-rank-badge text-gray-500 bg-gray-100">9</span>
+                        <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên I</p>
+                    </div>
+                    <span class="list-score text-lg md:text-xl font-black text-sky-700">1 điểm</span>
+                </div>
+                
+                <!-- Hạng 10 -->
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
+                    <div class="flex items-center space-x-4">
+                        <span class="list-rank-badge text-gray-500 bg-gray-100">10</span>
+                        <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên K</p>
+                    </div>
+                    <span class="list-score text-lg md:text-xl font-black text-sky-700">0 điểm</span>
                 </div>
             </div>
             
-            <p class="mt-8 text-gray-500 text-sm">
+            <!-- ĐÃ LÀM NỔI VỪA PHẢI -->
+            <p class="mt-8 p-4 bg-sky-100/50 text-gray-700 text-base rounded-lg border-l-4 border-sky-400 font-medium">
                 Bảng xếp hạng chỉ phản ánh mức độ tham gia, không định giá con người. Hãy coi đây là lời nhắc để giữ lửa học tập, thi đua vui vẻ và cùng nhau tiến bộ.
             </p>
         </section>
@@ -541,8 +468,8 @@
                 </p>
             </div>
             
-            <!-- Phần lưu ý mới đã được thêm vào đây -->
-            <p class="mt-8 text-gray-500 text-sm fade-in-scroll">
+            <!-- Phần lưu ý đã được làm nổi vừa phải -->
+            <p class="mt-8 p-4 bg-sky-100/50 text-gray-700 text-base rounded-lg border-l-4 border-sky-400 font-medium fade-in-scroll">
                 Cơ chế cộng điểm được áp dụng minh bạch và công bằng cho tất cả thành viên, dựa trên tiêu chí rõ ràng và được công bố trước. Mọi đóng góp đều được ghi nhận đúng mức, đảm bảo uy tín và sự tôn trọng lẫn nhau.
             </p>
         </section>
