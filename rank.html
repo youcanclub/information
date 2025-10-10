@@ -229,25 +229,25 @@
                 padding: 0 0.5rem; /* Add padding to prevent touching screen edges */
             }
 
-            /* Define width and general height for all cards on mobile */
+            /* FIX: CÂN CHỈNH KÍCH THƯỚC THẺ VÀ CĂN CHỈNH NỘI DUNG */
             .top-rank-card {
-                /* Đảm bảo 3 thẻ fit vừa vặn trên màn hình hẹp */
-                width: calc(33.333% - 0.5rem); 
+                flex-grow: 1; 
+                width: 30%; /* Set a base width, letting flex handle distribution */
                 max-width: none; 
                 padding: 0.75rem 0.25rem; /* Giảm padding tổng thể */
-                min-height: 8rem; /* Base minimum height for mobile side-by-side */
+                min-height: 8.5rem !important; /* Tăng nhẹ chiều cao cơ sở */
                 margin-top: 0 !important; 
-                transform: none !important; /* Remove scaling/translation */
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lighter shadow on mobile */
+                transform: none !important; 
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             }
 
             /* Re-establish Rank 1 prominence in the smaller row */
             .rank-one {
-                min-height: 9rem !important; /* Slightly taller */
+                min-height: 9.5rem !important; /* Tăng nhẹ chiều cao Hạng 1 */
                 margin-top: -0.5rem !important; /* Lift slightly */
             }
             .rank-two, .rank-three {
-                min-height: 8rem !important; /* Base height for 2 & 3 */
+                min-height: 8.5rem !important; /* Base height for 2 & 3 */
                 margin-top: 0.5rem !important; /* Push 2 & 3 down relative to 1 */
             }
 
@@ -261,46 +261,41 @@
                 border: 3px solid white; /* Thinner border */
             }
 
+            /* Cải thiện vị trí Vương miện */
             .rank-one .fa-crown {
-                top: -3.0rem; /* Adjusted for smaller badge/card height */
-                font-size: 1.5rem; /* Smaller crown */
+                top: -3.25rem; /* Dịch lên cao hơn một chút */
+                font-size: 1.5rem; 
             }
 
-            /* FIX: OPTIMIZED TEXT SIZING AND SPACING FOR MOBILE CARDS */
-            
-            /* Name - Hạng 2 & 3 */
-            .top-rank-card p:nth-child(3) { 
-                font-size: 0.75rem; /* text-xs */
-                line-height: 1rem; 
+            /* Tối ưu hóa kích thước và căn chỉnh văn bản bên trong thẻ */
+            .top-rank-card p:nth-child(3) { /* Tên (Name) */
+                font-size: 0.7rem; /* Giảm nhẹ font size */
+                line-height: 1; 
                 margin-bottom: 0; 
-                padding-top: 0.25rem; /* Added slight top padding for better vertical centering */
+                padding-top: 0.5rem; /* Tăng padding trên để đẩy tên xuống khỏi badge */
                 word-wrap: break-word; 
                 max-width: 100%;
             }
             
-            /* Name - Hạng 1 */
             .rank-one p:nth-child(3) {
-                font-size: 0.875rem !important; /* text-sm */
-                padding-top: 0.5rem !important; /* Adjusted for Rank 1's height */
+                font-size: 0.8rem !important; 
+                padding-top: 0.8rem !important; /* Tăng padding trên cho Hạng 1 do Crown */
             }
             
-            /* Score - Hạng 2 & 3 */
-            .top-rank-card p:nth-child(4) { 
-                font-size: 1.5rem !important; /* Reduced for better fit */
-                line-height: 1.75rem; 
+            .top-rank-card p:nth-child(4) { /* Điểm số (Score) */
+                font-size: 1.6rem !important; /* Kích thước vừa phải */
+                line-height: 1.8rem; 
                 margin-top: 0.25rem !important; 
                 margin-bottom: 0;
             }
             
-            /* Score - Hạng 1 */
             .rank-one p:nth-child(4) {
-                font-size: 2rem !important; /* Slightly larger for prominence */
+                font-size: 2.1rem !important; /* Score Hạng 1 lớn hơn */
             }
             
-            /* Label (Điểm) */
-            .top-rank-card p:nth-child(5) { 
-                font-size: 0.625rem !important; /* text-xs */
-                line-height: 0.75rem;
+            .top-rank-card p:nth-child(5) { /* Label (Điểm) */
+                font-size: 0.6rem !important; /* Giảm nhỏ hơn */
+                line-height: 0.7rem;
                 margin-top: 0;
             }
         }
