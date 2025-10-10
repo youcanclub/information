@@ -73,7 +73,8 @@
 
         /* Hero Section Styling */
         #cau-chuyen {
-            background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%); /* light gradient from sky-100 to sky-50 */
+            /* Đã xóa màu nền xanh đồng nhất và để nó hòa vào màu nền body (bg-sky-50) */
+            background-color: transparent; 
             border-radius: 0 0 40px 40px;
             padding-bottom: 5rem;
         }
@@ -186,24 +187,29 @@
             </div>
         </section>
         
-        <!-- Giá Trị Cốt Lõi (Core Values) --><section id="gia-tri" class="py-16 fade-in-scroll">
+        <!-- Giá Trị Cốt Lõi (Core Values) -->
+        <section id="gia-tri" class="py-16 fade-in-scroll">
             <div class="text-center mb-12">
                 <!-- ICON: Giá Trị Cốt Lõi (Continuous Float) --><i class="fa-solid fa-cogs text-sky-600 text-6xl mx-auto mb-4 icon-transition icon-animate-float" style="animation-delay: -5.5s;"></i>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Giá Trị Cốt Lõi</h2>
-                <p class="mt-2 text-gray-500">Nền tảng cho mọi quyết định và hành động. Nhấn vào từng giá trị để tìm hiểu thêm.</p>
+                <p class="mt-2 text-gray-500">Nền tảng cho mọi quyết định và hành động. <strong class="text-sky-700">Nhấn vào từng giá trị</strong> để tìm hiểu thêm.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-6 mb-8">
-                <!-- Value Card 1 --><div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-lg hover:shadow-xl" data-target="desc-1">
+                <!-- Value Card 1: Thêm border-2 border-sky-300 và shadow-md mặc định để trông nổi bật hơn -->
+                <div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-sky-300 transition-all duration-300 shadow-md hover:shadow-xl" data-target="desc-1">
                     <h4 class="font-bold text-xl text-gray-800">Tôn trọng - Cùng tiến bộ</h4>
                 </div>
-                <!-- Value Card 2 --><div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-lg hover:shadow-xl" data-target="desc-2">
+                <!-- Value Card 2: Thêm border-2 border-sky-300 và shadow-md mặc định để trông nổi bật hơn -->
+                <div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-sky-300 transition-all duration-300 shadow-md hover:shadow-xl" data-target="desc-2">
                     <h4 class="font-bold text-xl text-gray-800">Dám thử - Dám sửa</h4>
                 </div>
-                <!-- Value Card 3 --><div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-transparent transition-all duration-300 shadow-lg hover:hover:shadow-xl" data-target="desc-3">
+                <!-- Value Card 3: Thêm border-2 border-sky-300 và shadow-md mặc định để trông nổi bật hơn -->
+                <div class="value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-sky-300 transition-all duration-300 shadow-md hover:hover:shadow-xl" data-target="desc-3">
                     <h4 class="font-bold text-xl text-gray-800">Học từ nhau - Tư duy mở</h4>
                 </div>
             </div>
-            <!-- Bảng trắng chi tiết --><div id="descriptions-container" class="min-h-[150px] bg-white rounded-xl p-8 shadow-inner transition-all duration-500 border-l-4 border-sky-600" style="display: none;">
+            <!-- Bảng trắng chi tiết -->
+            <div id="descriptions-container" class="min-h-[150px] bg-white rounded-xl p-8 shadow-inner transition-all duration-500 border-l-4 border-sky-600" style="display: none;">
                 <div id="desc-1" class="value-description" style="display: none;">
                     <h5 class="font-bold text-2xl text-sky-800 mb-3">Tôn trọng - Cùng tiến bộ</h5>
                     <p class="text-gray-600 leading-relaxed text-lg">Chúng tôi tin rằng khi tôn trọng sự khác biệt và đa dạng trong suy nghĩ, chúng ta sẽ cùng nhau tạo ra những đột phá và phát triển bền vững cho cả cộng đồng.</p>
@@ -259,11 +265,14 @@
         </section>
 
         <!-- Khu vực đăng ký (Call to Action) -->
-        <section id="dang-ky" class="py-20 text-center fade-in-scroll mt-16">
-            <h3 class="text-3xl font-bold text-gray-800 mb-6">Sẵn sàng để vượt qua giới hạn của bản thân?</h3>
-            <a href="https://forms.gle/9wgmqSkFbY1A7mHo6" target="_blank" rel="noopener noreferrer" class="bg-sky-700 text-white font-extrabold py-4 px-10 rounded-full shadow-2xl shadow-sky-400/50 hover:bg-sky-800 transition-all duration-300 transform hover:scale-105 inline-block text-xl">
-                <i class="fa-solid fa-hand-point-right mr-2"></i> Đăng ký tham gia CLB ngay!
-            </a>
+        <section id="dang-ky" class="py-16 text-center fade-in-scroll mt-16">
+            <!-- ĐÃ THÊM KHUNG NỔI BẬT CHO PHẦN KÊU GỌI HÀNH ĐỘNG -->
+            <div class="bg-sky-100 p-8 md:p-12 rounded-2xl shadow-2xl border-2 border-sky-300">
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Sẵn sàng để vượt qua giới hạn của bản thân?</h3>
+                <a href="https://forms.gle/9wgmqSkFbY1A7mHo6" target="_blank" rel="noopener noreferrer" class="bg-sky-700 text-white font-extrabold py-4 px-10 rounded-full shadow-2xl shadow-sky-400/50 hover:bg-sky-800 transition-all duration-300 transform hover:scale-105 inline-block text-xl">
+                    <i class="fa-solid fa-hand-point-right mr-2"></i> Đăng ký tham gia CLB ngay!
+                </a>
+            </div>
         </section>
 
     </main>
