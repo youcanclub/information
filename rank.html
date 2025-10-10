@@ -12,58 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* Responsive fix cho podium nhỏ */
-@media (max-width: 640px) {
-  .top-ranks-flex-container {
-    justify-content: space-evenly;
-    gap: 0.25rem;
-    padding: 0 0.25rem;
-  }
-
-  .top-rank-card {
-    width: 32%;
-    padding: 0.5rem 0.25rem;
-    border-radius: 1rem;
-    text-align: center;
-    min-height: 8.5rem;
-  }
-
-  .rank-one {
-    min-height: 9.5rem !important;
-  }
-
-  .rank-badge {
-    width: 2.2rem;
-    height: 2.2rem;
-    font-size: 1rem;
-    top: -1.1rem;
-    border: 3px solid #fff;
-  }
-
-  .rank-one .fa-crown {
-    font-size: 1.4rem;
-    top: -2.6rem;
-  }
-
-  .top-rank-card p {
-    margin: 0.2rem 0;
-    line-height: 1.1rem;
-  }
-
-  .top-rank-card p:first-of-type {
-    font-size: 0.8rem;
-  }
-
-  .top-rank-card p:nth-child(4) {
-    font-size: 1.5rem;
-  }
-
-  .top-rank-card p:last-of-type {
-    font-size: 0.6rem;
-    letter-spacing: 0.03em;
-  }
-}
-
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
             background-color: #f0f9ff; /* Màu nền xanh nhạt (sky-50) */
@@ -318,31 +266,40 @@
                 font-size: 1.5rem; /* Smaller crown */
             }
 
-            /* FIX: OVERLAPPING TEXT IN TOP RANK CARDS FOR MOBILE */
-            .top-rank-card p:nth-child(3) { /* Name */
+            /* FIX: OPTIMIZED TEXT SIZING AND SPACING FOR MOBILE CARDS */
+            
+            /* Name - Hạng 2 & 3 */
+            .top-rank-card p:nth-child(3) { 
                 font-size: 0.75rem; /* text-xs */
                 line-height: 1rem; 
                 margin-bottom: 0; 
+                padding-top: 0.25rem; /* Added slight top padding for better vertical centering */
                 word-wrap: break-word; 
                 max-width: 100%;
             }
+            
+            /* Name - Hạng 1 */
             .rank-one p:nth-child(3) {
-                font-size: 0.875rem !important; 
-                padding-top: 0.5rem !important; 
+                font-size: 0.875rem !important; /* text-sm */
+                padding-top: 0.5rem !important; /* Adjusted for Rank 1's height */
             }
             
-            .top-rank-card p:nth-child(4) { /* Score */
-                font-size: 1.5rem !important; 
+            /* Score - Hạng 2 & 3 */
+            .top-rank-card p:nth-child(4) { 
+                font-size: 1.5rem !important; /* Reduced for better fit */
                 line-height: 1.75rem; 
                 margin-top: 0.25rem !important; 
                 margin-bottom: 0;
             }
+            
+            /* Score - Hạng 1 */
             .rank-one p:nth-child(4) {
-                font-size: 2rem !important; 
+                font-size: 2rem !important; /* Slightly larger for prominence */
             }
             
-            .top-rank-card p:nth-child(5) { /* Label */
-                font-size: 0.625rem !important; 
+            /* Label (Điểm) */
+            .top-rank-card p:nth-child(5) { 
+                font-size: 0.625rem !important; /* text-xs */
                 line-height: 0.75rem;
                 margin-top: 0;
             }
@@ -403,39 +360,40 @@
 
     <main class="container mx-auto px-6 py-8 md:py-16">
         <section id="leaderboard" class="text-center fade-in-scroll">
-  <h1 class="text-3xl md:text-5xl font-extrabold text-sky-900 mb-10 md:mb-20">Bảng xếp hạng tháng</h1>
+    <h1 class="text-3xl md:text-5xl font-extrabold text-sky-900 mb-10 md:mb-20">Bảng xếp hạng tháng</h1>
 
-  <div class="podium-container max-w-5xl mx-auto mt-4 md:mt-12 p-4 md:p-8">
-    <div class="top-ranks-flex-container flex flex-row justify-center items-end gap-1 md:gap-6">
+    <div class="podium-container max-w-5xl mx-auto mt-4 md:mt-12 p-4 md:p-8">
+        <div class="top-ranks-flex-container flex flex-row justify-center items-end gap-1 md:gap-6">
 
-      <!-- Hạng 2 -->
-      <div class="top-rank-card rank-silver rank-two w-1/3 md:w-1/3">
-        <span class="rank-badge silver">2</span>
-        <p class="text-[0.85rem] sm:text-lg md:text-xl font-black mb-1 text-center break-words leading-tight">Thành viên B</p>
-        <p class="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-1 leading-snug">12</p>
-        <p class="text-[0.65rem] sm:text-xs uppercase font-semibold opacity-70">Điểm</p>
-      </div>
+            <!-- Hạng 2 -->
+            <div class="top-rank-card rank-silver rank-two w-1/3 md:w-1/3">
+                <span class="rank-badge silver">2</span>
+                <p class="text-[0.85rem] sm:text-lg md:text-xl font-black mb-1 text-center break-words leading-tight">Thành viên B</p>
+                <p class="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-1 leading-snug">12</p>
+                <p class="text-[0.65rem] sm:text-xs uppercase font-semibold opacity-70">Điểm</p>
+            </div>
 
-      <!-- Hạng 1 -->
-      <div class="top-rank-card rank-gold rank-one w-1/3 md:w-1/3">
-        <i class="fa-solid fa-crown text-amber-700 text-xl sm:text-3xl absolute -top-6 left-1/2 -translate-x-1/2"></i>
-        <span class="rank-badge gold">1</span>
-        <p class="text-[0.95rem] sm:text-xl md:text-2xl font-black mb-1 text-center pt-6 sm:pt-8 leading-tight break-words">Thành viên A</p>
-        <p class="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-1 leading-snug">15</p>
-        <p class="text-[0.7rem] sm:text-sm uppercase font-semibold opacity-80">Điểm</p>
-      </div>
+            <!-- Hạng 1 -->
+            <div class="top-rank-card rank-gold rank-one w-1/3 md:w-1/3">
+                <i class="fa-solid fa-crown text-amber-700 text-xl sm:text-3xl absolute -top-6 left-1/2 -translate-x-1/2"></i>
+                <span class="rank-badge gold">1</span>
+                <p class="text-[0.95rem] sm:text-xl md:text-2xl font-black mb-1 text-center pt-6 sm:pt-8 leading-tight break-words">Thành viên A</p>
+                <p class="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-1 leading-snug">15</p>
+                <p class="text-[0.7rem] sm:text-sm uppercase font-semibold opacity-80">Điểm</p>
+            </div>
 
-      <!-- Hạng 3 -->
-      <div class="top-rank-card rank-bronze rank-three w-1/3 md:w-1/3">
-        <span class="rank-badge bronze">3</span>
-        <p class="text-[0.85rem] sm:text-lg md:text-xl font-black mb-1 text-center break-words leading-tight">Thành viên C</p>
-        <p class="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-1 leading-snug">10</p>
-        <p class="text-[0.65rem] sm:text-xs uppercase font-semibold opacity-70">Điểm</p>
-      </div>
+            <!-- Hạng 3 -->
+            <div class="top-rank-card rank-bronze rank-three w-1/3 md:w-1/3">
+                <span class="rank-badge bronze">3</span>
+                <p class="text-[0.85rem] sm:text-lg md:text-xl font-black mb-1 text-center break-words leading-tight">Thành viên C</p>
+                <p class="text-2xl sm:text-3xl md:text-4xl font-extrabold mt-1 leading-snug">10</p>
+                <p class="text-[0.65rem] sm:text-xs uppercase font-semibold opacity-70">Điểm</p>
+            </div>
 
+        </div>
     </div>
-  </div>
 </section>
+        
             <!-- Bảng xếp hạng chi tiết (Rank 4+) - Dạng danh sách thẻ (Striped Card) -->
             <div class="mt-12 space-y-1 max-w-3xl mx-auto p-4 bg-white rounded-xl shadow-lg border border-gray-100">
                 <p class="text-left text-sm font-semibold text-gray-700 uppercase mb-3 px-2">Các thành viên tích cực khác</p>
@@ -659,4 +617,3 @@
     </script>
 </body>
 </html>
-
