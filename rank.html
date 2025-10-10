@@ -45,7 +45,7 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Thêm bóng chữ nhẹ */
         }
 
-        /* Rank 1 Specific - Taller, Larger, Elevated */
+        /* Rank 1 Specific - Taller, Larger, Elevated (Desktop) */
         .rank-one {
             min-height: 13rem; /* Chiều cao lớn hơn */
             margin-top: -1.5rem; /* Nâng thẻ lên cao hơn so với 2 & 3 */
@@ -53,7 +53,7 @@
             z-index: 20; /* Đảm bảo nó nằm trên 2 & 3 */
         }
         
-        /* Rank 2 & 3 Specific - Đẩy xuống nhẹ để tạo hiệu ứng bục */
+        /* Rank 2 & 3 Specific - Đẩy xuống nhẹ để tạo hiệu ứng bục (Desktop) */
         .rank-two, .rank-three {
             margin-top: 0.5rem; 
         }
@@ -128,11 +128,11 @@
         /* NEW CROWN POSITIONING */
         .rank-one .fa-crown {
             position: absolute;
-            top: -3.5rem; /* ĐÃ CẬP NHẬT: Hạ thấp vương miện xuống (từ -5.5rem) */
+            top: -3.5rem; /* Vị trí Vương miện */
             left: 50%;
             transform: translateX(-50%);
-            z-index: 40; /* Đảm bảo nằm trên huy hiệu (30) */
-            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4); /* Thêm bóng đổ cho vương miện */
+            z-index: 40; 
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
         }
 
 
@@ -196,19 +196,70 @@
         /* === MOBILE ADJUSTMENTS (DƯỚI 640PX) === */
         /* ================================================= */
         @media (max-width: 639px) {
-            /* FORCE COLUMN LAYOUT FOR TOP RANKS ON MOBILE (Trở về thứ tự 1, 2, 3) */
+            /* Change 1 & 2: Make Ranks 1, 2, 3 appear side-by-side, smaller, and balanced */
             .top-ranks-flex-container {
-                flex-direction: column;
-                align-items: center; 
-                gap: 3rem; 
+                /* OVERRIDE: Remove column stacking, revert to row/flex for side-by-side */
+                flex-direction: row; 
+                align-items: flex-end; /* Keep the podium alignment */
+                justify-content: space-between; /* Distribute space evenly */
+                gap: 0.25rem; /* Very small gap for fit on narrow screens */
+                padding: 0 0.5rem; /* Add padding to prevent touching screen edges */
             }
-            /* Đảm bảo Hạng 1, 2, 3 xếp chồng lên nhau gọn gàng trên mobile */
+
+            /* Change 3: Define width and general height for all cards on mobile */
             .top-rank-card {
-                width: 100%;
-                max-width: 280px; /* Tăng max-width nhẹ */
-                min-height: 10rem;
+                width: calc(33.333% - 0.5rem); /* Ensure 3 cards fit with gap */
+                max-width: none; 
+                padding: 1rem 0.25rem; /* Reduce padding inside the card */
+                min-height: 8rem; /* Base minimum height for mobile side-by-side */
                 margin-top: 0 !important; 
-                transform: none !important; /* Bỏ scale và margin âm */
+                transform: none !important; /* Remove scaling/translation */
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lighter shadow on mobile */
+            }
+
+            /* Change 4: Re-establish Rank 1 prominence in the smaller row */
+            .rank-one {
+                min-height: 9rem !important; /* Slightly taller */
+                margin-top: -0.5rem !important; /* Lift slightly */
+            }
+            .rank-two, .rank-three {
+                min-height: 8rem !important; /* Base height for 2 & 3 */
+                margin-top: 0.5rem !important; /* Push 2 & 3 down relative to 1 */
+            }
+
+            /* Adjust Badge & Crown size/position for smaller cards */
+            .rank-badge {
+                width: 2.5rem; 
+                height: 2.5rem;
+                line-height: 2.5rem;
+                font-size: 1.1rem; 
+                top: -1.25rem; 
+                border: 3px solid white; /* Thinner border */
+            }
+
+            .rank-one .fa-crown {
+                top: -3.0rem; /* Adjusted for smaller badge/card height */
+                font-size: 1.5rem; /* Smaller crown */
+            }
+
+            /* Adjust font sizes inside the cards for better fit/readability on mobile */
+            .top-rank-card p:nth-child(3) { /* Name: Thành viên A/B/C */
+                font-size: 0.875rem; /* text-sm */
+            }
+            /* Score: 15/12/10 */
+            .top-rank-card p:nth-child(4) { 
+                font-size: 1.75rem !important; /* text-xl */
+            }
+            /* Label: Điểm */
+            .top-rank-card p:nth-child(5) { 
+                font-size: 0.625rem !important; /* text-xs (already defined) */
+            }
+
+            .rank-one .text-xl, .rank-one .text-2xl {
+                font-size: 1rem !important; /* Tên Hạng 1 */
+            }
+            .rank-one .text-4xl, .rank-one .text-5xl {
+                font-size: 2.25rem !important; /* Điểm Hạng 1 */
             }
         }
     </style>
