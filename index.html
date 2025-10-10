@@ -96,6 +96,31 @@
         .icon-animate-float {
             animation: subtle-float 3s ease-in-out infinite; /* 3 giây, kiểu ease-in-out, lặp vô hạn */
         }
+        
+        /* --- HIỆU ỨNG RUNG LẮC NHẸ CHO NÚT CTA (ĐĂNG KÝ) --- */
+        @keyframes cta-wobble {
+            0%, 100% {
+                transform: rotate(0deg) scale(1.0);
+            }
+            15% {
+                transform: rotate(1deg) scale(1.01); /* Rung nhẹ sang phải */
+            }
+            30% {
+                transform: rotate(-1deg) scale(1.0); /* Rung nhẹ sang trái */
+            }
+            45% {
+                transform: rotate(1deg) scale(1.01);
+            }
+            60% {
+                transform: rotate(0deg) scale(1.0);
+            }
+        }
+        .cta-shake {
+            /* Animation chạy chậm (4s) để tạo cảm giác 'hấp dẫn' nhẹ nhàng, lặp vô hạn */
+            animation: cta-wobble 4s ease-in-out infinite; 
+            transform-origin: center;
+        }
+        /* --- KẾT THÚC HIỆU ỨNG RUNG LẮC --- */
 
     </style>
 </head>
@@ -277,7 +302,8 @@
             <!-- ĐÃ THÊM KHUNG NỔI BẬT CHO PHẦN KÊU GỌI HÀNH ĐỘNG -->
             <div class="bg-sky-100 p-8 md:p-12 rounded-2xl shadow-2xl border-2 border-sky-300">
                 <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Sẵn sàng để vượt qua giới hạn của bản thân?</h3>
-                <a href="https://forms.gle/9wgmqSkFbY1A7mHo6" target="_blank" rel="noopener noreferrer" class="bg-sky-700 text-white font-extrabold py-4 px-10 rounded-full shadow-2xl shadow-sky-400/50 hover:bg-sky-800 transition-all duration-300 transform hover:scale-105 inline-block text-xl">
+                <!-- ĐÃ THÊM CLASS 'cta-shake' TẠI ĐÂY -->
+                <a href="https://forms.gle/9wgmqSkFbY1A7mHo6" target="_blank" rel="noopener noreferrer" class="cta-shake bg-sky-700 text-white font-extrabold py-4 px-10 rounded-full shadow-2xl shadow-sky-400/50 hover:bg-sky-800 transition-all duration-300 transform hover:scale-105 inline-block text-xl">
                     <i class="fa-solid fa-hand-point-right mr-2"></i> Đăng ký tham gia CLB ngay!
                 </a>
             </div>
@@ -339,8 +365,7 @@
                         descriptionsContainer.style.display = 'block';
                         if (targetDescription) {
                             targetDescription.style.display = 'block';
-                            // Scroll to the container when opened for better visibility on mobile
-                            descriptionsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            // ĐÃ XÓA: descriptionsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
                     } else {
                         // Nếu đã active, nhấp lại sẽ ẩn container
