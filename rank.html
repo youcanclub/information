@@ -127,18 +127,19 @@
             position: fixed;
             bottom: 1.5rem; 
             right: 1.5rem;  
-            background-color: #0369a1; /* Nền đậm (sky-700) */
-            color: #ffffff;           /* Icon nhạt (white) */
+            background-color: #0c4a6e; /* Nền đậm (Dark Blue - #0c4a6e) */
+            color: #f0f9ff;           /* Icon nhạt (Light Blue/White - #f0f9ff) */
             width: 3.5rem; 
             height: 3.5rem; 
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); /* Tăng bóng nhẹ cho màu đậm */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35); /* Tăng bóng nhẹ cho nền đậm */
             transition: all 0.3s ease;
             z-index: 100;
             font-size: 1.5rem; 
+            border: none; /* Bỏ border vì nền đã đậm */
         }
         .comment-button {
             bottom: 6rem; 
@@ -146,7 +147,7 @@
 
         .feedback-button:hover, .comment-button:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35); /* Tăng bóng hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Tăng bóng hover mạnh hơn */
         }
         
         /* --- ANIMATION CHO CÁC BLOCK LỚN (Tiêu đề, Cơ chế) --- */
