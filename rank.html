@@ -149,6 +149,7 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
         
+        /* --- ANIMATION CHO CÁC BLOCK LỚN (Tiêu đề, Cơ chế) --- */
         .fade-in-scroll {
             opacity: 0;
             transform: translateY(20px);
@@ -158,6 +159,22 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* ---------------------------------------------------- */
+        /* --- HIỆU ỨNG XUẤT HIỆN TỪ TRÁI SANG PHẢI (CHO TỪNG THÀNH VIÊN) --- */
+        /* ---------------------------------------------------- */
+        .rank-list-item-animated {
+            opacity: 0;
+            transform: translateX(-50px); /* Bắt đầu từ bên trái */
+            /* Transition cơ bản, JS sẽ thêm transition-delay */
+            transition: opacity 0.5s cubic-bezier(0.17, 0.88, 0.32, 1.27), transform 0.5s cubic-bezier(0.17, 0.88, 0.32, 1.27);
+            will-change: opacity, transform; /* Tối ưu hóa hiệu suất */
+        }
+        .rank-list-item-animated.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
 
         /* ================================================= */
         /* === MOBILE ADJUSTMENTS (DƯỚI 640PX) === */
@@ -254,9 +271,9 @@
             </h1>
 
             <!-- Bảng xếp hạng chi tiết (Rank 1+) - Dạng danh sách duy nhất -->
-            <div class="max-w-3xl mx-auto p-2 md:p-4 bg-white rounded-2xl shadow-2xl border border-gray-100 space-y-1 md:space-y-1.5">
+            <div id="leaderboard-list" class="max-w-3xl mx-auto p-2 md:p-4 bg-white rounded-2xl shadow-2xl border border-gray-100 space-y-1 md:space-y-1.5">
                 <!-- Hạng 1 (Được làm nổi bật tối đa) -->
-                <div class="rank-list-item list-rank-1 flex items-center justify-between p-3 md:p-4 rounded-xl shadow-sm hover:scale-[1.015] transform">
+                <div class="rank-list-item list-rank-1 flex items-center justify-between p-3 md:p-4 rounded-xl shadow-sm hover:scale-[1.015] transform rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <!-- Huy hiệu Vàng Gradient -->
                         <span class="list-rank-badge list-rank-badge-gold">1</span>
@@ -270,7 +287,7 @@
                 </div>
 
                 <!-- Hạng 2 (Bóng đổ bạc) -->
-                <div class="rank-list-item list-rank-2 flex items-center justify-between p-3 md:p-4 rounded-xl shadow-sm">
+                <div class="rank-list-item list-rank-2 flex items-center justify-between p-3 md:p-4 rounded-xl shadow-sm rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <!-- Huy hiệu Bạc Gradient -->
                         <span class="list-rank-badge list-rank-badge-silver">2</span>
@@ -281,7 +298,7 @@
                 </div>
 
                 <!-- Hạng 3 (Bóng đổ đồng) -->
-                <div class="rank-list-item list-rank-3 flex items-center justify-between p-3 md:p-4 rounded-xl shadow-sm">
+                <div class="rank-list-item list-rank-3 flex items-center justify-between p-3 md:p-4 rounded-xl shadow-sm rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <!-- Huy hiệu Đồng Gradient -->
                         <span class="list-rank-badge list-rank-badge-bronze">3</span>
@@ -292,7 +309,7 @@
                 </div>
 
                 <!-- Hạng 4 (Tiếp tục phong cách đơn giản) -->
-                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <span class="list-rank-badge text-gray-500 bg-gray-100">4</span>
                         <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên D</p>
@@ -301,7 +318,7 @@
                 </div>
 
                 <!-- Hạng 5 -->
-                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <span class="list-rank-badge text-gray-500 bg-gray-100">5</span>
                         <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên E</p>
@@ -310,7 +327,7 @@
                 </div>
                 
                 <!-- Hạng 6 -->
-                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <span class="list-rank-badge text-gray-500 bg-gray-100">6</span>
                         <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên F</p>
@@ -319,7 +336,7 @@
                 </div>
                 
                 <!-- Hạng 7 -->
-                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <span class="list-rank-badge text-gray-500 bg-gray-100">7</span>
                         <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên G</p>
@@ -328,7 +345,7 @@
                 </div>
 
                 <!-- Hạng 8 -->
-                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <span class="list-rank-badge text-gray-500 bg-gray-100">8</span>
                         <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên H</p>
@@ -337,7 +354,7 @@
                 </div>
 
                 <!-- Hạng 9 -->
-                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <span class="list-rank-badge text-gray-500 bg-gray-100">9</span>
                         <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên I</p>
@@ -346,7 +363,7 @@
                 </div>
                 
                 <!-- Hạng 10 -->
-                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl">
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <span class="list-rank-badge text-gray-500 bg-gray-100">10</span>
                         <p class="list-name text-gray-900 font-medium text-base md:text-lg">Thành viên K</p>
@@ -512,28 +529,61 @@
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // --- New JavaScript for scroll-in animation (Hiệu ứng xuất hiện khi cuộn) ---
-            const observerOptions = {
-                root: null, // Sử dụng viewport làm root
+            // --- JavaScript cho hiệu ứng xuất hiện khi cuộn (fade-in-scroll & rank-list-item-animated) ---
+            
+            // 1. Observer cho các khối lớn (Tiêu đề, Cơ chế cộng điểm, Lưu ý) - Fade in từ dưới lên
+            const fadeObserverOptions = {
+                root: null,
                 rootMargin: '0px',
-                threshold: 0.1 // Kích hoạt khi 10% của phần tử hiển thị
+                threshold: 0.1 
             };
-
-            const observer = new IntersectionObserver((entries, observer) => {
+            const fadeObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Nếu phần tử đang hiển thị, thêm class 'is-visible' để kích hoạt animation
                         entry.target.classList.add('is-visible');
-                        // Dừng theo dõi phần tử này sau khi nó đã xuất hiện
                         observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, fadeObserverOptions);
 
-            // Tìm tất cả các phần tử có class 'fade-in-scroll' và bắt đầu theo dõi chúng
+            // Bắt đầu theo dõi các khối lớn
             document.querySelectorAll('.fade-in-scroll').forEach(section => {
-                observer.observe(section);
+                fadeObserver.observe(section);
             });
+
+            // 2. Observer cho danh sách thành viên (Xuất hiện tuần tự từ trái sang phải)
+            const listObserverOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 
+            };
+
+            const listObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Khi container list xuất hiện, kích hoạt animation tuần tự cho các items
+                        const listItems = entry.target.querySelectorAll('.rank-list-item-animated');
+                        listItems.forEach((item, index) => {
+                            // Áp dụng delay tuần tự (0s, 0.1s, 0.2s, ...)
+                            item.style.transitionDelay = `${index * 0.1}s`; 
+                            
+                            // Sử dụng setTimeout để đảm bảo trình duyệt có thời gian áp dụng delay
+                            setTimeout(() => {
+                                item.classList.add('is-visible');
+                            }, 50); 
+                        });
+
+                        // Dừng theo dõi container sau khi animation đã được kích hoạt
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, listObserverOptions);
+
+            // Bắt đầu theo dõi container của danh sách thành viên
+            const leaderboardList = document.getElementById('leaderboard-list');
+            if (leaderboardList) {
+                listObserver.observe(leaderboardList);
+            }
         });
     </script>
 </body>
