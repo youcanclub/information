@@ -136,13 +136,15 @@
 
     <!-- Header Navigation --><header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-2">
+            <!-- Logo/Tên CLB (Liên kết trang chủ) --><a href="#" class="flex items-center space-x-2">
                 <!-- LOGO --><img src="https://i.ibb.co/8LV2QDR2/4-D892-F5-A-D50-C-41-F6-AB82-610-B6-BF4-D719.jpg" alt="Logo You Can Club" class="h-12 w-auto rounded-full shadow-lg border border-sky-200">
                 <span class="text-xl font-extrabold text-sky-900">You Can Club</span>
             </a>
             <div class="hidden md:flex space-x-8 items-center">
-                <!-- Hoạt động (CẬP NHẬT TỪ 'Thông báo') --><a href="new.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Hoạt động</a>
+                <!-- START: CẬP NHẬT THANH ĐIỀU HƯỚNG -->
+                <!-- Hoạt động --><a href="new.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Hoạt động</a>
                 <!-- Bảng xếp hạng --><a href="rank.html" class="nav-link text-gray-600 hover:text-sky-800 transition-colors duration-300">Bảng xếp hạng</a>
+                <!-- END: CẬP NHẬT THANH ĐIỀU HƯỚNG -->
                 <!-- Nút Tham gia ngay cho Desktop (Vẫn giữ kiểu tròn) --><a href="#dang-ky" class="
                     px-5 py-2.5 
                     bg-gradient-to-r from-sky-500 to-sky-700 
@@ -161,8 +163,10 @@
             </button>
         </nav>
         <!-- Mobile Menu --><div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-sky-100 pb-4">
-            <!-- Hoạt động (CẬP NHẬT TỪ 'Thông báo') --><a href="new.html" class="nav-link block py-2 px-6 text-gray-600 hover:bg-sky-100">Hoạt động</a>
+            <!-- START: CẬP NHẬT MOBILE MENU (ĐÃ XÓA "Trang chủ CLB") -->
+            <a href="new.html" class="nav-link block py-2 px-6 text-gray-600 hover:bg-sky-100">Hoạt động</a>
             <a href="rank.html" class="nav-link block py-2 px-6 text-gray-600 hover:bg-sky-100">Bảng xếp hạng</a>
+            <!-- END: CẬP NHẬT MOBILE MENU -->
             <!-- Nút Tham gia ngay cho Mobile (ĐÃ CẬP NHẬT: bo góc vừa phải, chiếm chiều ngang rộng) --><a href="#dang-ky" class="
                 block mx-6 mt-2 py-3 text-center
                 bg-gradient-to-r from-sky-500 to-sky-700 
@@ -376,7 +380,6 @@
                         descriptionsContainer.style.display = 'block';
                         if (targetDescription) {
                             targetDescription.style.display = 'block';
-                            // ĐÃ XÓA: descriptionsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
                     } else {
                         // Nếu đã active, nhấp lại sẽ ẩn container
@@ -403,38 +406,6 @@
                         }
                     }
                 });
-            });
-            
-            // Active Nav Link on Scroll (Intersection Observer for highlighting sections)
-            const sections = document.querySelectorAll('section');
-            const mainNavLinks = document.querySelectorAll('header nav a.nav-link');
-            
-            const navOptions = {
-                root: null,
-                rootMargin: '-50% 0px -50% 0px', // Highlight link when section is near the middle of the viewport
-                threshold: 0
-            };
-
-            const navObserver = new IntersectionObserver((entries, observer) => {
-                let activeId = null;
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        activeId = entry.target.id;
-                    }
-                });
-
-                mainNavLinks.forEach(link => {
-                    link.classList.remove('active-nav');
-                    const linkHash = link.getAttribute('href') ? link.getAttribute('href').substring(1) : '';
-                    // Check if link is not the join button AND its href matches the active section ID
-                    if (!link.classList.contains('join-button') && linkHash === activeId) {
-                        link.classList.add('active-nav');
-                    }
-                });
-            }, navOptions);
-
-            sections.forEach(section => {
-                navObserver.observe(section);
             });
             
             // --- JavaScript for scroll-in animation (Hiệu ứng xuất hiện khi cuộn) ---
