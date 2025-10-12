@@ -17,13 +17,13 @@
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
         }
-        /* Styling for the floating feedback button - ĐÃ ĐỔI MÀU */
+        /* Styling for the floating feedback button - ĐÃ ĐỔI MÀU SANG GRADIENT */
         .feedback-button {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background-color: #0c4a6e; /* Dark sky blue (New Background) */
-            color: #f0f9ff; /* White (New Icon Color) */
+            background: linear-gradient(135deg, #0c4a6e, #1a568c); /* Dark Blue Gradient (New Background) */
+            color: #f0f9ff; /* White (Icon Color) */
             width: 3.5rem;
             height: 3.5rem;
             display: flex;
@@ -42,13 +42,13 @@
             /* Styling for the icon inside the button */
             font-size: 1.5rem;
         }
-        /* Styling for the new floating comment button - ĐÃ ĐỔI MÀU */
+        /* Styling for the new floating comment button - ĐÃ ĐỔI MÀU SANG GRADIENT */
         .comment-button {
             position: fixed;
             bottom: 6.5rem; /* Adjusted to stack vertically above the feedback button */
             right: 2rem; /* Aligned with the feedback button */
-            background-color: #0c4a6e; /* Dark sky blue (New Background) */
-            color: #f0f9ff; /* White (New Icon Color) */
+            background: linear-gradient(135deg, #0c4a6e, #1a568c); /* Dark Blue Gradient (New Background) */
+            color: #f0f9ff; /* White (Icon Color) */
             width: 3.5rem;
             height: 3.5rem;
             display: flex;
@@ -176,16 +176,83 @@
             
         </section>
 
-        <!-- ĐÃ XÓA: Phần Chủ đề sinh hoạt theo yêu cầu của bạn -->
+        <!-- START: Phần Thông tin sinh hoạt đã được thiết kế lại bắt mắt hơn -->
+        <section id="activity-format" class="mt-16 py-12 bg-white/70 rounded-2xl shadow-inner fade-in-scroll">
+            <!-- ĐÃ THAY ĐỔI ICON TỪ fa-list-check SANG fa-sitemap -->
+            <h2 class="text-3xl font-bold text-sky-900 text-center mb-10"><i class="fa-solid fa-sitemap mr-2"></i> Thông tin sinh hoạt</h2>
+            
+            <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                <!-- Sinh hoạt tuần Card (Online - Màu Xanh) -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-sky-400/50 hover:translate-y-[-4px] border border-sky-200">
+                    <!-- Header with Gradient and Icon -->
+                    <div class="bg-gradient-to-r from-sky-600 to-sky-700 p-5 text-white flex items-center justify-center">
+                        <i class="fa-solid fa-calendar-week text-3xl mr-3"></i>
+                        <h3 class="text-2xl font-extrabold">Sinh hoạt tuần</h3>
+                    </div>
+                    <!-- Content Area -->
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-graduation-cap text-sky-600 text-xl pt-1"></i>
+                            <p>
+                                <strong class="text-gray-900">Nội dung:</strong> Chủ đề sinh hoạt dựa theo nội dung đã được học ở trường và góc nhìn, mẹo học tập, ý kiến về nội dung đó.
+                            </p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-laptop-code text-sky-600 text-xl pt-1"></i>
+                            <p>
+                                <strong class="text-gray-900">Hình thức:</strong> Bật cam, thuyết trình <strong class="text-sky-700">online</strong> (qua Google Meet/Zoom).
+                            </p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-clock text-sky-600 text-xl pt-1"></i>
+                            <p>
+                                <strong class="text-gray-900">Thời lượng:</strong> 10-15 phút/người, 2-3 người/buổi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sinh hoạt tháng Card (Offline - Màu Vàng/Cam) -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-amber-400/50 hover:translate-y-[-4px] border border-amber-200">
+                    <!-- Header with Gradient and Icon -->
+                    <div class="bg-gradient-to-r from-amber-600 to-amber-700 p-5 text-white flex items-center justify-center">
+                        <i class="fa-solid fa-calendar-days text-3xl mr-3"></i>
+                        <h3 class="text-2xl font-extrabold">Sinh hoạt tháng</h3>
+                    </div>
+                    <!-- Content Area -->
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-chart-bar text-amber-600 text-xl pt-1"></i>
+                            <p>
+                                <strong class="text-gray-900">Nội dung:</strong> Tổng kết tháng, nhận xét, góp ý giúp các thành viên cải thiện, và <strong class="text-amber-700">trao thưởng thành viên xuất sắc</strong>.
+                            </p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-location-dot text-amber-600 text-xl pt-1"></i>
+                            <p>
+                                <strong class="text-gray-900">Hình thức:</strong> <strong class="text-amber-700">Offline</strong> tại một địa điểm cố định.
+                            </p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-calendar-check text-amber-600 text-xl pt-1"></i>
+                            <p>
+                                <strong class="text-gray-900">Thời gian:</strong> Thường diễn ra vào Thứ 7/Chủ nhật tuần cuối cùng trong tháng.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END: Phần Thông tin sinh hoạt đã được đổi tên -->
 
     </main>
     
-    <!-- Nút bình luận nổi bật, cố định ở góc dưới bên phải - ĐÃ ĐỔI MÀU -->
+    <!-- Nút bình luận nổi bật, cố định ở góc dưới bên phải - ĐÃ CẬP NHẬT MÀU GRADIENT -->
     <a href="https://forms.gle/sdiptXjXtoByeYiF8" target="_blank" rel="noopener noreferrer" class="comment-button" aria-label="Bình luận về CLB">
         <i class="fa-solid fa-comment"></i>
     </a>
 
-    <!-- Nút góp ý nổi bật, cố định ở góc dưới bên phải - ĐÃ ĐỔI MÀU -->
+    <!-- Nút góp ý nổi bật, cố định ở góc dưới bên phải - ĐÃ CẬP NHẬT MÀU GRADIENT -->
     <a href="https://forms.gle/WAmeqVbB7fvX3VtFA" target="_blank" rel="noopener noreferrer" class="feedback-button" aria-label="Góp ý cho CLB">
         <i class="fa-solid fa-lightbulb"></i>
     </a>
