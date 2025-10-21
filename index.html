@@ -30,13 +30,22 @@
         .interactive-card {
             transition: all 0.3s ease;
         }
+        /* Đã cập nhật trạng thái active cho card để dùng màu nền sky-700 và border sky-900 cho nổi bật */
         .interactive-card.active {
             transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            border-color: #0c4a6e; /* sky-800 */
+            box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.2), 0 5px 10px -5px rgb(0 0 0 / 0.1);
+            border-color: #075985; /* sky-800 */
+            background-color: #0c4a6e; /* sky-900 */
+            color: white;
         }
-        
-        /* ĐÃ LOẠI BỎ CSS CỦA .join-button CŨ VÀ DÙNG INLINE TAILWIND */
+        .interactive-card.active h4, .interactive-card.active p {
+            color: white !important;
+        }
+        /* Đảm bảo icon bên trong thẻ active cũng đổi màu thành trắng (hoặc màu sáng) */
+        .interactive-card.active .icon-bg {
+            background-color: white !important;
+            color: #0c4a6e !important; /* sky-900 */
+        }
 
         .feedback-button, .comment-button {
             position: fixed;
@@ -70,7 +79,6 @@
 
         /* Hero Section Styling */
         #cau-chuyen {
-            /* Đã xóa màu nền xanh đồng nhất và để nó hòa vào màu nền body (bg-sky-50) */
             background-color: transparent; 
             border-radius: 0 0 40px 40px;
             padding-bottom: 5rem;
@@ -92,15 +100,11 @@
             transition: none;
             display: inline-block; /* Quan trọng để áp dụng transform */
         }
-
-        /* Keyframes cho hiệu ứng nổi nhẹ, liên tục (đã làm rõ ràng hơn) */
         @keyframes subtle-float {
             0% { transform: translateY(0) scale(1); }
             50% { transform: translateY(-12px) scale(1.08); } /* Nổi lên 12px và phóng to nhẹ 8% */
             100% { transform: translateY(0) scale(1); }
         }
-
-        /* Áp dụng animation liên tục cho các icon (đã tăng tốc độ nhẹ) */
         .icon-animate-float {
             animation: subtle-float 3s ease-in-out infinite; /* 3 giây, kiểu ease-in-out, lặp vô hạn */
         }
@@ -124,11 +128,11 @@
             }
         }
         .cta-shake {
-            /* Animation chạy chậm (4s) để tạo cảm giác 'hấp dẫn' nhẹ nhàng, lặp vô hạn */
             animation: cta-wobble 4s ease-in-out infinite; 
             transform-origin: center;
         }
-        /* --- KẾT THÚC HIỆU ỨNG RUNG LẮC --- */
+
+        /* --- Đã loại bỏ CSS tùy chỉnh cho bố cục chủ đề không cân đối trước đó --- */
 
     </style>
 </head>
@@ -189,11 +193,10 @@
             <h1 class="text-4xl md:text-6xl font-extrabold text-sky-900 mb-6 tracking-tight">
                 Hành trình <span class="text-sky-600">vượt qua giới hạn</span>
             </h1>
-            <!-- BẮT ĐẦU: NỘI DUNG MỚI ĐƯỢC CẬP NHẬT THEO YÊU CẦU -->
+            <!-- NỘI DUNG CHÍNH CỦA CLB -->
             <p class="max-w-4xl mx-auto text-xl text-gray-700 leading-relaxed font-light">
-                Câu lạc bộ được xây dựng dựa trên nguyên tắc khoa học “Giảng lại” (Teaching Back) - Thành viên không chỉ học mà còn hệ thống hóa và thuyết trình lại, qua đó rèn luyện kỹ năng diễn đạt và sự tự tin khi nói trước đám đông. CLB đồng thời tạo môi trường an toàn và thân thiện, giúp những bạn ngại thuyết trình dám thể hiện và tỏa sáng. Ngoài học tập, thành viên còn được ứng dụng kỹ năng này để sáng tạo nội dung số giá trị (video, podcast) và xây dựng thương hiệu cá nhân tích cực, chuẩn bị hành trang vững vàng cho tương lai.
+                Câu lạc bộ được xây dựng dựa trên phương pháp teach back: Học thông qua dạy lại - Thành viên không chỉ học mà còn hệ thống hóa và thuyết trình lại, qua đó rèn luyện kỹ năng diễn đạt và sự tự tin khi nói trước đám đông. CLB đồng thời tạo môi trường an toàn và thân thiện, giúp những bạn ngại thuyết trình dám thể hiện và tỏa sáng. Ngoài học tập, thành viên còn được ứng dụng kỹ năng này để sáng tạo nội dung số giá trị (video, podcast) và xây dựng thương hiệu cá nhân tích cực, chuẩn bị hành trang vững vàng cho tương lai.
             </p>
-            <!-- KẾT THÚC: NỘI DUNG MỚI ĐƯỢC CẬP NHẬT -->
         </section>
 
         <!-- Sứ Mệnh (Mission) --><section id="su-menh" class="py-16 bg-white rounded-2xl my-16 shadow-xl fade-in-scroll border-t-4 border-sky-400">
@@ -243,20 +246,20 @@
                 <p class="mt-2 text-gray-500">Nền tảng cho mọi quyết định và hành động. <strong class="text-sky-700">Nhấn vào từng giá trị</strong> để tìm hiểu thêm.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-6 mb-8">
-                <!-- Value Card 1: Đã đổi tên class thành 'interactive-card' để tái sử dụng cho phần chủ đề -->
+                <!-- Value Card 1 -->
                 <div class="interactive-card value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-sky-300 transition-all duration-300 shadow-md hover:shadow-xl" data-target="desc-1">
                     <h4 class="font-bold text-xl text-gray-800">Tôn trọng - Cùng tiến bộ</h4>
                 </div>
-                <!-- Value Card 2: Đã đổi tên class thành 'interactive-card' để tái sử dụng cho phần chủ đề -->
+                <!-- Value Card 2 -->
                 <div class="interactive-card value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-sky-300 transition-all duration-300 shadow-md hover:shadow-xl" data-target="desc-2">
                     <h4 class="font-bold text-xl text-gray-800">Dám thử - Dám sửa</h4>
                 </div>
-                <!-- Value Card 3: Đã đổi tên class thành 'interactive-card' để tái sử dụng cho phần chủ đề -->
+                <!-- Value Card 3 -->
                 <div class="interactive-card value-card cursor-pointer bg-white p-6 rounded-xl border-2 border-sky-300 transition-all duration-300 shadow-md hover:hover:shadow-xl" data-target="desc-3">
                     <h4 class="font-bold text-xl text-gray-800">Học từ nhau - Tư duy mở</h4>
                 </div>
             </div>
-            <!-- Bảng trắng chi tiết -->
+            <!-- Bảng trắng chi tiết (Giá trị cốt lõi) -->
             <div id="descriptions-container" class="min-h-[150px] bg-white rounded-xl p-8 shadow-inner transition-all duration-500 border-l-4 border-sky-600" style="display: none;">
                 <div id="desc-1" class="value-description" style="display: none;">
                     <h5 class="font-bold text-2xl text-sky-800 mb-3">Tôn trọng - Cùng tiến bộ</h5>
@@ -273,12 +276,41 @@
             </div>
         </section>
 
-        <!-- Chủ đề sinh hoạt (Activity Topics) - Đã được di chuyển sau Giá trị Cốt lõi -->
+        <!-- Chủ đề sinh hoạt (Activity Topics) -->
         <section id="chu-de" class="py-16 text-center fade-in-scroll">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Các Chủ Đề Sinh Hoạt</h2>
             <p class="mb-10 text-gray-600 max-w-3xl mx-auto">Các buổi sinh hoạt giúp bạn phát triển khả năng thuyết trình, phản biện và học tập qua các chủ đề dưới đây. <strong class="text-sky-700">Nhấn vào từng chủ đề</strong> để xem chi tiết.</p>
             
-            <!-- Bảng trắng chi tiết Chủ đề (MỚI) -->
+            <!-- CẬP NHẬT DANH SÁCH CHỦ ĐỀ - Bố cục 3 cột cân đối -->
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                
+                <!-- Topic Card 1: Phát triển bản thân -->
+                <div id="topic-card-1" class="interactive-card topic-card cursor-pointer bg-white rounded-xl border-2 border-sky-300 shadow-lg p-6 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105" data-target="topic-desc-1">
+                    <div class="icon-bg bg-sky-700 text-white rounded-full h-14 w-14 flex items-center justify-center mb-3 transition-colors duration-300">
+                        <i class="fa-solid fa-seedling text-3xl"></i>
+                    </div>
+                    <p class="text-lg font-bold text-gray-800">Phát triển bản thân</p>
+                </div>
+
+                <!-- Topic Card 2: Quan điểm & Giá trị sống -->
+                <div id="topic-card-2" class="interactive-card topic-card cursor-pointer bg-white rounded-xl border-2 border-sky-300 shadow-lg p-6 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105" data-target="topic-desc-2">
+                    <div class="icon-bg bg-sky-700 text-white rounded-full h-14 w-14 flex items-center justify-center mb-3 transition-colors duration-300">
+                        <i class="fa-solid fa-gem text-3xl"></i>
+                    </div>
+                    <p class="text-lg font-bold text-gray-800">Quan điểm & Giá trị sống</p>
+                </div>
+
+                <!-- Topic Card 3: Xã hội & Xu hướng (Đã đồng bộ màu và kích thước) -->
+                <div id="topic-card-3" class="interactive-card topic-card cursor-pointer bg-white rounded-xl border-2 border-sky-300 shadow-lg p-6 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105" data-target="topic-desc-3">
+                    <div class="icon-bg bg-sky-700 text-white rounded-full h-14 w-14 flex items-center justify-center mb-3 transition-colors duration-300">
+                        <i class="fa-solid fa-earth-asia text-3xl"></i>
+                    </div>
+                    <p class="text-lg font-bold text-gray-800">Xã hội & Xu hướng</p>
+                </div>
+            </div>
+            <!-- KẾT THÚC CẬP NHẬT DANH SÁCH CHỦ ĐỀ -->
+
+            <!-- Bảng trắng chi tiết Chủ đề -->
             <div id="topic-descriptions-container" class="max-w-5xl mx-auto mt-8 min-h-[150px] bg-white rounded-xl p-8 shadow-inner transition-all duration-500 border-l-4 border-sky-600" style="display: none;">
                 <div id="topic-desc-1" class="topic-description text-left" style="display: none;">
                     <h5 class="font-bold text-2xl text-sky-800 mb-3"><i class="fa-solid fa-seedling mr-2"></i> Phát triển bản thân</h5>
@@ -294,41 +326,6 @@
                 </div>
             </div>
             <!-- KẾT THÚC Bảng trắng chi tiết Chủ đề -->
-            
-            <!-- CẬP NHẬT DANH SÁCH CHỦ ĐỀ -->
-            <!-- Đã thêm mt-8 để tạo khoảng cách giữa bảng mô tả và các thẻ chủ đề -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-8">
-                <!-- Phát triển bản thân (Đã thêm class interactive-card và data-target) -->
-                <div class="interactive-card topic-card cursor-pointer bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105" data-target="topic-desc-1">
-                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
-                        <i class="fa-solid fa-seedling text-2xl"></i>
-                    </div>
-                    <p class="text-lg font-semibold text-gray-800">Phát triển bản thân</p>
-                </div>
-                <!-- Quan điểm & Giá trị sống (Đã thêm class interactive-card và data-target) -->
-                <div class="interactive-card topic-card cursor-pointer bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105" data-target="topic-desc-2">
-                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
-                        <!-- Icon đã đổi từ handshake sang gem --><i class="fa-solid fa-gem text-2xl"></i>
-                    </div>
-                    <p class="text-lg font-semibold text-gray-800">Quan điểm & Giá trị sống</p>
-                </div>
-                <!-- Xã hội & Xu hướng (MỚI) (Đã thêm class interactive-card và data-target) -->
-                <div class="interactive-card topic-card cursor-pointer bg-white rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105" data-target="topic-desc-3">
-                    <div class="bg-sky-700 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
-                        <!-- Icon cho Xã hội & Xu hướng --><i class="fa-solid fa-earth-asia text-2xl"></i>
-                    </div>
-                    <p class="text-lg font-semibold text-gray-800">Xã hội & Xu hướng</p>
-                </div>
-                <!-- Đang cập nhật thêm (Greyed out) -->
-                <div class="bg-gray-200 rounded-xl shadow-lg p-4 flex flex-col items-center justify-center opacity-70 cursor-not-allowed">
-                    <div class="bg-gray-500 text-white rounded-full h-12 w-12 flex items-center justify-center mb-2">
-                        <i class="fa-solid fa-ellipsis-h text-2xl"></i>
-                    </div>
-                    <p class="text-lg font-semibold text-gray-600">Đang cập nhật thêm</p>
-                </div>
-            </div>
-            <!-- KẾT THÚC CẬP NHẬT DANH SÁCH CHỦ ĐỀ -->
-
         </section>
 
         <!-- Khu vực đăng ký (Call to Action) -->
@@ -336,7 +333,7 @@
             <!-- ĐÃ THÊM KHUNG NỔI BẬT CHO PHẦN KÊU GỌI HÀNH ĐỘNG -->
             <div class="bg-sky-100 p-8 md:p-12 rounded-2xl shadow-2xl border-2 border-sky-300">
                 <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Sẵn sàng để vượt qua giới hạn của bản thân?</h3>
-                <!-- ĐÃ THÊM CLASS 'cta-shake' TẠI ĐÂY -->
+                <!-- ĐÃ THÊM CLASS 'cta-shake' TẠY ĐÂY -->
                 <a href="https://forms.gle/9wgmqSkFbY1A7mHo6" target="_blank" rel="noopener noreferrer" class="cta-shake bg-sky-700 text-white font-extrabold py-4 px-10 rounded-full shadow-2xl shadow-sky-400/50 hover:bg-sky-800 transition-all duration-300 transform hover:scale-105 inline-block text-xl">
                     <i class="fa-solid fa-hand-point-right mr-2"></i> Đăng ký tham gia CLB ngay!
                 </a>
@@ -371,90 +368,61 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // --- Existing Functionality: Core Values (Giá trị cốt lõi) ---
-            // Đã đổi tên class .value-card thành .interactive-card để tái sử dụng, 
-            // và dùng class .value-card để lọc riêng nhóm này.
-            const valueCards = document.querySelectorAll('.interactive-card.value-card');
-            const descriptionsContainer = document.getElementById('descriptions-container');
-            const allValueDescriptions = document.querySelectorAll('.value-description');
             
-            // Ẩn tất cả các mô tả ban đầu
-            allValueDescriptions.forEach(desc => desc.style.display = 'none');
+            // --- Hàm chung để xử lý Active và Hiển thị mô tả ---
+            function handleCardClick(card, isValueCard) {
+                const targetId = card.dataset.target;
+                const targetDescription = document.getElementById(targetId);
 
-            // Thêm sự kiện click cho các thẻ giá trị
+                // Kiểm tra xem thẻ hiện tại đã active chưa
+                const wasActive = card.classList.contains('active');
+
+                // Bỏ trạng thái active của TẤT CẢ các thẻ
+                document.querySelectorAll('.interactive-card').forEach(c => {
+                    c.classList.remove('active');
+                    // Không cần reset màu sắc đặc biệt vì tất cả giờ đều dùng màu sky
+                });
+                
+                // Ẩn tất cả mô tả (cả Giá trị và Chủ đề)
+                document.querySelectorAll('.value-description, .topic-description').forEach(desc => {
+                    desc.style.display = 'none';
+                });
+                document.getElementById('descriptions-container').style.display = 'none';
+                document.getElementById('topic-descriptions-container').style.display = 'none';
+
+                if (!wasActive) {
+                    // Kích hoạt thẻ hiện tại
+                    card.classList.add('active');
+                    
+                    // Hiển thị container và mô tả tương ứng
+                    if (isValueCard) {
+                        document.getElementById('descriptions-container').style.display = 'block';
+                    } else {
+                        document.getElementById('topic-descriptions-container').style.display = 'block';
+                    }
+
+                    if (targetDescription) {
+                        targetDescription.style.display = 'block';
+                    }
+                }
+            }
+
+            // --- 1. Core Values (Giá trị cốt lõi) ---
+            const valueCards = document.querySelectorAll('.interactive-card.value-card');
             valueCards.forEach(card => {
                 card.addEventListener('click', function () {
-                    const targetId = this.dataset.target;
-                    const targetDescription = document.getElementById(targetId);
-
-                    // Kiểm tra xem thẻ hiện tại đã active chưa
-                    const wasActive = this.classList.contains('active');
-
-                    // Bỏ trạng thái active của tất cả các thẻ GIÁ TRỊ VÀ CHỦ ĐỀ
-                    document.querySelectorAll('.interactive-card').forEach(c => c.classList.remove('active'));
-                    // Ẩn tất cả mô tả
-                    allValueDescriptions.forEach(desc => {
-                        desc.style.display = 'none';
-                    });
-                    document.querySelectorAll('.topic-description').forEach(desc => {
-                        desc.style.display = 'none';
-                    });
-                    document.getElementById('topic-descriptions-container').style.display = 'none';
-
-                    if (!wasActive) {
-                        // Kích hoạt thẻ GIÁ TRỊ hiện tại, hiển thị container và mô tả tương ứng
-                        this.classList.add('active');
-                        descriptionsContainer.style.display = 'block';
-                        if (targetDescription) {
-                            targetDescription.style.display = 'block';
-                        }
-                    } else {
-                        // Nếu đã active, nhấp lại sẽ ẩn container
-                        descriptionsContainer.style.display = 'none';
-                    }
+                    handleCardClick(this, true); // true: là thẻ Giá trị
                 });
             });
             
-            // --- NEW Functionality: Activity Topic Cards (Chủ đề sinh hoạt) ---
+            // --- 2. Activity Topic Cards (Chủ đề sinh hoạt) ---
             const topicCards = document.querySelectorAll('.interactive-card.topic-card');
-            const topicDescriptionsContainer = document.getElementById('topic-descriptions-container');
-            const allTopicDescriptions = document.querySelectorAll('.topic-description');
-
-            // Thêm sự kiện click cho các thẻ chủ đề
             topicCards.forEach(card => {
                 card.addEventListener('click', function () {
-                    const targetId = this.dataset.target;
-                    const targetDescription = document.getElementById(targetId);
-
-                    // Kiểm tra xem thẻ hiện tại đã active chưa
-                    const wasActive = this.classList.contains('active');
-
-                    // Bỏ trạng thái active của tất cả các thẻ GIÁ TRỊ VÀ CHỦ ĐỀ
-                    document.querySelectorAll('.interactive-card').forEach(c => c.classList.remove('active'));
-                    // Ẩn tất cả mô tả
-                    allTopicDescriptions.forEach(desc => {
-                        desc.style.display = 'none';
-                    });
-                    document.querySelectorAll('.value-description').forEach(desc => {
-                        desc.style.display = 'none';
-                    });
-                    document.getElementById('descriptions-container').style.display = 'none';
-
-
-                    if (!wasActive) {
-                        // Kích hoạt thẻ CHỦ ĐỀ hiện tại, hiển thị container và mô tả tương ứng
-                        this.classList.add('active');
-                        topicDescriptionsContainer.style.display = 'block';
-                        if (targetDescription) {
-                            targetDescription.style.display = 'block';
-                        }
-                    } else {
-                        // Nếu đã active, nhấp lại sẽ ẩn container
-                        topicDescriptionsContainer.style.display = 'none';
-                    }
+                    handleCardClick(this, false); // false: là thẻ Chủ đề
                 });
             });
-            
+
             // Mobile Menu Toggle
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
