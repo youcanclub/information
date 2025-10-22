@@ -132,8 +132,6 @@
             transform-origin: center;
         }
 
-        /* --- Đã loại bỏ CSS tùy chỉnh cho bố cục chủ đề không cân đối trước đó --- */
-
     </style>
 </head>
 <body class="bg-sky-50 text-gray-800">
@@ -278,30 +276,23 @@
 
         <!-- Chủ đề sinh hoạt (Activity Topics) -->
         <section id="chu-de" class="py-16 text-center fade-in-scroll">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Các Chủ Đề Sinh Hoạt</h2>
+            <!-- ĐÃ THAY ĐỔI TIÊU ĐỀ TẠI ĐÂY -->
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Chủ Đề Sinh Hoạt Chính</h2>
             <p class="mb-10 text-gray-600 max-w-3xl mx-auto">Các buổi sinh hoạt giúp bạn phát triển khả năng thuyết trình, phản biện và học tập qua các chủ đề dưới đây. <strong class="text-sky-700">Nhấn vào từng chủ đề</strong> để xem chi tiết.</p>
             
-            <!-- CẬP NHẬT DANH SÁCH CHỦ ĐỀ - Bố cục 3 cột cân đối -->
-            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <!-- CẬP NHẬT DANH SÁCH CHỦ ĐỀ - Bố cục 2 cột cân đối -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
                 
                 <!-- Topic Card 1: Phát triển bản thân -->
-                <div id="topic-card-1" class="interactive-card topic-card cursor-pointer bg-white rounded-xl border-2 border-sky-300 shadow-lg p-6 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105" data-target="topic-desc-1">
+                <div id="topic-card-1" class="interactive-card topic-card cursor-pointer bg-white rounded-xl border-2 border-sky-300 shadow-lg p-6 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-[1.03]" data-target="topic-desc-1">
                     <div class="icon-bg bg-sky-700 text-white rounded-full h-14 w-14 flex items-center justify-center mb-3 transition-colors duration-300">
                         <i class="fa-solid fa-seedling text-3xl"></i>
                     </div>
                     <p class="text-lg font-bold text-gray-800">Phát triển bản thân</p>
                 </div>
 
-                <!-- Topic Card 2: Quan điểm & Giá trị sống -->
-                <div id="topic-card-2" class="interactive-card topic-card cursor-pointer bg-white rounded-xl border-2 border-sky-300 shadow-lg p-6 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105" data-target="topic-desc-2">
-                    <div class="icon-bg bg-sky-700 text-white rounded-full h-14 w-14 flex items-center justify-center mb-3 transition-colors duration-300">
-                        <i class="fa-solid fa-gem text-3xl"></i>
-                    </div>
-                    <p class="text-lg font-bold text-gray-800">Quan điểm & Giá trị sống</p>
-                </div>
-
-                <!-- Topic Card 3: Xã hội & Xu hướng (Đã đồng bộ màu và kích thước) -->
-                <div id="topic-card-3" class="interactive-card topic-card cursor-pointer bg-white rounded-xl border-2 border-sky-300 shadow-lg p-6 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105" data-target="topic-desc-3">
+                <!-- Topic Card 2: Xã hội & Xu hướng -->
+                <div id="topic-card-3" class="interactive-card topic-card cursor-pointer bg-white rounded-xl border-2 border-sky-300 shadow-lg p-6 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-[1.03]" data-target="topic-desc-3">
                     <div class="icon-bg bg-sky-700 text-white rounded-full h-14 w-14 flex items-center justify-center mb-3 transition-colors duration-300">
                         <i class="fa-solid fa-earth-asia text-3xl"></i>
                     </div>
@@ -316,10 +307,7 @@
                     <h5 class="font-bold text-2xl text-sky-800 mb-3"><i class="fa-solid fa-seedling mr-2"></i> Phát triển bản thân</h5>
                     <p class="text-gray-600 leading-relaxed text-lg">Giúp thành viên khám phá điểm mạnh, điểm yếu, đặt mục tiêu, và phát triển thói quen tích cực thông qua các bài thuyết trình về kỹ năng mềm, quản lý thời gian và tư duy tăng trưởng.</p>
                 </div>
-                <div id="topic-desc-2" class="topic-description text-left" style="display: none;">
-                    <h5 class="font-bold text-2xl text-sky-800 mb-3"><i class="fa-solid fa-gem mr-2"></i> Quan điểm & Giá trị sống</h5>
-                    <p class="text-gray-600 leading-relaxed text-lg">Môi trường để thành viên chia sẻ và phản biện về các quan điểm cá nhân, từ đó làm rõ hệ giá trị cốt lõi của bản thân, tạo nền tảng vững chắc cho mọi quyết định trong cuộc sống.</p>
-                </div>
+                <!-- Đã loại bỏ topic-desc-2 (Quan điểm & Giá trị sống) -->
                 <div id="topic-desc-3" class="topic-description text-left" style="display: none;">
                     <h5 class="font-bold text-2xl text-sky-800 mb-3"><i class="fa-solid fa-earth-asia mr-2"></i> Xã hội & Xu hướng</h5>
                     <p class="text-gray-600 leading-relaxed text-lg">Nơi cập nhật và phân tích các vấn đề xã hội, công nghệ và xu hướng mới nhất. Rèn luyện kỹ năng nghiên cứu, tổng hợp thông tin và phản biện về thế giới xung quanh.</p>
@@ -380,7 +368,6 @@
                 // Bỏ trạng thái active của TẤT CẢ các thẻ
                 document.querySelectorAll('.interactive-card').forEach(c => {
                     c.classList.remove('active');
-                    // Không cần reset màu sắc đặc biệt vì tất cả giờ đều dùng màu sky
                 });
                 
                 // Ẩn tất cả mô tả (cả Giá trị và Chủ đề)
