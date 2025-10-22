@@ -47,7 +47,8 @@
             color: #0c4a6e !important; /* sky-900 */
         }
 
-        .feedback-button, .comment-button {
+        /* ĐÃ CẬP NHẬT: chỉ giữ lại .comment-button và đặt nó ở vị trí cũ của .feedback-button */
+        .comment-button {
             position: fixed;
             background-color: #0c4a6e; /* Nền xanh đậm theo yêu cầu */
             color: #f0f9ff; /* Màu icon theo yêu cầu */
@@ -60,20 +61,15 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             z-index: 100;
-        }
-        .feedback-button {
-            bottom: 2rem;
+            bottom: 2rem; /* Vị trí mới: thấp nhất */
             right: 2rem;
         }
-        .comment-button {
-            bottom: 6.5rem;
-            right: 2rem;
-        }
-        .feedback-button:hover, .comment-button:hover {
+        
+        .comment-button:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
-        .feedback-button i, .comment-button i {
+        .comment-button i {
             font-size: 1.5rem;
         }
 
@@ -330,11 +326,9 @@
 
     </main>
 
-    <!-- Nút góp ý nổi bật, cố định ở góc dưới bên phải --><a href="https://forms.gle/WAmeqVbB7fvX3VtFA" target="_blank" rel="noopener noreferrer" class="feedback-button" aria-label="Góp ý cho CLB">
-        <i class="fa-solid fa-lightbulb"></i>
-    </a>
+    <!-- ĐÃ XÓA Nút góp ý nổi bật, cố định ở góc dưới bên phải -->
     
-    <!-- Nút bình luận nổi bật, cố định ở góc dưới bên phải --><a href="https://forms.gle/sdiptXjXtoByeYiF8" target="_blank" rel="noopener noreferrer" class="comment-button" aria-label="Bình luận về CLB">
+    <!-- Nút bình luận nổi bật, cố định ở góc dưới bên phải (Vị trí mới: bottom: 2rem) --><a href="https://forms.gle/sdiptXjXtoByeYiF8" target="_blank" rel="noopener noreferrer" class="comment-button" aria-label="Bình luận về CLB">
         <i class="fa-solid fa-comment"></i>
     </a>
 
