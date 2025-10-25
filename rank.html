@@ -108,12 +108,12 @@
         .list-rank-badge-silver { background: linear-gradient(135deg, #C0C0C0, #9CA3AF); } 
         .list-rank-badge-bronze { background: linear-gradient(135deg, #CD7F32, #B45309); } 
         
-        /* Hạng 4+ */
+        /* Hạng 4+ (ĐÃ ĐỔI TỪ HÌNH VUÔNG SANG HÌNH TRÒN) */
         .list-rank-badge:not(.list-rank-badge-gold):not(.list-rank-badge-silver):not(.list-rank-badge-bronze) {
             color: #4b5563; /* Màu chữ xám cho hạng dưới */
             background-color: #e5e7eb; /* Nền xám nhạt */
             box-shadow: none;
-            border-radius: 0.5rem; /* Vẫn giữ hình vuông */
+            border-radius: 50%; /* Giờ là hình tròn */
         }
         
         /* --- FONT SIZES --- */
@@ -211,10 +211,15 @@
 
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- ĐÃ THÊM DÒNG CHỮ NHỎ VÀO ĐÂY -->
             <a href="#" class="flex items-center space-x-2">
-                <!-- LOGO - ĐÃ SỬA LỖI ĐƯỜNG DẪN Ở ĐÂY -->
+                <!-- LOGO -->
                 <img src="https://i.ibb.co/8LV2QDR2/4-D892-F5-A-D50-C-41-F6-AB82-610-B6-BF4-D719.jpg" alt="Logo You Can Club" class="h-12 w-auto rounded-full">
-                <span class="text-xl font-bold text-gray-900">You Can Club</span>
+                <!-- WRAPPER MỚI CHO TIÊU ĐỀ VÀ PHỤ ĐỀ -->
+                <div class="flex flex-col items-start">
+                    <span class="text-xl font-bold text-gray-900 leading-none">You Can Club</span>
+                    <span class="text-xs italic text-gray-500 leading-none mt-0.5">Bạn có thể!</span>
+                </div>
             </a>
             <div class="hidden md:flex items-center space-x-8">
                 <!-- Thêm các liên kết điều hướng -->
@@ -267,112 +272,115 @@
             <h1 class="text-3xl md:text-5xl font-extrabold py-2 mb-2 md:mb-4 gradient-text flex justify-center">
                 Bảng xếp hạng
             </h1>
-            <!-- THỜI GIAN CỦA BẢNG XẾP HẠNG (THÁNG 10) -->
+            <!-- THỜI GIAN CỦA BẢNG XẾP HẠNG (ĐÃ ĐỔI ĐỊNH DẠNG NGÀY THÁNG) -->
             <p class="text-lg md:text-xl font-semibold text-sky-700 mb-8 md:mb-10">
-                Tháng 10/2025 (01/10 - 31/10)
+                Tháng 10/2025
             </p>
 
             <!-- Bảng xếp hạng chi tiết (Rank 1+) - Dạng danh sách duy nhất -->
             <div id="leaderboard-list" class="max-w-3xl mx-auto p-2 md:p-4 bg-white rounded-2xl shadow-2xl border border-gray-100 space-y-1 md:space-y-1.5">
                 
-                <!-- Hạng 1 -->
+                <!-- Hạng 1 (Phước Vinh) -->
                 <div class="rank-list-item list-rank-1 flex items-center justify-between p-3 md:p-4 rounded-xl shadow-sm hover:scale-[1.015] transform rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <!-- Huy hiệu Vàng Gradient -->
                         <span class="list-rank-badge list-rank-badge-gold">1</span>
                         <p class="list-name text-gray-900 font-extrabold flex items-center text-lg md:text-xl">
                             <i class="fa-solid fa-crown text-amber-500 text-xl mr-2 hidden sm:block"></i>
-                            Duy Khang
+                            Phước Vinh
                         </p>
                     </div>
                     <!-- Điểm số lớn nhất -->
-                    <span class="list-score text-2xl md:text-3xl font-black text-amber-700">19 điểm</span>
+                    <span class="list-score text-2xl md:text-3xl font-black text-amber-700">23 điểm</span>
                 </div>
 
-                <!-- Hạng 2 -->
+                <!-- Hạng 2 (Trọng Khoa) -->
                 <div class="rank-list-item list-rank-2 flex items-center justify-between p-3 md:p-4 rounded-xl shadow-sm rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <!-- Huy hiệu Bạc Gradient -->
                         <span class="list-rank-badge list-rank-badge-silver">2</span>
-                        <p class="list-name text-gray-900 font-bold text-base md:text-lg">Phước Vinh</p>
+                        <p class="list-name text-gray-900 font-bold text-base md:text-lg">Trọng Khoa</p>
                     </div>
                     <!-- Điểm số lớn -->
-                    <span class="list-score text-xl md:text-2xl font-black text-gray-700">17 điểm</span>
+                    <span class="list-score text-xl md:text-2xl font-black text-gray-700">23 điểm</span>
                 </div>
 
-                <!-- Hạng 3 -->
+                <!-- Hạng 3 (Minh Tơ) -->
                 <div class="rank-list-item list-rank-3 flex items-center justify-between p-3 md:p-4 rounded-xl shadow-sm rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <!-- Huy hiệu Đồng Gradient -->
                         <span class="list-rank-badge list-rank-badge-bronze">3</span>
-                        <p class="list-name text-gray-900 font-bold text-base md:text-lg">Trọng Khoa</p>
+                        <p class="list-name text-gray-900 font-bold text-base md:text-lg">Minh Tơ</p>
                     </div>
                     <!-- Điểm số lớn -->
-                    <span class="list-score text-xl md:text-2xl font-black text-amber-800">17 điểm</span>
+                    <span class="list-score text-xl md:text-2xl font-black text-amber-800">11 điểm</span>
                 </div>
 
-                <!-- Hạng 4 -->
+                <!-- Hạng 4 (Bé Trân) -->
                 <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <span class="list-rank-badge text-gray-500 bg-gray-100">4</span>
-                        <p class="list-name text-gray-900 font-medium text-base md:text-lg">Minh Tơ</p>
+                        <p class="list-name text-gray-900 font-medium text-base md:text-lg">Bé Trân</p>
                     </div>
-                    <span class="list-score text-lg md:text-xl font-black text-sky-700">9 điểm</span>
+                    <span class="list-score text-lg md:text-xl font-black text-sky-700">11 điểm</span>
                 </div>
 
-                <!-- Hạng 5 (ĐÃ CẬP NHẬT: Bé Trân) -->
+                <!-- Hạng 5 (Hoài Phúc) -->
                 <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
                         <span class="list-rank-badge text-gray-500 bg-gray-100">5</span>
-                        <p class="list-name text-gray-900 font-medium text-base md:text-lg">Bé Trân</p>
-                    </div>
-                    <span class="list-score text-lg md:text-xl font-black text-sky-700">9 điểm</span>
-                </div>
-                
-                <!-- Hạng 6 -->
-                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
-                    <div class="flex items-center space-x-4">
-                        <span class="list-rank-badge text-gray-500 bg-gray-100">6</span>
                         <p class="list-name text-gray-900 font-medium text-base md:text-lg">Hoài Phúc</p>
                     </div>
                     <span class="list-score text-lg md:text-xl font-black text-sky-700">5 điểm</span>
                 </div>
                 
-                <!-- Hạng 7 -->
+                <!-- Hạng 6 (Hồng Ngát) -->
                 <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
-                        <span class="list-rank-badge text-gray-500 bg-gray-100">7</span>
+                        <span class="list-rank-badge text-gray-500 bg-gray-100">6</span>
                         <p class="list-name text-gray-900 font-medium text-base md:text-lg">Hồng Ngát</p>
                     </div>
                     <span class="list-score text-lg md:text-xl font-black text-sky-700">5 điểm</span>
                 </div>
-
-                <!-- Hạng 8 -->
+                
+                <!-- Hạng 7 (Duy Kiệt) -->
                 <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
-                        <span class="list-rank-badge text-gray-500 bg-gray-100">8</span>
+                        <span class="list-rank-badge text-gray-500 bg-gray-100">7</span>
                         <p class="list-name text-gray-900 font-medium text-base md:text-lg">Duy Kiệt</p>
                     </div>
                     <span class="list-score text-lg md:text-xl font-black text-sky-700">5 điểm</span>
                 </div>
 
-                <!-- Hạng 9 -->
+                <!-- Hạng 8 (Minh Khôi) -->
                 <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
-                        <span class="list-rank-badge text-gray-500 bg-gray-100">9</span>
+                        <span class="list-rank-badge text-gray-500 bg-gray-100">8</span>
                         <p class="list-name text-gray-900 font-medium text-base md:text-lg">Minh Khôi</p>
                     </div>
                     <span class="list-score text-lg md:text-xl font-black text-sky-700">0 điểm</span>
                 </div>
-                
-                <!-- Hạng 10 (ĐÃ CẬP NHẬT: Phương Uyên) -->
+
+                <!-- Hạng 9 (Phương Uyên) -->
                 <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
                     <div class="flex items-center space-x-4">
-                        <span class="list-rank-badge text-gray-500 bg-gray-100">10</span>
+                        <span class="list-rank-badge text-gray-500 bg-gray-100">9</span>
                         <p class="list-name text-gray-900 font-medium text-base md:text-lg">Phương Uyên</p>
                     </div>
                     <span class="list-score text-lg md:text-xl font-black text-sky-700">0 điểm</span>
                 </div>
+                
+                <!-- Hạng 10 (Khả Quỳnh) -->
+                <div class="rank-list-item flex items-center justify-between p-3 md:p-4 rounded-xl rank-list-item-animated">
+                    <div class="flex items-center space-x-4">
+                        <span class="list-rank-badge text-gray-500 bg-gray-100">10</span>
+                        <p class="list-name text-gray-900 font-medium text-base md:text-lg">Khả Quỳnh</p>
+                    </div>
+                    <span class="list-score text-lg md:text-xl font-black text-sky-700">0 điểm</span>
+                </div>
+                
+                <!-- Bỏ Duy Khang (19 điểm) và các thành viên còn lại không có trong bảng mới -->
+                <!-- Các thành viên cũ đã bị loại bỏ để chỉ giữ lại các thành viên trong bảng điểm mới nhất. -->
             </div>
             
             <!-- ĐÃ LÀM NỔI VỪA PHẢI -->
@@ -397,7 +405,7 @@
                     
                     <!-- Inner Grid for points - 2 columns -->
                     <div class="grid grid-cols-2 gap-4">
-                        <!-- Tham gia (Đã thay đổi: +2) -->
+                        <!-- Tham gia (+2) -->
                         <div class="p-4 rounded-xl bg-sky-50 shadow-sm border border-sky-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-sky-300">
                             <i class="fa-solid fa-person-walking-luggage text-sky-600 text-xl mb-1"></i>
                             <p class="font-medium text-gray-700">Tham gia</p>
@@ -439,35 +447,35 @@
                     
                     <!-- Inner Grid for points - 2 columns -->
                     <div class="grid grid-cols-2 gap-4">
-                        <!-- Tham gia (Đã thay đổi: +5) -->
+                        <!-- Tham gia (+5) -->
                         <div class="p-4 rounded-xl bg-indigo-50 shadow-sm border border-indigo-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-indigo-300">
                             <i class="fa-solid fa-person-walking-luggage text-indigo-600 text-xl mb-1"></i>
                             <p class="font-medium text-gray-700">Tham gia</p>
                             <p class="text-2xl font-black text-indigo-800 mt-1">+5</p>
                         </div>
-                        <!-- Tương tác -->
+                        <!-- Tương tác (+6) -->
                         <div class="p-4 rounded-xl bg-indigo-50 shadow-sm border border-indigo-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-indigo-300">
                             <i class="fa-solid fa-comments text-indigo-600 text-xl mb-1"></i>
                             <p class="font-medium text-gray-700">Tương tác</p>
-                            <p class="text-2xl font-black text-indigo-800 mt-1">+4</p>
+                            <p class="text-2xl font-black text-indigo-800 mt-1">+6</p>
                         </div>
-                        <!-- Góp ý (Đã thay đổi: +10) -->
+                        <!-- Góp ý (+10) -->
                         <div class="p-4 rounded-xl bg-indigo-50 shadow-sm border border-indigo-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-indigo-300">
                             <i class="fa-solid fa-lightbulb text-indigo-600 text-xl mb-1"></i>
                             <p class="font-medium text-gray-700">Góp ý</p>
                             <p class="text-2xl font-black text-indigo-800 mt-1">+10</p>
                         </div>
-                        <!-- Xây dựng -->
+                        <!-- Xây dựng (+12) -->
                         <div class="p-4 rounded-xl bg-indigo-50 shadow-sm border border-indigo-100 flex flex-col items-center justify-center transition duration-300 hover:shadow-md hover:border-indigo-300">
                             <i class="fa-solid fa-tools text-indigo-600 text-xl mb-1"></i>
                             <p class="font-medium text-gray-700">Xây dựng</p>
-                            <p class="text-2xl font-black text-indigo-800 mt-1">+8</p>
+                            <p class="text-2xl font-black text-indigo-800 mt-1">+12</p>
                         </div>
-                        <!-- Thuyết trình - Full width -->
+                        <!-- Thuyết trình - Full width (+15) -->
                         <div class="col-span-2 p-4 rounded-xl bg-indigo-100 border-2 border-indigo-400 shadow-lg transition duration-300 hover:shadow-xl flex flex-col items-center justify-center">
                             <i class="fa-solid fa-microphone-lines text-indigo-700 text-2xl mb-1"></i>
                             <p class="font-bold text-lg text-indigo-800">Thuyết trình</p>
-                            <p class="text-3xl font-extrabold text-indigo-900 mt-2">+10</p>
+                            <p class="text-3xl font-extrabold text-indigo-900 mt-2">+15</p>
                         </div>
                     </div>
                 </div>
